@@ -1,67 +1,59 @@
 <template>
-    <div class="ma-5">
-        <div>
-            <span class="t18600">
-                انگشتر ثمین مستطیل سبز
-            </span>
-        </div>
-        <div class="mt-5 mb-4">
-            <v-chip class="pa-2 px-4 ">
-                <span class="t1440">
-                    کالکشن اردیبهشت
-                </span>
-            </v-chip>
-        </div>
-        <div class="mt-8">
-            <div class="d-flex box-pdp-select">
-                <div class="mt-2">
-                    <span class="ml-3">
-                        رنگ
+    <v-row class="ma-5">
+        <v-col cols="6">
+            <div>
+                <div class="mt-5">
+                    <span class="t18600">
+                        انگشتر ثمین مستطیل سبز
                     </span>
                 </div>
-                <div>
-                    <v-select class="rounded-lg border_gray  " background-color="white" :items="items" dense label="رنگ"
-                        outlined></v-select>
+                <div class="mt-5 mb-4">
+                    <v-chip class="pa-2 px-4 ">
+                        <span class="t1440">
+                            کالکشن اردیبهشت
+                        </span>
+                    </v-chip>
                 </div>
+            
+            </div>
+        </v-col>
 
-            </div>
-            <div class="d-flex box-pdp-select">
-                <div class="mt-2">
-                    <span class="ml-3">
-                        سایز
-                    </span>
-                </div>
-                <div>
-                    <v-select class="rounded-lg border_gray  " background-color="white" :items="items" dense
-                        label="سایز" outlined></v-select>
-                </div>
+        <v-col cols="5">
+            <v-row justify="center" align="center">
+                <v-col cols="4" >
+                    <div class="mt-2">
+                        <v-img width="64" :src="require('~/assets/img/cardPdp.svg')"></v-img>
+                    </div>
+                    <div class="text-center mt-3">
+                        <span class="t12400 " >
+                            پرداخت امن
+                        </span>
+                    </div>
+                </v-col>
+                <v-col cols="4" >
+                    <div>
+                        <v-img width="62" :src="require('~/assets/img/packeagePdp.svg')"></v-img>
+                    </div>
+                    <div class="text-center">
+                        <span class="t12400">
+                            پرداخت امن
+                        </span>
+                    </div>
+                </v-col>
+                <v-col cols="4" >
+                    <div>
+                        <v-img width="64" :src="require('~/assets/img/starPdp.svg')"></v-img>
+                    </div>
+                    <div class="text-center">
+                        <span class="t12400">
+                            پرداخت امن
+                        </span>
+                    </div>
+                </v-col>
+            </v-row>
+        </v-col>
 
-            </div>
-            <div class="d-flex box-pdp-select">
-                <div class="mt-2">
-                    <span class="ml-3">
-                        وزن
-                    </span>
-                </div>
-                <div>
-                    <v-select class="rounded-lg border_gray  " background-color="white" :items="items" dense label="وزن"
-                        outlined></v-select>
-                </div>
-
-            </div>
-            <div class="mt-10">
-                <span class="t14400">
-                    توضیحات
-                </span>
-                <div class="d-flex align-start">
-                    <v-icon color="#F39C12" class="ml-3"> mdi-information-outline</v-icon>
-                    <p class="t12400">
-                        در صورت تغییر رنگ طلا به رنگ‌های دیگر به علت وجود آبکاری کالا مرجوع نمی‌شود.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </v-row>
 </template>
     
 <script>

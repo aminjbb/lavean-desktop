@@ -5,12 +5,11 @@
                 <v-col cols="4">
                     <CarouselImageThumbnails2 />
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="8">
                     <NameAndDetail />
-                </v-col>
-                <v-col cols="4">
                     <PriceSection />
                 </v-col>
+              
             </v-row>
         </v-col>
     
