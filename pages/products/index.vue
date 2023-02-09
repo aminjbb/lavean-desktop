@@ -79,28 +79,7 @@
                                     </v-icon>
                                 </v-row>
                             </v-btn>
-                            <v-card v-if="searchShow" class="pa-10 mt-5 position__relative" width="421" rounded="lg"
-                                color="Cultured" outlined>
-                                <div>
-                                    <v-text-field prepend-inner-icon="mdi-search-web" max-height="36"
-                                        background-color="WhiteSmoke" outlined class="border-r-15"
-                                        placeholder="جست و جوی کالکشن" clearable></v-text-field>
-                                </div>
-                                <v-card width="323" color="white" outlined>
-                                    <v-checkbox class="mx-5 my-3" v-model="checkbox1" label="Checkbox 1"></v-checkbox>
-                                    <v-divider></v-divider>
-                                    <v-checkbox class="mx-5 my-3" v-model="checkbox1" label="Checkbox 1"></v-checkbox>
-                                    <v-divider></v-divider>
-                                </v-card>
 
-                                <v-row justify="center" class="mt-5 px-6">
-                                    <v-btn height="46" class="px-15" block color="DeepGreen" dark rounded="xl">
-                                        <span class="t14400 white--text">
-                                            انتخاب
-                                        </span>
-                                    </v-btn>
-                                </v-row>
-                            </v-card>
                         </div>
 
 
@@ -124,46 +103,75 @@
                                 </v-item>
                             </v-item-group>
                         </v-card>
+
+                        <div class="position__absolute position__absolute_left">
+                            <v-btn @click="sortShow = !sortShow" height="48" class="px-10" color="ChineseWhite" dark
+                                outlined rounded="xl">
+                                <v-row justify="space-between">
+                                    <v-icon class="ml-5" color="Black">
+                                        mdi-sort-variant
+                                    </v-icon>
+                                    <span class="t14400 Black--text">
+                                        جدید ترین
+                                    </span>
+
+                                </v-row>
+                            </v-btn>
+
+                        </div>
                     </div>
-
-                    <div class="position__absolute position__absolute_left">
-                        <v-btn @click="sortShow = !sortShow" height="48" class="px-10" color="ChineseWhite" dark
-                            outlined rounded="xl">
-                            <v-row justify="space-between">
-                                <v-icon class="ml-5" color="Black">
-                                    mdi-sort-variant
-                                </v-icon>
-                                <span class="t14400 Black--text">
-                                    جدید ترین
-                                </span>
-
-                            </v-row>
-                        </v-btn>
-
+                </v-row>
+                <v-card v-if="searchShow" class="pa-10 mt-5 position__absolute z-index-10" width="421" rounded="lg"
+                    color="Cultured" outlined>
+                    <div>
+                        <v-text-field prepend-inner-icon="mdi-search-web" max-height="36" background-color="WhiteSmoke"
+                            outlined class="border-r-15" placeholder="جست و جوی کالکشن" clearable></v-text-field>
                     </div>
-                    <v-card v-if="sortShow" class="pa-10 mt-15 position__relative " width="421" rounded="lg"
-                        color="Cultured" outlined>
-
-                        <v-card width="323" color="white" outlined>
-                            <v-radio-group v-model="radioGroup">
-                                <template v-for="n in 3">
-                                    <v-radio class="ma-3" :key="n" :label="`Radio ${n}`" :value="n"></v-radio>
-                                    <v-divider></v-divider>
-                                </template>
-
-
-                            </v-radio-group>
-
-
-                        </v-card>
+                    <v-card width="323" color="white" outlined>
+                        <template>
+                            <v-container fluid>
+                                <v-checkbox :value="colection.url" class="mx-5 my-3" v-model="selectedColection"
+                                    v-for="(colection, index) in collections" :key="colection.id"
+                                    :label="colection.name"></v-checkbox>
+                                <v-divider></v-divider>
+                            </v-container>
+                        </template>
 
 
                     </v-card>
-                </v-row>
+
+                    <v-row justify="center" class="mt-5 px-6">
+                        <v-btn @click="fillterColection()" height="46" class="px-15" block color="DeepGreen" dark
+                            rounded="xl">
+                            <span class="t14400 white--text">
+                                انتخاب
+                            </span>
+                        </v-btn>
+                    </v-row>
+                </v-card>
+                <v-card v-if="sortShow" class="pa-10 mt-5 position__absolute  position__absolute_rigth z-index-10"
+                    width="421" rounded="lg" color="Cultured" outlined>
+
+                    <v-card width="323" color="white" outlined>
+                        <v-radio-group v-model="radioGroup">
+                            <v-radio class="ma-3"  label="جدید‌ترین" value="n"></v-radio>
+                            <v-divider></v-divider>
+                            <v-radio class="ma-3"  label="کمترین قیمت" value="n"></v-radio>
+                            <v-divider></v-divider>
+                            <v-radio class="ma-3"  label="بیشترین قیمت" value="n"></v-radio>
+                            <v-divider></v-divider>
+
+                        </v-radio-group>
+
+
+                    </v-card>
+
+
+                </v-card>
 
                 <v-row justify="center" align="center" class="my-10">
-                    <v-col cols="3" v-for="(product, index) in  products" :key="index"> 
-                        <ProductCard :product="product"/>
+                    <v-col cols="3" v-for="(product, index) in  products" :key="index">
+                        <ProductCard :product="product" />
                     </v-col>
                     <!-- <v-col cols="3">
                         <ProductCard />
@@ -193,6 +201,7 @@ import ProductCard from '~/components/Public/ProductCard.vue'
 export default {
     beforeMount() {
         this.$store.dispatch('set_products', '')
+        this.$store.dispatch('set_collections')
     },
     components: {
         ProductCard
@@ -201,8 +210,12 @@ export default {
         products() {
             return this.$store.getters['get_products']
         },
-        productPageLength(){
+        productPageLength() {
             return this.$store.getters['get_productPageLength']
+        },
+
+        collections() {
+            return this.$store.getters['get_collections']
         }
     },
     data() {
@@ -212,12 +225,53 @@ export default {
             shopFilterBtn: 'all',
             searchShow: false,
             sortShow: false,
+            selectedColection: [],
+            isSend: true,
             items: [
                 { title: 'Click Me' },
                 { title: 'Click Me' },
                 { title: 'Click Me' },
                 { title: 'Click Me 2' },
             ],
+        }
+    },
+
+    methods: {
+        fillterColection() {
+
+            if (this.selectedColection.length > 0) {
+                var colections = ''
+                this.selectedColection.forEach(el => {
+                    colections += '"' + el + '",'
+                })
+                if (this.isSend) {
+                    setTimeout(() => {
+
+                        if (this.$route.query.colection) {
+                            const query = Object.assign({}, this.$route.query);
+                            query.colection = colections;
+                            this.$router.push({ query });
+                        } else {
+                            var route = this.$route.fullPath.split("?");
+                            var query = "";
+                            if (route[1]) {
+                                query = route[1] + "&colection=" + colections;
+                            } else {
+                                query = "?colection=" + colections;
+                            }
+
+                            this.$router.push("/products?" + query);
+                        }
+                    }, 25);
+                }
+            } else {
+                let url = new URL(window.location.href);
+                let params = new URLSearchParams(url.sort);
+                params.delete("colection");
+                var newParams = params.toString();
+
+                this.$router.push("/products?" + newParams);
+            }
         }
     }
 }

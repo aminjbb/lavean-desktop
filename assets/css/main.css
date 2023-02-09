@@ -74,7 +74,7 @@ body {
 }
 
 .position__absolute {
-  position: absolute;
+  position: absolute !important;
 }
 
 .position__relative {
@@ -1082,7 +1082,7 @@ ol li {
 .footer-box {
   margin-top: 500px;
   min-height: 387px;
- 
+
   background: #0A0A0A !important;
   border-radius: 141px 141px 0px 0px !important;
 }
@@ -1096,9 +1096,20 @@ ol li {
   border-radius: 219px 219px 0px 0px !important;
 }
 
-.why-lavin{
+.why-lavin {
   top: 25px;
   right: 305px;
   z-index: 10;
 }
-.w-100{width: 100% !important;}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.z-index-10 {
+  z-index: 10;
+}
+
+.position__absolute_rigth{
+  left: 160px !important;
+}

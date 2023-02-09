@@ -61,9 +61,10 @@ export default (ctx) => {
           OldLace: "#FFF5E4",
           Gray02: "#424242",
           DeepGreen:"#21725E",
-          Gray02:"#EDEDED",
           SuccessFocus:"#C8EBE2",
           Cultured02:"#F5F6F7",
+          DeepCarminePink:"#FF2C2C",
+          
         },
         dark: {},
       },

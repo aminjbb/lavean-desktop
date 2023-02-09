@@ -8,28 +8,30 @@
         </div>
         <v-card-text>
             <div class="text-center">
-                <span class="t18600 Gunmetal--text">
+                <span class="t18600 Gunmetal--text" v-if="price > 0" >
                     {{ splitChar(price) }}
                     <span class="t16400 Gunmetal--text">
                         تومان
                     </span>
                 </span>
+                <span class="t18600 Gray--text" v-else>
+                    ناموجود
+                </span>
             </div>
 
         </v-card-text>
         <div class="d-flex justify-center">
-            <v-btn v-if="price > 0" width="161" height="37" color="Gray2" class="rounded-xl" elevation="2">
+            <v-btn :to="'/product/' + product.url" width="161" height="37" color="Black" class="rounded-xl" elevation="2">
                 <span class="t12400 white--text">مشاهده کالا</span>
             </v-btn>
-            <v-btn v-else width="161" height="37" color="Gray02 " class="rounded-xl" elevation="2">
-                <span class="t12400 Black--text">ناموجود</span>
-            </v-btn>
+          
         </div>
     </v-card>
 
 </template>
 
 <script>
+
 export default {
     props: {
         product: ''
