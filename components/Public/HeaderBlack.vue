@@ -40,7 +40,7 @@
                     <span class="t14400 Black--text"> فروشگاه</span>
                 </v-btn>
 
-                <v-btn text class="d-flex align-centerpb-0 mb-0" to="/shop" exact large>
+                <v-btn text class="d-flex align-centerpb-0 mb-0"  exact large>
                     <span class="t14400 Black--text"> لاوین مگ </span>
                 </v-btn>
 

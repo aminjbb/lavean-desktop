@@ -67,20 +67,20 @@
 
                 </v-row>
             </v-card>
-
+            <v-row justify="end">
+                <v-col cols="4" class="mt-3 ">
+                    <v-btn to="/order" dark color="Black" rounded="xl" min-width="207" v-if="bestVariant">
+                        <span class="t12400">اضافه کردن به سبد خرید</span>
+                    </v-btn>
+                    <v-btn dark color="Black" rounded="xl" min-width="207" v-else>
+                        <span class="t12400">بازدید از فروشگاه</span>
+                    </v-btn>
+                </v-col>
+            </v-row>
 
         </v-col>
 
-        <v-row justify="end">
-            <v-col cols="4" class="mt-3 ">
-                <v-btn dark color="Black" rounded="xl" min-width="207" v-if="bestVariant">
-                    <span class="t12400">اضافه کردن به سبد خرید</span>
-                </v-btn>
-                <v-btn dark color="Black" rounded="xl" min-width="207" v-else>
-                    <span class="t12400">بازدید از فروشگاه</span>
-                </v-btn>
-            </v-col>
-        </v-row>
+
 
     </div>
 </template>

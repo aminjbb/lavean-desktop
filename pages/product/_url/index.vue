@@ -28,6 +28,7 @@ import Branches from "~/components/Pdp/Branches.vue";
 import PriceSection from "~/components/Pdp/PriceSection.vue";
 import { gql } from 'nuxt-graphql-request';
 export default {
+    layout:'headerBlack',
     components: {
         CarouselImageThumbnails2,
         NameAndDetail,

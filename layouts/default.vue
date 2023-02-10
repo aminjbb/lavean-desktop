@@ -75,9 +75,11 @@
           <v-row justify="center" align="center" class="height-percent-100">
             <v-col cols="2">
               <div class="text-center">
+               <v-btn to="/contact-us" text>
                 <span class="t14400 white--text">
                   تماس با ما
                 </span>
+               </v-btn>
               </div>
 
             </v-col>
