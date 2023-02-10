@@ -1,6 +1,6 @@
 <template>
     <v-row justify="center" class="mt-10">
-        <v-col cols="10">
+        <v-col cols="8">
             <v-row justify="center">
                 <v-col cols="4">
                     <CarouselImageThumbnails2 :product="product.clientProductByUrl" />
@@ -53,7 +53,7 @@ export default {
             id,
             name,
             metaDescription,
-            discountPercent,
+            discountPercent
             metaTitle,
             metaTags,
             canonical,
