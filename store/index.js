@@ -8,10 +8,25 @@ export const state = () => ({
   prodcutHome: [],
   produCategories: [],
   bestVariant: '',
-  collections: []
+  collections: [],
+  orderStep: 1
 })
 
 export const mutations = {
+  decress_orderStep(state) {
+    if (state.orderStep > 1) {
+      --state.orderStep
+    }
+  },
+  incress_orderStep(state) {
+    if (state.orderStep < 5) {
+      ++state.orderStep
+    }
+
+  },
+  set_orderStep(state, num) {
+    state.orderStep = num
+  },
   set_collections(state, obj) {
     state.collections = obj
   },
@@ -72,6 +87,11 @@ export const actions = {
                   id,
                   name,
                   url,
+                  discountPercent
+                  collection{
+                    name,
+                    url,
+                  }
                   bestVariant{
                       id,weight,price
                   }
@@ -95,12 +115,17 @@ export const actions = {
     commit('set_tableLoading', true)
     const query = gql`
         query{
-            clientProducts(limit:20) {
+            clientProducts(limit:20`+form+`) {
                 totalCount
                 results {
                   id,
                   name,
                   url,
+                  discountPercent
+                  collection{
+                    name,
+                    url,
+                  }
                   bestVariant{
                       id,weight,price
                   }
@@ -123,6 +148,9 @@ export const actions = {
 }
 
 export const getters = {
+  get_orderStep(state) {
+    return state.orderStep
+  },
   get_collections(state) {
     return state.collections
   },

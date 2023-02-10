@@ -1068,7 +1068,7 @@ ol li {
 }
 
 .position__absolute_left {
-  left: 160px;
+  left: 225px;
 }
 
 .position__relative_left {
@@ -1080,7 +1080,7 @@ ol li {
 }
 
 .footer-box {
-  margin-top: 500px;
+  margin-top: 200px;
   min-height: 387px;
 
   background: #0A0A0A !important;
@@ -1112,4 +1112,8 @@ ol li {
 
 .position__absolute_rigth{
   left: 160px !important;
+}
+
+.mt--5{
+  margin-top: -20px;
 }

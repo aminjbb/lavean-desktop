@@ -35,19 +35,19 @@
         <div class="position__absolute zindex-2">
             <v-btn-toggle class="mb-1" group>
                 <v-btn text class="d-flex align-center pb-0 mb-0" to="/" large >
-                    <span class="t14400 white--text"> فروشگاه</span>
+                    <span class="t14400 Black--text"> فروشگاه</span>
                 </v-btn>
 
                 <v-btn text class="d-flex align-centerpb-0 mb-0" to="/shop" exact large>
 
-                    <span class="t14400 white--text"> لاوین مگ </span>
+                    <span class="t14400 Black--text"> لاوین مگ </span>
                 </v-btn>
 
                 <v-btn text class="d-flex align-center pb-0 mb-0" to="/about-us" large>
-                    <span class="t14400 white--text"> درباره ما </span>
+                    <span class="t14400 Black--text"> درباره ما </span>
                 </v-btn>
                 <v-btn text class="d-flex align-center pb-0 mb-0" to="/blog" large>
-                    <span class="t14400 white--text"> تماس با ما </span>
+                    <span class="t14400 Black--text"> تماس با ما </span>
                 </v-btn>
 
             </v-btn-toggle>

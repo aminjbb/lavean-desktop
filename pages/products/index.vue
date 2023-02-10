@@ -2,7 +2,7 @@
     <div>
         <v-row justify="center">
 
-            <v-img max-height="491" :src="require('~/assets/img/bannerPlp.png')">
+            <v-img class="mt-2" max-height="491" :src="require('~/assets/img/bannerPlp.png')">
                 <v-container>
                     <v-row justify="start" align="center" class="height-percent-100 mt-15">
                         <v-col cols="5">
@@ -154,11 +154,11 @@
 
                     <v-card width="323" color="white" outlined>
                         <v-radio-group v-model="radioGroup">
-                            <v-radio class="ma-3"  label="جدید‌ترین" value="n"></v-radio>
+                            <v-radio class="ma-3" label="جدید‌ترین" value="n"></v-radio>
                             <v-divider></v-divider>
-                            <v-radio class="ma-3"  label="کمترین قیمت" value="n"></v-radio>
+                            <v-radio class="ma-3" label="کمترین قیمت" value="n"></v-radio>
                             <v-divider></v-divider>
-                            <v-radio class="ma-3"  label="بیشترین قیمت" value="n"></v-radio>
+                            <v-radio class="ma-3" label="بیشترین قیمت" value="n"></v-radio>
                             <v-divider></v-divider>
 
                         </v-radio-group>
@@ -173,27 +173,61 @@
                     <v-col cols="3" v-for="(product, index) in  products" :key="index">
                         <ProductCard :product="product" />
                     </v-col>
-                    <!-- <v-col cols="3">
-                        <ProductCard />
-                    </v-col>
-                    <v-col cols="3">
-                        <ProductCard />
-                    </v-col>
-                    <v-col cols="3">
-                        <ProductCard />
-                    </v-col> -->
+
                 </v-row>
 
+                <template v-if="isFilter && products.length == 0">
+                    <v-row justify="center">
+                        <v-img class="mt-2" max-width="304" max-height="259"
+                            :src="require('~/assets/img/is-null-object.svg')"></v-img>
 
-                <div class="text-center my-15">
+                    </v-row>
+                    <v-row justify="center" class="mt-6">
+                        <p class="t24400 DimGray--text">نتیجه ای برای این کلید واژه یافت نشد.</p>
+
+                    </v-row>
+
+                </template>
+
+                <div class="text-center my-15" v-if="productPageLength ">
                     <v-pagination color="Black" v-model="page" :length="productPageLength" circle></v-pagination>
                 </div>
+
+                <v-row justify="center">
+                    <v-card outlined width="1197" class="pa-10" rounded="lg">
+                        <p>
+                            یاقوت سرخ به عنوان اصلی‌ترین سنگ ماه تولد تیر شناخته می‌شود و در کنار آن، زمرد، مون استون و
+                            مروارید نیز سنگ‌های فرعی متولدین تیر ماه هستند.
+                            سنگ ماه تولد تیر (جولای): روبی (یاقوت سرخ)
+                            یاقوت نوعی از کرندوم است. کروندوم خالص بی‌رنگ است که در این حالت یاقوت سفید را به وجود
+                            می‌آورد؛
+                            بنابراین رنگ در اثر ناخالصی‌های شیمیائی به‌وجود می‌آید. رنگ قرمز موجود در روبی به خاطر کروم
+                            موجود در این سنگ‌قیمتی است. وقتی مقدار کروم در روبی کم باشد، رنگ آن صورتی می‌شود و به عنوان
+                            «یاقوت صورتی» در بازار عرضه می‌شود. درجه سختی روبی (یاقوت) با الماس قابل مقایسه است. این سنگ
+                            درجه سختی ۹ در مقیاس موس دارد. یعنی از بیشتر سنگ‌های جواهر سخت‌تر و مستحکم‌تر است. این محکم
+                            بودن
+                            باعث می‌شود تا این سنگ را روی انگشتر سوار کنند، زیرا به راحتی شکسته نمی‌شود.
+                            بهترین نوع سنگ یاقوت سرخ در منطقه ماگوک در کشور برمه پیدا شده است. این گوهر را در سنگ‌های
+                            رودخانه‌ای نیز می‌توان یافت. همچنین جالب است بدانید نادرترین و ارزشمندترین یاقوت برمه‌ای،
+                            یاقوت
+                            سرخ ستاره‌ای نام دارد که به «خون کبوتر» نیز معروف است چون مانند خون کبوتر سرخ است. درون این
+                            نوع
+                            روبی چیزی مثل یک ستاره شش وجهی نورانی با تقارن عالی به چشم می‌خورد و وقتی سنگ را می‌چرخانید
+                            مرکز
+                            ستاره نیز حرکت می‌کند.
+                            یاقوت به دو صورت کابوشون و برلیان تراشیده می‌شود. نوع مصنوعی آن هم در کارخانه ساخته می‌شود
+                            که
+                            قیمت ارزان‌تری نسبت به یاقوت اصل دارد. از جذابیت‌های روبی این است که نور طبیعی را به خود جذب
+                            می‌کند و بعدا در نبود نور آن را بازتاب می‌دهد. در مطلب آیا سنگ ماه تولدتان را می‌شناسید؟
+                            می‌توانید مشخصات و خواص دیگر سنگ‌های ماه تولد را بخوانید.
+                        </p>
+                    </v-card>
+                </v-row>
             </v-col>
 
-
         </v-row>
-    </div>
 
+    </div>
 </template>
 
 <script>
@@ -220,6 +254,7 @@ export default {
     },
     data() {
         return {
+            isFilter:false,
             text: '',
             page: 1,
             shopFilterBtn: 'all',
@@ -272,6 +307,17 @@ export default {
 
                 this.$router.push("/products?" + newParams);
             }
+        }
+    },
+
+    watch: {
+        $route(to) {
+            this.isFilter = true
+            var query = ''
+            if (to.query.colection) {
+                query = ',collection_Url_In:[' + to.query.colection + ']'
+            }
+            this.$store.dispatch('set_products', query)
         }
     }
 }
