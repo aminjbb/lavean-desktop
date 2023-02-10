@@ -12,8 +12,8 @@
                         </span>
                     </v-row>
                 </v-card>
-                <div justify="end"><v-img width="200" height="48"
-                        :src="require('~/assets/img/lavinLogoMain.png')"></v-img>
+                <div justify="end"><a href="/"><v-img width="200" height="48"
+                        :src="require('~/assets/img/lavinLogoMain.png')"></v-img></a>
                 </div>
                 <div>
                     <v-row justify="space-between" class="mt-1">
@@ -34,7 +34,7 @@
         <v-divider class="mt-2"></v-divider>
         <div class="position__absolute zindex-2">
             <v-btn-toggle class="mb-1" group>
-                <v-btn text class="d-flex align-center pb-0 mb-0" to="/" large >
+                <v-btn text class="d-flex align-center pb-0 mb-0" to="/" large>
                     <span class="t14400 white--text"> فروشگاه</span>
                 </v-btn>
 
