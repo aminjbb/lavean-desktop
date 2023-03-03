@@ -17,7 +17,7 @@
                                 <v-col cols="2">
                                     <div>
                                         <span class="t50400 black--text mx-2">
-                                            30
+                                            {{countdown_seconds}}
                                         </span>
                                     </div>
                                     <div>
@@ -30,7 +30,7 @@
                                 <v-col cols="2">
                                     <div>
                                         <span class="t50400 black--text mx-2">
-                                            30
+                                            {{countdown_minutes}}
                                         </span>
                                     </div>
                                     <div>
@@ -42,7 +42,7 @@
                                 <v-col cols="2">
                                     <div>
                                         <span class="t50400 black--text mx-2">
-                                            30
+                                            {{countdown_hours}}
                                         </span>
                                     </div>
                                     <div>
@@ -85,7 +85,7 @@
                     </v-row>
 
                 </v-col>
-                <v-col cols="6" >
+                <v-col cols="6">
                     <v-row justify="end" align="center">
                         <div class="pa-5 ">
                             <v-img height="215" width="574" :src="require('~/assets/img/template1.png')"></v-img>
@@ -98,6 +98,40 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            countdown_hours: "",
+            countdown_minutes: "",
+            countdown_seconds: "",
+        }
+    },
 
+    methods: {
+        countDown() {
+            if (this.countdown_seconds > 0) {
+                --this.countdown_seconds;
+            } else {
+                this.countdown_seconds = 59;
+                if (this.countdown_minutes > 0) {
+                    --this.countdown_minutes;
+                } else {
+                    this.countdown_minutes = 59;
+                    if (this.countdown_hours > 0) {
+                        --this.countdown_hours;
+                    }
+                }
+            }
+        },
+    },
+    mounted() {
+        var date = new Date();
+
+        this.countdown_hours = date.getHours()
+        this.countdown_minutes = date.getMinutes()
+        this.countdown_seconds = date.getMinutes()
+        setInterval(() => {
+            this.countDown();
+        }, 1000);
+    },
 }
 </script>

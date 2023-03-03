@@ -1,6 +1,7 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 import { gql } from 'nuxt-graphql-request';
+
 export const strict = false
 export const state = () => ({
   products: [],
@@ -9,10 +10,18 @@ export const state = () => ({
   produCategories: [],
   bestVariant: '',
   collections: [],
-  orderStep: 1
+  orderStep: 1,
+  isLogin: false,
+  meCustomer: ''
 })
 
 export const mutations = {
+  set_meCustomer(state, obj) {
+    state.meCustomer = obj
+  },
+  set_isLogin(state, bool) {
+    state.isLogin = bool
+  },
   decress_orderStep(state) {
     if (state.orderStep > 1) {
       --state.orderStep
@@ -51,6 +60,44 @@ export const mutations = {
 
 export const actions = {
 
+  async set_meCustomer({ commit }) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+        query{
+          meCustomer{
+             client{
+              user{
+                firstName
+                lastName
+                email
+              },
+              mobile,
+              addresses{
+                id
+                city{
+                  id, name
+                  province{
+                    id, name
+                  }
+                }
+                addressDetail
+                number
+                postalCode
+                default
+                latitude
+                longitude
+              }
+             },
+             sex,
+             nationalCode,
+             birthdate
+            }
+          } `;
+    const me = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_meCustomer', me.meCustomer);
+  },
   async set_collections({ commit }, form) {
 
     const query = gql`
@@ -115,7 +162,7 @@ export const actions = {
     commit('set_tableLoading', true)
     const query = gql`
         query{
-            clientProducts(limit:20`+form+`) {
+            clientProducts(limit:20`+ form + `) {
                 totalCount
                 results {
                   id,
@@ -148,6 +195,12 @@ export const actions = {
 }
 
 export const getters = {
+  get_meCustomer(state) {
+    return state.meCustomer
+  },
+  get_isLogin(state) {
+    return state.isLogin
+  },
   get_orderStep(state) {
     return state.orderStep
   },

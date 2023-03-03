@@ -48,6 +48,7 @@ export default {
     HomeCategory,
     LaveenLevel
   },
+  
 
   beforeMount() {
     this.$store.dispatch('set_productHome')

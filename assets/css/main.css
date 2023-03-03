@@ -1117,3 +1117,14 @@ ol li {
 .mt--5{
   margin-top: -20px;
 }
+
+.search_box{
+  left: 500px;
+  top: 70px;
+  border-radius: 24.5px !important; 
+}
+
+
+.v-list-item--link:before{
+  border-radius: 15px
+}

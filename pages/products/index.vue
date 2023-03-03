@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-2">
         <v-row justify="center">
 
             <v-img class="mt-2" max-height="491" :src="require('~/assets/img/bannerPlp.png')">
@@ -54,7 +54,9 @@
                                 </template>
                                 <v-list>
                                     <v-list-item v-for="(item, index) in items" :key="index">
-                                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                        <v-list-item-title><v-btn text to="/">
+                                                {{ item.title }}
+                                            </v-btn></v-list-item-title>
                                     </v-list-item>
                                 </v-list>
                             </v-menu>
@@ -121,8 +123,8 @@
                         </div>
                     </div>
                 </v-row>
-                <v-card v-if="searchShow" class="pa-10 mt-5 position__absolute z-index-10" width="421" rounded="lg"
-                    color="Cultured" outlined>
+                <v-card v-click-outside="outsideSearchShow" v-if="searchShow"
+                    class="pa-10 mt-5 position__absolute z-index-10" width="421" rounded="lg" color="Cultured" outlined>
                     <div>
                         <v-text-field prepend-inner-icon="mdi-search-web" max-height="36" background-color="WhiteSmoke"
                             outlined class="border-r-15" placeholder="جست و جوی کالکشن" clearable></v-text-field>
@@ -149,8 +151,9 @@
                         </v-btn>
                     </v-row>
                 </v-card>
-                <v-card v-if="sortShow" class="pa-10 mt-5 position__absolute  position__absolute_rigth z-index-10"
-                    width="421" rounded="lg" color="Cultured" outlined>
+                <v-card v-click-outside="outsidesortShow" v-if="sortShow"
+                    class="pa-10 mt-5 position__absolute  position__absolute_rigth z-index-10" width="421" rounded="lg"
+                    color="Cultured" outlined>
 
                     <v-card width="323" color="white" outlined>
                         <v-radio-group v-model="radioGroup">
@@ -189,7 +192,7 @@
 
                 </template>
 
-                <div class="text-center my-15" v-if="productPageLength ">
+                <div class="text-center my-15" v-if="productPageLength">
                     <v-pagination color="Black" v-model="page" :length="productPageLength" circle></v-pagination>
                 </div>
 
@@ -254,7 +257,7 @@ export default {
     },
     data() {
         return {
-            isFilter:false,
+            isFilter: false,
             text: '',
             page: 1,
             shopFilterBtn: 'all',
@@ -272,6 +275,16 @@ export default {
     },
 
     methods: {
+        outsideSearchShow() {
+            if (this.searchShow) {
+                this.searchShow = false;
+            }
+        },
+        outsidesortShow() {
+            if (this.sortShow) {
+                this.sortShow = false;
+            }
+        },
         fillterColection() {
 
             if (this.selectedColection.length > 0) {

@@ -1,26 +1,26 @@
 <template>
-  <v-card class="Gray02 mt-15" outlined rounded="lg">
+  <v-card class="Cultured mt-15" outlined rounded="lg">
     <v-avatar class="pa-2  position__relative up-info-section" color="white" size="106">
       <v-img width="94" height="94" :src="require('~/assets/img/userProfile.svg')"></v-img>
     </v-avatar>
     <div class="text-center mt-m-4">
       <span class="t14400">
-        امین جباری
+        {{userFirstName}}
       </span>
     </div>
     <div class="text-center mt-2">
       <v-chip class="ma-2 px-5" color="white" text-color="white">
         <span class="t14400 Black--text">
-          09223732465
+          {{userMobile}}
         </span>
       </v-chip>
     </div>
     <!-- <v-divider></v-divider> -->
 
-    <v-list color="Gray02">
-      <v-list-item-group class="mx-5 Gunmetal--text " active-class="SuccessFocus" color="primary">
-        <template v-for="(item, i) in items">
-          <v-list-item :key="i" :to="item.to"  exact class="border-r-15 ma-3 white">
+    <v-list color="Cultured">
+      <v-list-item-group class="mx-5 Gunmetal--text border-r-15" active-class="successFocus" color="primary">
+        <template v-for="(item, i) in items" class="border-r-15">
+          <v-list-item :key="i" :to="item.to" exact class="border-r-15 ma-3 white">
             <v-list-item-icon class="ml-3">
               <!-- <v-icon v-text="item.icon" ></v-icon> -->
 
@@ -79,39 +79,25 @@ export default {
   }),
 
   computed: {
-    thumbnail() {
-      try {
-        return this.userAccount.thumbnail
-      } catch (error) {
-        return ''
-      }
-    },
-    userAccount() {
-      return this.$store.getters['wallet/get_userAccount']
-    },
     userInfo() {
-      return this.$store.getters["public/get_userInfo"];
+      return this.$store.getters['get_meCustomer']
     },
-
-    name() {
+    userFirstName() {
       try {
-        return this.userInfo.user.first_name
+        return this.userInfo.client.user.firstName
+      } catch (error) {
+        return ''
+      }
+    },
+    userMobile() {
+      try {
+        return this.userInfo.client.mobile
       } catch (error) {
         return ''
       }
     },
 
-    userPhone() {
-      try {
-        return this.userInfo.mobile
-      } catch (error) {
-        return ''
-      }
-    },
-
-    baseUrl() {
-      return process.env.baseUrl + '/media/'
-    }
+   
   },
 
   methods: {

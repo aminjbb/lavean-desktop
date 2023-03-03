@@ -147,23 +147,13 @@ export default {
             this.loading = true;
             var name = ''
             var mobile = ''
-            if (this.form.itsMe) {
-                name = this.name
-                mobile = this.userMobile
-            }
-            else {
-                name = this.form.name
-                mobile = this.convertPersianNumber(this.form.number)
-            }
             axios({
                 method: "post",
-                url: process.env.apiUrl + "address/",
+                url: process.env.apiUrl + "address/client/",
                 headers: {
                     Authorization: "Bearer " + this.$cookies.get("customer_token"),
                 },
                 data: {
-                    title: this.form.addressName,
-                    first_name: name,
                     city: this.form.city,
                     postal_code: this.convertPersianNumber(this.form.postalCode),
                     address_detail: this.form.address,
@@ -281,11 +271,21 @@ export default {
 
     computed: {
         province() {
-            return this.$store.getters["public/get_provinces"];
+            var province = []
+            this.$store.getters["public/get_provinces"].forEach(element => {
+                var form = { text :element.name , value: element.id}
+                province.push(form)
+            });
+            return province
         },
 
         citys() {
-            return this.$store.getters["public/get_citys"];
+            var citys = []
+            this.$store.getters["public/get_citys"].forEach(element => {
+                var form = { text :element.name , value: element.id}
+                citys.push(form)
+            });
+            return citys
         },
         addressD() {
             return this.$store.getters['userProfile/get_addressOnMap']
