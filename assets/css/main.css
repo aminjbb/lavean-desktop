@@ -1150,3 +1150,36 @@ header {
   border-left: 2px solid black;
   height: 60px;
 }
+
+.ov-hidden{
+  overflow: hidden !important;
+}
+
+.absolute{
+  position: absolute;
+  z-index: 1;
+}
+
+.relative{
+  position:relative;
+}
+
+.top50-r{
+  right: 0;
+  top: 50%;
+}
+.top50-l{
+  left: 0;
+  top: 50%;
+}
+
+.w90{
+  width: 90% !important;
+}
+
+.levelbtn{
+  position: absolute;
+  right:42%;
+  top: 30px;
+  border-radius: 42px !important;
+}

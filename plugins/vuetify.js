@@ -64,7 +64,8 @@ export default (ctx) => {
           successFocus:"#C8EBE2",
           Cultured02:"#F5F6F7",
           DeepCarminePink:"#FF2C2C",
-          LightSilver:"#D9D9D9"
+          LightSilver:"#D9D9D9",
+          black2:"#0A0A0A"
           
         },
         dark: {},

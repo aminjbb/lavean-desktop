@@ -15,7 +15,7 @@
                     </v-row>
                 </v-card>
                 <div justify="end"><a href="/"><img width="180" height="40"
-                            :src="require('~/assets/img/lavinLogoMain.png')"></a>
+                         class="absolute"   :src="require('~/assets/img/lavinLogoMain.png')"></a>
                 </div>
                 <div>
                     <v-row justify="space-between" class="mt-1">

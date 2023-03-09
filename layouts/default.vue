@@ -33,14 +33,14 @@
               </div>
               <v-row justify="center" class="mt-2">
                 <span class="mx-1">
-                  <v-img width="31" height="31" :src="require('~/assets/img/instaIcon.svg')"></v-img>
+                  <v-img width="31" height="31" :src="require('~/assets/img/InstagramLogo.svg')"></v-img>
                 </span>
                 <span class="mx-1">
-                  <v-img width="33" height="33" :src="require('~/assets/img/facebookIcon.svg')"></v-img>
+                  <v-img width="33" height="33" :src="require('~/assets/img/FacebookLogo.svg')"></v-img>
                 </span>
 
                 <span class="mx-1">
-                  <v-img width="35" height="31" :src="require('~/assets/img/telegramicon.svg')"></v-img>
+                  <v-img width="35" height="31" :src="require('~/assets/img/TelegramLogo.svg')"></v-img>
                 </span>
 
               </v-row>

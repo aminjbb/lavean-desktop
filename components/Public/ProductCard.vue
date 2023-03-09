@@ -2,7 +2,7 @@
     <v-row justify="center">
         <v-hover
         v-slot="{ hover }"
-        open-delay="200"
+       
       >
       <v-card :elevation="hover ? 16 : 2"
           :class="{ 'on-hover': hover }" rounded="lg" height="369" width="239" outlined>
@@ -136,6 +136,7 @@ export default {
 
 <style  scoped>
 .on-hover{
-    background-color: rgba(#FFF, 0.8)
+    background-color: rgba(#FFF, 0.8);
+    cursor: pointer;
 }
 </style>

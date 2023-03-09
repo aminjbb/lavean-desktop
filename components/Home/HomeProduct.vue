@@ -1,15 +1,19 @@
 <template>
     <v-container>
-        <div class="mt-5 mb-10">
+        <div class="mt-5 mb-10 relative">
             <div class="t30600 black--text pr-15">
-                <span>
+                <span >
                     مناسب شما!
                 </span>
             </div>
-            <v-row justify="center" class="mt-5">
+            <img @click="scrollLeft()" class="absolute top50-l" src="~/assets/img/left.svg" alt="">
+                <img @click="scrollRight()" class="absolute top50-r" src="~/assets/img/rigth.svg" alt="">
+
+            <v-row id="homeProduct" justify="start" class="mt-5 pb-6 flex-nowrap scroll ov-hidden ">
                 <v-col cols="3" v-for="(product, index) in homeProducts " :key="index">
                     <ProductCard :product="product" />
                 </v-col>
+
 
             </v-row>
         </div>
@@ -22,10 +26,35 @@ export default {
         ProductCard
     },
 
+    data() {
+        return {
+            left: 0
+        }
+    },
+
     computed: {
         homeProducts() {
             return this.$store.getters['get_productHome']
         }
     },
+
+    methods: {
+        scrollLeft() {
+            this.left -= 200
+            document.getElementById('homeProduct').scrollTo({
+                top: 0,
+                left: this.left,
+                behavior: 'smooth'
+            })
+        },
+        scrollRight() {
+            this.left += 200
+            document.getElementById('homeProduct').scrollTo({
+                top: 0,
+                left: this.left,
+                behavior: 'smooth'
+            })
+        }
+    }
 }
 </script>
