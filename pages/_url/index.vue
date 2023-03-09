@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-row justify="end" class="mt-15 mr-13">
-            <v-col cols="10">
+            <v-col cols="11">
                 <v-row justify="start" class="mb-3">
                     <p class="t45600 GraniteGray--text">
                         قوانین و مقررات لاوین
@@ -12,8 +12,8 @@
         </v-row>
         <v-row justify="center" align="center" class="mt-5">
 
-            <v-col cols="7">
-                <v-row justify="center">
+            <v-col cols="9">
+                <v-row justify="center" class="mt-5">
                     <p>سنگ ماه تولد تیر همانند دیگر سنگ‌های ماه تولد دارای انرژی کیهانی است که از طریق تماس طلا و جواهر
                         مزین به این سنگ با بدن فرد به او منتقل می‌شود. برخی کارشناسان بر این باور هستند که هر ماه تولد
                         یک سنگ ویژه‌ای دارد که می‌توان از انرژی آن برای درمان بیماری‌ها یا بهبود شرایط روحی فرد استفاده

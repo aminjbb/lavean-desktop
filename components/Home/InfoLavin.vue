@@ -4,17 +4,20 @@
                 خرید میکنند؟
             </span></span>
         <div class="info-home-box d-flex justify-center">
-            <v-card height="411" width="647" color="LightSilver" class="LightSilver-box pt-15 px-10 t14400" rounded="xl"
+            <v-card height="411" width="647" color="LightSilver" class="LightSilver-box pt-15 px-10 t14400" 
                 outlined>
                 <v-col cols="7">
-                    <p>ارسال رایگان به سراسر کشور</p>
-                    <p>امکان تعویض تا یک هفته بعد از خرید</p>
-                    <p>عودت و بازگشت وجه تا 24 ساعت بعد از خرید</p>
-                    <p>با هر خرید 2% از کل مبلغ سفارشتان را در کیف پول دریافت و برای خرید بعدی از اعتبارتان استفاده
-                        کنید!</p>
-                    <p>تضمین اصالت کالا</p>
-                    <p>تحویل سریع در کوتاه ترین زمان</p>
-                    <p>امکان ابکاری محصولات قبل از ارسال</p>
+                    <ul>
+                        <li class="t14400">ارسال رایگان به سراسر کشور</li>
+                        <li class="t14400 mt-5">امکان تعویض تا یک هفته بعد از خرید</li>
+                        <li class="t14400 mt-5">عودت و بازگشت وجه تا 24 ساعت بعد از خرید</li>
+                        <li class="t14400 mt-5">با هر خرید 2% از کل مبلغ سفارشتان را در کیف پول دریافت و برای خرید بعدی از اعتبارتان استفاده
+                            کنید!</li>
+                        <li class="t14400 mt-5">تضمین اصالت کالا</li>
+                        <li class="t14400 mt-5">تحویل سریع در کوتاه ترین زمان</li>
+                        <li class="t14400 mt-5">امکان ابکاری محصولات قبل از ارسال</li>
+                    </ul>
+
                 </v-col>
             </v-card>
 
@@ -30,3 +33,19 @@ export default {
 
 }
 </script>
+<style>
+ul {
+  list-style: none;
+}
+
+ul li::before {
+    content: "\2022";
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: -1em;
+    width: 1em;
+
+  }</style>
+
+

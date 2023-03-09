@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <div class="mt-5 mb-10">
+        <div class="mt-15 mr-10 mb-10">
             <div class="t30600 black--text pr-10">
                 <span>
                     محصولات لاوین

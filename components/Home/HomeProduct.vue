@@ -6,7 +6,7 @@
                     مناسب شما!
                 </span>
             </div>
-            <v-row class="mt-5">
+            <v-row justify="center" class="mt-5">
                 <v-col cols="3" v-for="(product, index) in homeProducts " :key="index">
                     <ProductCard :product="product" />
                 </v-col>

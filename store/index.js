@@ -67,6 +67,19 @@ export const actions = {
     const query = gql`
         query{
           meCustomer{
+            cartDetails{
+              variant{
+                id,weight,price
+                product{
+                  name
+                  imageCover{
+                    imageThumbnail{
+                      medium
+                    }
+                  }
+                }
+              }
+            }
              client{
               user{
                 firstName

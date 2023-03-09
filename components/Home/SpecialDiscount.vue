@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <div class="mt-4">
+        <div class="mt-90">
             <v-row>
                 <v-col cols="6" class="pl-15">
                     <v-row justify="end" align="center">
@@ -16,7 +16,7 @@
                             <v-row justify="end" align="center">
                                 <v-col cols="2">
                                     <div>
-                                        <span class="t50400 black--text mx-2">
+                                        <span class="t45400 black--text mx-2">
                                             {{countdown_seconds}}
                                         </span>
                                     </div>
@@ -27,21 +27,23 @@
                                     </div>
 
                                 </v-col>
+                                <div class="vertical-divider"></div>
                                 <v-col cols="2">
                                     <div>
-                                        <span class="t50400 black--text mx-2">
+                                        <span class="t45400 black--text mx-2">
                                             {{countdown_minutes}}
                                         </span>
                                     </div>
-                                    <div>
+                                    <div class="text-center">
                                         <span class="t16400 black--text mx-2">
                                             Minutes
                                         </span>
                                     </div>
                                 </v-col>
+                                <div class="vertical-divider"></div>
                                 <v-col cols="2">
                                     <div>
-                                        <span class="t50400 black--text mx-2">
+                                        <span class="t45400 black--text mx-2">
                                             {{countdown_hours}}
                                         </span>
                                     </div>
@@ -56,21 +58,21 @@
                             </v-row>
 
                         </v-col>
-                        <v-col cols="6">
-                            <v-row justify="start">
-                                <span class="t20400 text-decoration-line-through DimGray--text dana-fa">
+                        <v-col cols="7">
+                            <v-row justify="start" class="mr-10">
+                                <span class="t18400 text-decoration-line-through DimGray--text dana-fa mt-2">
                                     ۲۵٬۰۰۰٬۰۰۰
                                 </span>
-                                <v-avatar class="mx-2" color="orange" size="31"><span
-                                        class="t15400 white--text dana-fa m">5%</span></v-avatar>
+                                <v-avatar class="mx-2 mt-1" color="orange" size="30"><span
+                                        class="t12400 white--text dana-fa mt-1">5%</span></v-avatar>
 
                             </v-row>
 
                         </v-col>
 
-                        <v-col cols="12">
-                            <v-row justify="end">
-                                <span class="t40600 black--text dana-fa">
+                        <v-col cols="7">
+                            <v-row justify="start">
+                                <span class="t40600 black--text dana-fa mr-12">
                                     ۲۵٬۰۰۰٬۰۰۰
                                     <span class="t30400 black--text">تومان</span>
                                 </span>
@@ -88,7 +90,7 @@
                 <v-col cols="6">
                     <v-row justify="end" align="center">
                         <div class="pa-5 ">
-                            <v-img height="215" width="574" :src="require('~/assets/img/template1.png')"></v-img>
+                            <v-img class="mt-15" height="215" width="574" :src="require('~/assets/img/template1.png')"></v-img>
                         </div>
                     </v-row>
                 </v-col>

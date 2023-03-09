@@ -1,15 +1,15 @@
 <template>
-    <div class="DeepGreen" style="width:100% ; height:322px">
+    <div class="DeepGreen" style="width:100% ; height:350px">
         <v-row justify="center" align="center" class="height-percent-100">
-            <v-col cols="6">
-                <v-row justify="space-between" class="mx-11">
+            <v-col cols="8" md="6">
+                <v-row justify="space-between" >
                     <div>
                         <img width="73" height="63" :src="require('~/assets/img/HomeShop.svg')">
                     </div>
-                    <div class="mr-2">
+                    <div class=" mb-2">
                         <img width="56" height="71" :src="require('~/assets/img/HomeCard.svg')">
                     </div>
-                    <div class="mr-4">
+                    <div class="">
                         <img width="64" height="64" :src="require('~/assets/img/HomeUser.svg')">
                     </div>
                     <div>
@@ -20,7 +20,7 @@
                     </div>
                 </v-row>
                 <v-row justify="center">
-                    <img width="624" :src="require('~/assets/img/LavinLevel.svg')">
+                    <img :src="require('~/assets/img/LavinLevel.svg')">
                 </v-row>
 
                 <v-row justify="center">

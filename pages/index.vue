@@ -8,14 +8,14 @@
       <v-img :src="require('~/assets/img/bannerPlp.png')" class="mt-10">
         <v-container>
           <v-row justify="start" align="center" class="height-percent-100 mt-15">
-            <v-col cols="5">
+            <v-col cols="5" class="mt-5">
               <span class="t50400 white--text">
                 با لاوین در دنیای فشن سفر کنید!
               </span>
             </v-col>
           </v-row>
           <v-row justify="end" align="center" class="height-percent-100 mt-15">
-            <v-col cols="3">
+            <v-col cols="3" class="mb-9">
               <v-btn height="58" class="px-15" color="Cultured" dark rounded="xl">
                 <span class="t20400 Black--text">
                   شروع کنیم

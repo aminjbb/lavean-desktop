@@ -1001,7 +1001,8 @@ ol li {
 .LightSilver-box {
   position: absolute !important;
   bottom: 0;
-  right: 100px
+  right: 100px;
+  border-radius:45px !important;
 }
 
 .info-image-box {
@@ -1110,21 +1111,42 @@ ol li {
   z-index: 10;
 }
 
-.position__absolute_rigth{
+.position__absolute_rigth {
   left: 160px !important;
 }
 
-.mt--5{
+.mt--5 {
   margin-top: -20px;
 }
 
-.search_box{
+.search_box {
   left: 500px;
   top: 70px;
-  border-radius: 24.5px !important; 
+  border-radius: 24.5px !important;
 }
 
 
-.v-list-item--link:before{
+.v-list-item--link:before {
   border-radius: 15px
+}
+
+header {
+  height: 90px !important;
+}
+
+.clock-img {
+  position: absolute;
+  left: -13px;
+  top: 5px;
+}
+.mt-90{
+  margin-top:90px;
+}
+
+.vertical-divider {
+  margin-top: 24px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-left: 2px solid black;
+  height: 60px;
 }

@@ -1,6 +1,11 @@
 <template>
     <v-row justify="center">
-        <v-card rounded="lg" height="369" width="239">
+        <v-hover
+        v-slot="{ hover }"
+        open-delay="200"
+      >
+      <v-card :elevation="hover ? 16 : 2"
+          :class="{ 'on-hover': hover }" rounded="lg" height="369" width="239" outlined>
             <v-img height="235" :src="productImageCover" class="border-r-15"></v-img>
             <div class="mt--5 text-center">
                 <v-chip class="pa-2 px-4 plp-colection" v-if="collectionName">
@@ -48,6 +53,8 @@
 
             </div>
         </v-card>
+      </v-hover>
+       
 
     </v-row>
 </template>
@@ -126,3 +133,9 @@ export default {
     }
 }
 </script>
+
+<style  scoped>
+.on-hover{
+    background-color: rgba(#FFF, 0.8)
+}
+</style>

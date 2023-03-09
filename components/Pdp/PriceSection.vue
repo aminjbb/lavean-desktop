@@ -69,7 +69,7 @@
             </v-card>
             <v-row justify="end">
                 <v-col cols="4" class="mt-3 ">
-                    <v-btn to="/order" dark color="Black" rounded="xl" min-width="207" v-if="bestVariant">
+                    <v-btn :loading="loading" dark color="Black" rounded="xl" min-width="207" v-if="bestVariant" @click="addToCard()">
                         <span class="t12400">اضافه کردن به سبد خرید</span>
                     </v-btn>
                     <v-btn dark color="Black" rounded="xl" min-width="207" v-else>
@@ -80,19 +80,32 @@
 
         </v-col>
 
+        <v-snackbar v-model="snackbar" :timeout="4000">
+            {{ text }}
 
+            <template v-slot:actions>
+                <v-btn color="blue" variant="text" @click="snackbar = false">
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
 
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     props: {
         product: ''
     },
     data() {
         return {
-            changeVariant: ''
+            loading:false,
+            changeVariant: '',
+            snackbar:'',
+            text:'',
+            color:''
         }
     },
     methods: {
@@ -106,11 +119,53 @@ export default {
         setBestvariant() {
             var variant = this.product.availableVariants.find(el => el.id == this.changeVariant)
             this.$store.commit("set_bestVariant", variant);
+        },
+
+        addToCard() {
+            this.loading = true
+            axios({
+                method: 'post',
+                url: process.env.apiUrl + 'cart/client/',
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data: {
+                    variant: this.variantId
+                }
+            })
+                .then(response => {
+                    this.$store.dispatch('set_meCustomer')
+                    this.snackbar= true
+                    this.text = 'با موفقیت به سبد خرید اضافه شد'
+                    this.color = 'success'
+                    this.loading = false
+                    this.$router.push('/order')
+                    setTimeout(() => {
+                        this.snackbar= false
+                    }, 4000);
+                })
+                .catch(err => {
+                    this.loading = false
+                    this.snackbar= true
+                    this.text = 'به مشکلی بر خوردیم'
+                    this.color = 'success'
+                    setTimeout(() => {
+                        this.snackbar= false
+                    }, 4000);
+                })
         }
     },
     computed: {
         bestVariant() {
             return this.$store.getters['get_bestVariant']
+        },
+
+        variantId() {
+            try {
+                return this.bestVariant.id
+            } catch (error) {
+                return ''
+            }
         },
 
         variantPrice() {
