@@ -1002,7 +1002,7 @@ ol li {
   position: absolute !important;
   bottom: 0;
   right: 100px;
-  border-radius:45px !important;
+  border-radius: 45px !important;
 }
 
 .info-image-box {
@@ -1120,9 +1120,17 @@ ol li {
 }
 
 .search_box {
-  left: 500px;
+  left: 27%;
   top: 70px;
   border-radius: 24.5px !important;
+}
+
+@media  (max-width: 1902px) {
+  .search_box {
+    left: 18%;
+    top: 70px;
+    border-radius: 24.5px !important;
+  }
 }
 
 
@@ -1139,8 +1147,9 @@ header {
   left: -13px;
   top: 5px;
 }
-.mt-90{
-  margin-top:90px;
+
+.mt-90 {
+  margin-top: 90px;
 }
 
 .vertical-divider {
@@ -1151,35 +1160,57 @@ header {
   height: 60px;
 }
 
-.ov-hidden{
+.ov-hidden {
   overflow: hidden !important;
 }
 
-.absolute{
-  position: absolute;
+.absolute {
+  position: absolute !important;
   z-index: 1;
 }
 
-.relative{
-  position:relative;
+.relative {
+  position: relative;
 }
 
-.top50-r{
+.top50-r {
   right: 0;
   top: 50%;
 }
-.top50-l{
+
+.top50-l {
   left: 0;
   top: 50%;
 }
 
-.w90{
+.w90 {
   width: 90% !important;
 }
 
-.levelbtn{
+.levelbtn {
   position: absolute;
-  right:42%;
+  right: 42%;
   top: 30px;
   border-radius: 42px !important;
+}
+
+.br-15 {
+  border-radius: 15px !important;
+}
+
+
+.v-text-field-custom{
+  height: 55px !important;
+  border: 1px solid #EDEDED !important;
+}
+
+.circle-box-game {
+  width: 379px;
+  height: 379px;
+
+  border-radius: 100%;
+  background: rgba(46, 225, 122, 0.3);
+  filter: blur(170px);
+  position: absolute;
+  top: 66px;
 }

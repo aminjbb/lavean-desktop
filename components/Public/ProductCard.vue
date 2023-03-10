@@ -4,7 +4,7 @@
         v-slot="{ hover }"
        
       >
-      <v-card :elevation="hover ? 16 : 2"
+      <v-card :elevation="hover ? 16 : 0"
           :class="{ 'on-hover': hover }" rounded="lg" height="369" width="239" outlined>
             <v-img height="235" :src="productImageCover" class="border-r-15"></v-img>
             <div class="mt--5 text-center">

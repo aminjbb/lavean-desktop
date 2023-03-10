@@ -14,9 +14,12 @@
         </v-col>
 
 
-        <v-col cols="10">
+        <v-col cols="10" class="mt-6">
             <v-divider></v-divider>
             <Branches :Branches="product.clientBranchWarehouseStocks.results" />
+        </v-col>
+        <v-col cols="10" class="mt-6">
+            <HomeProduct />
         </v-col>
     </v-row>
 </template>
@@ -26,6 +29,7 @@ import CarouselImageThumbnails2 from "~/components/Carousel/CarouselImageThumbna
 import NameAndDetail from "~/components/Pdp/NameAndDetail.vue";
 import Branches from "~/components/Pdp/Branches.vue";
 import PriceSection from "~/components/Pdp/PriceSection.vue";
+import HomeProduct from '~/components/Home/HomeProduct.vue'
 import { gql } from 'nuxt-graphql-request';
 export default {
     layout:'headerBlack',
@@ -33,7 +37,8 @@ export default {
         CarouselImageThumbnails2,
         NameAndDetail,
         PriceSection,
-        Branches
+        Branches,
+        HomeProduct
     },
     async asyncData({ $graphql, app, params, store, route, error }) {
         store.commit("public/set_overlay", true);
@@ -101,6 +106,9 @@ export default {
         return {
             product: ''
         }
-    }
+    },
+    beforeMount() {
+    this.$store.dispatch('set_productHome')
+  }
 }
 </script>

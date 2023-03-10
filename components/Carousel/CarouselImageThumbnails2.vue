@@ -1,14 +1,14 @@
 <template>
-  <div class="rounded-lg">
-    <vueper-slides  ref="vueperslides1" :touchable="false" fade :autoplay="false" :bullets="false" :slide-ratio="1.11"
+  <div >
+    <vueper-slides   style="border-radius: 25px;" ref="vueperslides1" :touchable="false" fade :autoplay="false" :bullets="false" :slide-ratio="1.11"
       @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })">
-      <vueper-slide class="rounded-lg" v-for="(slide, i) in slides" :key="i" :image="slide.image">
+      <vueper-slide  style="border-radius: 25px;"  v-for="(slide, i) in slides" :key="i" :image="slide.image">
       </vueper-slide>
     </vueper-slides>
     <vueper-slides class="no-shadow thumbnails mt-2" ref="vueperslides2"
       @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })" :visible-slides="slides.length"
-      fixed-height="75px" :bullets="false" :touchable="false" :gap="2.5" :arrows="false">
-      <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image"
+      fixed-height="124px" :bullets="false" :touchable="false" :gap="2.5" :arrows="false">
+      <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image" style="width: 126px; border-radius: 15px; height: 124px;"
         @click.native="$refs.vueperslides2.goToSlide(i)">
       </vueper-slide>
     </vueper-slides>

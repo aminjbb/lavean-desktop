@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-3">
+    <div class="mb-3 mt-6">
         <v-row justify="center" align="center">
             <v-col cols="12" class="mb-5 mt-6">
                 <v-row justify="center">
@@ -10,7 +10,7 @@
             </v-col>
             <v-col cols="12">
                 <v-row justify="center">
-                    <v-card outlined min-height="54" max-height="54" min-width="588" max-width="588" rounded="lg">
+                    <v-card outlined min-height="54" max-height="54" min-width="588" max-width="588" class=" br-15">
                         <v-row class="mt-1" justify="space-between" align="center">
                             <v-col cols="6">
                                 <p class="text-center t14600 Black--text">وزن</p>
@@ -25,8 +25,8 @@
 
             <v-col cols="12" class="mt-1" v-if="branchelength > 0">
                 <v-row justify="center" v-for="(branche, index) in Branches" :key="index">
-                    <v-card outlined min-height="54" max-height="54" min-width="588" max-width="588" rounded="lg"
-                        class="mt-2">
+                    <v-card outlined min-height="54" max-height="54" min-width="588" max-width="588" 
+                        class="mt-2 br-15">
                         <v-row class="mt-1" justify="space-between" align="center">
                             <v-col cols="6">
                                 <p class="text-center t14400 Black--text">{{ branche.variant.weight }}</p>

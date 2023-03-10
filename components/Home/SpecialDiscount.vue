@@ -88,8 +88,9 @@
 
                 </v-col>
                 <v-col cols="6">
-                    <v-row justify="end" align="center">
+                    <v-row class="relative" justify="end" align="center">
                         <div class="pa-5 ">
+                            <div class="circle-box-game"></div>
                             <v-img class="mt-15" height="215" width="574" :src="require('~/assets/img/template1.png')"></v-img>
                         </div>
                     </v-row>

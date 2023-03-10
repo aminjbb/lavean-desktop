@@ -23,6 +23,7 @@ export default (ctx) => {
           warning2: "#008CE0",
           info: "#0082FD",
           info2: "#008CE0",
+          info3: "#0023DD",
           success: "#13AA52",
           success2: "#1BA94C",
           text1: "#181818",

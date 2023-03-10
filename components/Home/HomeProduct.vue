@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <div class="mt-5 mb-10 relative">
-            <div class="t30600 black--text pr-15">
+            <div class="t30600 black--text pr-15 ">
                 <span >
                     مناسب شما!
                 </span>
@@ -9,7 +9,7 @@
             <img @click="scrollLeft()" class="absolute top50-l" src="~/assets/img/left.svg" alt="">
                 <img @click="scrollRight()" class="absolute top50-r" src="~/assets/img/rigth.svg" alt="">
 
-            <v-row id="homeProduct" justify="start" class="mt-5 pb-6 flex-nowrap scroll ov-hidden ">
+            <v-row id="homeProduct" justify="start" class="mt-9 pb-6 flex-nowrap scroll ov-hidden px-11">
                 <v-col cols="3" v-for="(product, index) in homeProducts " :key="index">
                     <ProductCard :product="product" />
                 </v-col>

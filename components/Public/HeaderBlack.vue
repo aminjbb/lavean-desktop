@@ -2,19 +2,21 @@
     <header>
         <v-container>
             <v-row justify="space-between" class="pt-5">
-                <v-card outlined rounded="xl" height="49" width="298">
-                    <v-row justify="space-between" class="pa-6 Arsenic--text">
-                        <span class="t14400">
+                <v-card outlined rounded="xl" height="45" width="298">
+                    <v-img  width="30"  height="30" class="clock-img absolute"
+                                :src="require('~/assets/img/clock.svg')"></v-img>
+                    <v-row justify="space-between" class="py-6 pr-9 pl-10 Arsenic--text">
+                        <span class="t12400">
                             قیمت لحظه ای طلا
                         </span>
-                        <span class="t14400">
+                        <span class="t12400">
                             ۱,۴۵۵,۸۸۸,۹۳۰ ریال
                         </span>
                     </v-row>
                 </v-card>
                 <div justify="end">
                     <a href="/">
-                        <v-img width="200" height="48" :src="require('~/assets/img/lavinLogoMain.png')"></v-img>
+                        <v-img  width="200" height="48" :src="require('~/assets/img/lavinLogoMain.png')"></v-img>
                     </a>
                 </div>
                 <div>

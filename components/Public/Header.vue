@@ -3,7 +3,7 @@
         <v-container>
             <v-row justify="space-between" class="pt-5">
                 <v-card outlined rounded="xl" height="45" width="298">
-                    <v-img width="30"  height="30" class="clock-img"
+                    <v-img  width="30"  height="30" class="clock-img absolute"
                                 :src="require('~/assets/img/clock.svg')"></v-img>
                     <v-row justify="space-between" class="py-6 pr-9 pl-10 Arsenic--text">
                         <span class="t12400">
@@ -15,7 +15,7 @@
                     </v-row>
                 </v-card>
                 <div justify="end"><a href="/"><img width="180" height="40"
-                         class="absolute"   :src="require('~/assets/img/lavinLogoMain.png')"></a>
+                          :src="require('~/assets/img/lavinLogoMain.png')"></a>
                 </div>
                 <div>
                     <v-row justify="space-between" class="mt-1">

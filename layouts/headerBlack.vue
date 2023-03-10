@@ -31,18 +31,17 @@
                   لاوین در شبکه های اجتماعی
                 </span>
               </div>
-              <v-row justify="center" class="mt-2">
+              <v-row justify="center" class="mt-5">
                 <span class="mx-1">
-                  <v-img width="31" height="31" :src="require('~/assets/img/instaIcon.svg')"></v-img>
+                  <v-img width="32" height="32" :src="require('~/assets/img/InstagramLogo.svg')"></v-img>
                 </span>
                 <span class="mx-1">
-                  <v-img width="33" height="33" :src="require('~/assets/img/facebookIcon.svg')"></v-img>
-                </span>
-
-                <span class="mx-1">
-                  <v-img width="35" height="31" :src="require('~/assets/img/telegramicon.svg')"></v-img>
+                  <v-img width="32" height="32" :src="require('~/assets/img/FacebookLogo.svg')"></v-img>
                 </span>
 
+                <span class="mx-1">
+                  <v-img width="32" height="32" :src="require('~/assets/img/TelegramLogo.svg')"></v-img>
+                </span>
               </v-row>
             </v-col>
             <v-col cols="4">
@@ -51,7 +50,7 @@
                   آدرس دفتر مرکزی
                 </span>
               </div>
-              <div class="text-center">
+              <div class="text-center mt-4">
                 <span class="t14400 Cultured02--text">
                   اتوبان ستاری، جنب مجتمع تجاری کورش
                 </span>
@@ -63,8 +62,8 @@
                   تلفن تماس
                 </span>
               </div>
-              <div class="text-center">
-                <span class="t14400 Cultured02--text">
+              <div class="text-center mt-5">
+                <span class="t14400 Cultured02--text ">
                   44000071-72
                 </span>
               </div>
