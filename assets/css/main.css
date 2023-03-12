@@ -1214,3 +1214,17 @@ header {
   position: absolute;
   top: 66px;
 }
+
+.info-image-box-tr{
+  position: absolute;
+  background: rgba(73,69,69,0.38039);
+  width: 619px;
+  height: 369px;
+  border-radius: 45px !important;
+  z-index: 1;
+  left: 0;
+}
+
+.pt-150{
+  padding-top:110px
+}

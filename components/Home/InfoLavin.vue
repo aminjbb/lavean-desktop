@@ -22,6 +22,9 @@
             </v-card>
 
             <div class="info-image-box">
+                <div class="info-image-box-tr">
+
+                </div>
                 <v-img height="375" width="625" :src="require('~/assets/img/template2.png')"></v-img>
             </div>
         </div>

@@ -26,12 +26,12 @@
         <div class="footer-green-box">
           <v-row justify="center" align="center" class="height-percent-100">
             <v-col cols="4">
-              <div class="text-center">
+              <div class="text-center mt-2">
                 <span class="t14600 MagicMint--text">
                   لاوین در شبکه های اجتماعی
                 </span>
               </div>
-              <v-row justify="center" class="mt-2">
+              <v-row justify="center" class="mt-3">
                 <span class="mx-1">
                   <v-img width="31" height="31" :src="require('~/assets/img/InstagramLogo.svg')"></v-img>
                 </span>
@@ -40,30 +40,30 @@
                 </span>
 
                 <span class="mx-1">
-                  <v-img width="35" height="31" :src="require('~/assets/img/TelegramLogo.svg')"></v-img>
+                  <v-img width="30" height="31" :src="require('~/assets/img/TelegramLogo.svg')"></v-img>
                 </span>
 
               </v-row>
             </v-col>
             <v-col cols="4">
-              <div class="text-center">
-                <span class="t14600 MagicMint--text">
+              <div class="text-center pt-5">
+                <span class="t14600 MagicMint--text ">
                   آدرس دفتر مرکزی
                 </span>
               </div>
-              <div class="text-center">
+              <div class="text-center pt-2">
                 <span class="t14400 Cultured02--text">
                   اتوبان ستاری، جنب مجتمع تجاری کورش
                 </span>
               </div>
             </v-col>
             <v-col cols="4">
-              <div class="text-center">
+              <div class="text-center pt-5">
                 <span class="t14600 MagicMint--text">
                   تلفن تماس
                 </span>
               </div>
-              <div class="text-center">
+              <div class="text-center pt-2">
                 <span class="t14400 Cultured02--text">
                   44000071-72
                 </span>
