@@ -33,7 +33,7 @@
                             می‌توانید از چندین روش مختلف کمک بگیرید که ما در این مطلب برایتان توضیح داده‌ایم.</p>
                     </div>
                 </v-col>
-                <v-col cols="6" class="mr-15">
+                <v-col cols="6" md="5" class="mr-15">
                     <v-card class="br-15" outlined min-height="80" max-height="174" min-width="351" v-if="bestVariant">
 
                         <v-row justify="space-between" align="center" class="mt-6 mx-8" v-if="bestVariant">
@@ -73,7 +73,7 @@
                         </v-row>
                     </v-card>
                     <v-row justify="end">
-                        <v-col cols="7" class="mt-6 ml-2">
+                        <v-col cols="7" md="4" class="mt-6 ml-2">
                             <v-btn  :loading="loading" dark color="Black" rounded="xl" min-width="207" height="47" v-if="bestVariant"
                                 @click="addToCard()">
                                 <span class="t12400">اضافه کردن به سبد خرید</span>

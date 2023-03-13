@@ -12,10 +12,18 @@ export const state = () => ({
   collections: [],
   orderStep: 1,
   isLogin: false,
-  meCustomer: ''
+  meCustomer: '',
+  deliveryMethods: [],
+  orderBrache: []
 })
 
 export const mutations = {
+  set_orderBrache(state, obj) {
+    state.orderBrache = obj
+  },
+  set_deliveryMethods(state, obj) {
+    state.deliveryMethods = obj
+  },
   set_meCustomer(state, obj) {
     state.meCustomer = obj
   },
@@ -60,6 +68,43 @@ export const mutations = {
 
 export const actions = {
 
+  async set_orderBrache({ commit } , url) {
+  
+    const query = gql`
+    clientBranchWarehouseStocks(variant_Product_Url:"`+ url + `"){
+      results{
+          variant{
+              id,weight,
+          price,
+          },
+          branch{
+              id , name
+          }
+      }
+  }
+          
+        } `;
+    const me = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_orderBrache', me.clientBranchWarehouseStocks.results);
+  },
+  async set_deliveryMethods({ commit }) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+        query{
+          clientDeliveryMethods{
+            results{
+              id,
+              name,
+              description
+            }
+          }
+          
+        } `;
+    const me = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_deliveryMethods', me.clientDeliveryMethods.results);
+  },
   async set_meCustomer({ commit }) {
     const requestHeaders = {
       Authorization: "Bearer " + cookies.get("customer_token"),
@@ -71,6 +116,10 @@ export const actions = {
               variant{
                 id,weight,price
                 product{
+                  url
+                  collection{
+                    name
+                  }
                   name
                   imageCover{
                     imageThumbnail{
@@ -208,6 +257,12 @@ export const actions = {
 }
 
 export const getters = {
+  get_orderBrache(state) {
+    return state.orderBrache
+  },
+  get_deliveryMethods(state) {
+    return state.deliveryMethods
+  },
   get_meCustomer(state) {
     return state.meCustomer
   },

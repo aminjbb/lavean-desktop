@@ -10,22 +10,23 @@
             <div class="mt-10 mb-5">
 
                 <v-row>
-                    <v-form @submit.prevent="validate()" ref="address" v-model="valid">
+                    <v-form @submit.prevent="validate()" ref="userInfoOrder" v-model="valid">
                         <div>
                             <v-row justify="center">
                                 <v-col cols="5">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">نام و نام خانوادگی </span>
                                     </div>
-                                    <v-text-field class="border-r-15 mr-2" :rules="nameRule" v-model="form.addressName"
-                                        placeholder="نام آدرس" background-color="WhiteSmoke" outlined></v-text-field>
+                                    <v-text-field class="border-r-15 mr-2" :rules="nameRule" v-model="form.fullName"
+                                        placeholder="نام و نام خانوادگی" background-color="WhiteSmoke"
+                                        outlined></v-text-field>
                                 </v-col>
                                 <v-col cols="5">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">شماره موبایل</span>
                                     </div>
                                     <v-text-field placeholder="شماره موبایل" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-text-field>
+                                        :rules="mobileRule" v-model="form.mobile" class="border-r-15 mr-2"></v-text-field>
 
 
                                 </v-col>
@@ -33,8 +34,8 @@
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">کد ملی</span>
                                     </div>
-                                    <v-text-field placeholder="کد ملی" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-text-field>
+                                    <v-text-field placeholder="کد ملی" background-color="WhiteSmoke" outlined :rules="rule"
+                                        v-model="form.nationalCode" class="border-r-15 mr-2"></v-text-field>
 
 
                                 </v-col>
@@ -42,8 +43,8 @@
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">ایمیل</span>
                                     </div>
-                                    <v-text-field placeholder="ایمیل" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-text-field>
+                                    <v-text-field placeholder="ایمیل" background-color="WhiteSmoke" outlined :rules="rule"
+                                        v-model="form.email" class="border-r-15 mr-2"></v-text-field>
 
 
                                 </v-col>
@@ -52,7 +53,7 @@
                                         <span class="t14600 Black--text">توضیحات سفارش</span>
                                     </div>
                                     <v-textarea placeholder="توضیحات سفارش" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-textarea>
+                                        v-model="form.comment" class="border-r-15 mr-2"></v-textarea>
 
 
                                 </v-col>
@@ -60,7 +61,7 @@
 
                             </v-row>
 
-                         
+
                         </div>
                     </v-form>
                 </v-row>
@@ -113,16 +114,60 @@ export default {
             ],
             form: {
                 province: "",
-                city: "",
-                postalCode: "",
+                mobile: "",
+                nationalCode: "",
                 address: "",
                 plaque: "",
-                name: "",
+                email: "",
                 number: "",
-                addressName: '',
-                itsMe: ''
+                fullName: '',
+                itsMe: '',
+                comment: ''
             },
         };
     },
+
+    methods: {
+        setForm() {
+            try {
+                this.form.fullName = this.user.firstName
+                this.form.mobile = this.client.mobile
+                this.form.email = this.user.email
+                this.form.nationalCode = this.userInfo.nationalCode
+            } catch (error) {
+
+            }
+        }
+    },
+
+    computed: {
+        userInfo() {
+            try {
+                return this.$store.getters['get_meCustomer']
+            } catch (error) {
+
+            }
+        },
+
+        client() {
+            try {
+                return this.userInfo.client
+            } catch (error) {
+                return ''
+            }
+        },
+        user() {
+            try {
+                return this.client.user
+            } catch (error) {
+                return ''
+            }
+        }
+    },
+
+    mounted() {
+        this.setForm()
+     }
+
 }
 </script>

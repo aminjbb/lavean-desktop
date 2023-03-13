@@ -103,7 +103,7 @@
                                             <v-icon @click="editEmail = true">mdi-square-edit-outline</v-icon>
                                         </v-row>
                                     </v-card>
-                                    <v-text-field v-model="email" @click:append="sendData({ username: email } , 'user/client/me/user/')"
+                                    <v-text-field v-model="email" @click:append="sendData({ email: email } , 'user/client/me/user/')"
                                         append-icon="mdi-check-circle-outline" @blur="editEmail = false"
                                         v-else-if="editEmail" placeholder="ایمیل" background-color="WhiteSmoke" outlined
                                         class="border-r-15"></v-text-field>

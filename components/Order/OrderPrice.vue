@@ -39,7 +39,7 @@
             </v-row>
         </div>
 
-        <v-row justify="space-between" align="center" class="mt-3 mr-1">
+        <!-- <v-row justify="space-between" align="center" class="mt-3 mr-1">
             <v-col cols="8" v-if="orderStep == 1">
                 <v-row>
                     <v-col cols="1" class="ml-2">
@@ -70,7 +70,7 @@
                     </span>
                 </v-btn>
             </v-col>
-        </v-row>
+        </v-row> -->
     </div>
 </template>
 

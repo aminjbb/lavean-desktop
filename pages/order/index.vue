@@ -5,14 +5,48 @@
                 <v-row justify="center mt-10">
                     <v-col cols="7">
                         <OrderDetail v-if="orderStep == 1" />
-                        <OrderUserInfo v-if="orderStep == 2" />
-                        <OrderDelivery v-if="orderStep == 3" />
-                        <OrderBranche v-if="orderStep == 4" />
-                        <OrderAddress v-if="orderStep == 5" />
+                        <OrderUserInfo ref="OrderUserInfo" v-if="orderStep == 2" />
+                        <OrderAddress ref="OrderAddress" v-if="orderStep == 3" />
+                        <OrderDelivery  ref="OrderDelivery" v-if="orderStep == 4" />
+                        <OrderBranche v-if="orderStep == 5" />
+                      
 
                     </v-col>
                     <v-col cols="5">
                         <OrderPrice />
+                        <v-row justify="space-between" align="center" class="mt-3 mr-1">
+                            <v-col cols="8" v-if="orderStep == 1">
+                                <v-row>
+                                    <v-col cols="1" class="ml-2">
+                                        <v-icon color="accent">
+                                            mdi-information-outline
+                                        </v-icon>
+                                    </v-col>
+                                    <v-col cols="10">
+                                        <span class="t12400 GraniteGray--text">
+                                            هزینه این سفارش هنوز پرداخت نشده‌ و در صورت اتمام موجودی، کالاها از سبد حذف
+                                            می‌شوند.
+                                        </span>
+                                    </v-col>
+                                </v-row>
+
+
+                            </v-col>
+                            <v-col cols="4" v-else>
+                                <v-btn @click="preStep()" block color="ChineseWhite" dark rounded="xl">
+                                    <span class="t12400 GraniteGray--text">
+                                        مرحله قبل
+                                    </span>
+                                </v-btn>
+                            </v-col>
+                            <v-col cols="4">
+                                <v-btn @click="netxStep()" block color="Black" dark rounded="xl">
+                                    <span class="t12400">
+                                        ادامه خرید
+                                    </span>
+                                </v-btn>
+                            </v-col>
+                        </v-row>
                     </v-col>
                 </v-row>
             </v-col>
@@ -31,9 +65,9 @@ import OrderUserInfo from '~/components/Order/OrderUserInfo.vue'
 import OrderBranche from '~/components/Order/OrderBranche.vue'
 import OrderAddress from '~/components/Order/OrderAddress.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
-import { computed } from 'vue'
+import axios from 'axios'
 export default {
-    layout:'headerBlack',
+    layout: 'headerBlack',
     components: {
         OrderDetail,
         OrderUserInfo,
@@ -44,18 +78,107 @@ export default {
         ModalAddAddres
     },
 
+    methods: {
+        netxStep() {
+            if (this.orderStep == 2) {
+                this.$refs.OrderUserInfo.$refs.userInfoOrder.validate()
+                setTimeout(() => {
+                    if (this.$refs.OrderUserInfo.valid) {
+                        this.updateUser()
+                    }
+                }, 100);
+            }
+            else if(this.orderStep == 3){
+                    sessionStorage.setItem('orderAddress' , this.$refs.OrderAddress.address)
+                    this.$store.commit('incress_orderStep')
+            }
+            else if(this.orderStep == 4){
+                    sessionStorage.setItem('orderDelivery' , this.$refs.OrderDelivery.delivery)
+                    this.$store.commit('incress_orderStep')
+            }
+            else {
+                this.$store.commit('incress_orderStep')
+            }
+            // 
+        },
+        updateClient() {
+            axios({
+                method: 'put',
+                url: process.env.apiUrl + 'user/client/me/client/',
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data:{
+                    mobile: this.$refs.OrderUserInfo.form.mobile,
+                }
+            })
+                .then(response => {
+                    sessionStorage.setItem('orderComment' , this.$refs.OrderUserInfo.form.comment)
+                    this.$store.commit('incress_orderStep')
+                })
+                .catch(err => {
+
+                })
+        },
+        updateCustomer() {
+            axios({
+                method: 'put',
+                url: process.env.apiUrl + 'customer/client/me/',
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data:{
+                    national_code: this.$refs.OrderUserInfo.form.nationalCode,
+                }
+            })
+                .then(response => {
+                    this.updateClient()
+                })
+                .catch(err => {
+
+                })
+        },
+        updateUser() {
+            axios({
+                method: 'put',
+                url: process.env.apiUrl + 'user/client/me/user/',
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data:{
+                    first_name: this.$refs.OrderUserInfo.form.fullName,
+                    email: this.$refs.OrderUserInfo.form.email,
+                }
+            })
+                .then(response => {
+                    this.updateCustomer()
+                })
+                .catch(err => {
+
+                })
+        },
+        preStep() {
+            this.$store.commit('decress_orderStep')
+        }
+    },
+
     computed: {
         orderStep() {
             return this.$store.getters['get_orderStep']
         }
     },
 
+    beforeMount() {
+        this.$store.dispatch('set_meCustomer')
+        this.$store.dispatch('set_deliveryMethods')
+    },
+
     mounted() {
         if (sessionStorage.getItem('orderStep')) {
             this.$store.commit('set_orderStep', sessionStorage.getItem('orderStep'))
         }
-        else{
-             this.$store.commit('set_orderStep', 1)
+        else {
+            this.$store.commit('set_orderStep', 1)
         }
     }
 }
