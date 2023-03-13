@@ -32,6 +32,15 @@ export default {
         return {
             radios: ''
         }
-    }
+    },
+
+    // computed:{
+    //     product(){
+    //         return this.$store.getters['get_meCustomer'].cartDetails.
+    //     }
+    // },  
+    // mounted(){
+    //     this.$store.dispatch('set_orderBrache')
+    // }
 }
 </script>

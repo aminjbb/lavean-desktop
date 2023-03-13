@@ -7,16 +7,16 @@
                 </span>
             </div>
             <v-divider></v-divider>
-            <v-radio-group v-model="radios" class="px-8">
+            <v-radio-group v-model="delivery" class="px-8">
 
-                <v-radio value="Google">
+                <v-radio :value="delivery.id" v-for="(delivery) in deliveryMethods" :key="delivery.id">
                     <template v-slot:label>
                         <div class="box-delivery border-r-15 py-3">
                             <p class="t14400 Arsenic--text ma-3 mt-2 text-right">
-                                ارسال با تیپاکس
+                                {{delivery.name}}
                             </p>
                             <p class="t10400 Arsenic--text ma-3 mt-2 text-right">
-                                ۲ الی ۳ روز کاری برای شهرستان ها زمان بر است.
+                               {{delivery.description}}
                             </p>
                         </div>
                     </template>
@@ -32,7 +32,17 @@
 export default {
     data() {
         return {
-            radios: ''
+            delivery: ''
+        }
+    },
+
+    computed:{
+        deliveryMethods(){
+            try {
+                return this.$store.getters['get_deliveryMethods']
+            } catch (error) {
+                return []
+            }
         }
     }
 }
