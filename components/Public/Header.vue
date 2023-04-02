@@ -24,8 +24,9 @@
                                 :src="require('~/assets/img/search.svg')"></v-img>
                         </div>
                         <div class="d-flex">
-                            <img class="ml-2" width="29" height="32" :src="require('~/assets/img/card.svg')" />
-                            <img class="mt-1 mr-4" width="28" height="28"
+                            <a href="/order">  <img class="ml-2" width="29" height="32" :src="require('~/assets/img/card.svg')" /></a>
+                          
+                            <img @click="userProfileRoute()" class="mt-1 mr-4" width="28" height="28"
                                 :src="require('~/assets/img/userProfile.svg')" />
                         </div>
 
@@ -80,6 +81,14 @@ export default {
         }
     },
     methods:{
+        userProfileRoute(){
+            if (this.$cookies.get('customer_token')) {
+                this.$router.push('/user-profile')
+            }
+            else{
+                this.$router.push('/register')
+            }
+        },  
         searchProduct(){
             this.$router.push('/products?name=' + this.search)
         }
