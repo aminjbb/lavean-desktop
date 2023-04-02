@@ -132,6 +132,7 @@
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import { AxiosMethods } from "~/store/classes"
 export default {
+    layout: 'headerBlack',
     components: {
         UserProfileNavigation
     },

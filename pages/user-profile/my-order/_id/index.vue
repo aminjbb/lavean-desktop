@@ -94,6 +94,7 @@ export default {
         UserProfileNavigation,
         ModalAddAddres,
         OrderCard
-    }
+    },
+    layout: 'headerBlack',
 }
 </script>

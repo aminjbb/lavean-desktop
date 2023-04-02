@@ -50,6 +50,7 @@
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
 export default {
+    layout: 'headerBlack',
     components: {
         UserProfileNavigation,
         ModalAddAddres

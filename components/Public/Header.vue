@@ -1,7 +1,7 @@
 <template>
     <header>
-        <v-container>
-            <v-row justify="space-between" class="pt-5">
+        <div class="main-container" style="    height: 87px;">
+            <v-row justify="space-between" class="pt-10">
                 <v-card outlined rounded="xl" height="45" width="298">
                     <v-img  width="30"  height="30" class="clock-img absolute"
                                 :src="require('~/assets/img/clock.svg')"></v-img>
@@ -47,23 +47,23 @@
                     </v-col>
                 </v-row>
             </v-card> -->
-        </v-container>
+        </div>
         <v-divider class="mt-5"></v-divider>
         <div class="position__absolute zindex-2">
             <v-btn-toggle class="mb-1" group>
-                <v-btn text class="d-flex align-center pb-0 mb-0" to="/products" large>
+                <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/products" large link>
                     <span class="t14400 white--text"> فروشگاه</span>
                 </v-btn>
 
-                <v-btn text class="d-flex align-centerpb-0 mb-0" exact large>
+                <v-btn active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact large>
 
                     <span class="t14400 white--text"> لاوین مگ </span>
                 </v-btn>
 
-                <v-btn text class="d-flex align-center pb-0 mb-0" to="/about-us" large>
+                <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/about-us" large>
                     <span class="t14400 white--text"> درباره ما </span>
                 </v-btn>
-                <v-btn text class="d-flex align-center pb-0 mb-0" to="/contact-us" large>
+                <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/contact-us" large>
                     <span class="t14400 white--text"> تماس با ما </span>
                 </v-btn>
 
