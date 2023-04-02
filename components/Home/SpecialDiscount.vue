@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <div class="main-container">
         <div class="mt-90">
             <v-row>
                 <v-col cols="6" class="pl-15">
@@ -16,12 +16,15 @@
                             <v-row justify="end" align="center">
                                 <v-col cols="2">
                                     <div>
-                                        <span class="t45400 black--text mx-2">
+                                        <span class="t45400 black--text mx-2 dm-sans-font" v-if="countdown_seconds >= 10">
                                             {{countdown_seconds}}
+                                        </span>
+                                        <span class="t45400 black--text mx-2 dm-sans-font" v-else>
+                                           0{{countdown_seconds}}
                                         </span>
                                     </div>
                                     <div>
-                                        <span class="t16400 black--text mx-2">
+                                        <span class="t16400 black--text mx-2  dm-sans-font">
                                             Seconds
                                         </span>
                                     </div>
@@ -30,12 +33,16 @@
                                 <div class="vertical-divider"></div>
                                 <v-col cols="2">
                                     <div>
-                                        <span class="t45400 black--text mx-2">
+                        
+                                        <span class="t45400 black--text mx-2 dm-sans-font" v-if="countdown_minutes >= 10">
                                             {{countdown_minutes}}
+                                        </span>
+                                        <span class="t45400 black--text mx-2 dm-sans-font" v-else>
+                                           0{{countdown_minutes}}
                                         </span>
                                     </div>
                                     <div class="text-center">
-                                        <span class="t16400 black--text mx-2">
+                                        <span class="t16400 black--text mx-2 dm-sans-font">
                                             Minutes
                                         </span>
                                     </div>
@@ -43,12 +50,16 @@
                                 <div class="vertical-divider"></div>
                                 <v-col cols="2">
                                     <div>
-                                        <span class="t45400 black--text mx-2">
+
+                                        <span class="t45400 black--text mx-2 dm-sans-font" v-if="countdown_hours >= 10">
                                             {{countdown_hours}}
+                                        </span>
+                                        <span class="t45400 black--text mx-2 dm-sans-font" v-else>
+                                           0{{countdown_hours}}
                                         </span>
                                     </div>
                                     <div>
-                                        <span class="t16400 black--text mx-2">
+                                        <span class="t16400 black--text mx-2 dm-sans-font">
                                             Hours
                                         </span>
                                     </div>
@@ -72,7 +83,7 @@
 
                         <v-col cols="7">
                             <v-row justify="start">
-                                <span class="t40600 black--text dana-fa mr-12">
+                                <span class="t40600 black--text dana-fa ">
                                     ۲۵٬۰۰۰٬۰۰۰
                                     <span class="t30400 black--text">تومان</span>
                                 </span>
@@ -97,7 +108,7 @@
                 </v-col>
             </v-row>
         </div>
-    </v-container>
+    </div>
 </template>
 <script>
 export default {

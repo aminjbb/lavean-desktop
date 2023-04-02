@@ -2,17 +2,24 @@
     <div class="mt-2">
         <v-card outlined rounded="lg pt-3 pb-3">
             <div class="ma-4">
-                <span class="t14600 Black--text">
+                <span class="position__absolute">
+                    <img src="~/assets/img/map-pin.svg" alt="">
+                </span>
+                <span class="t14600 Black--text mr-8">
                     انتخاب آدرس ارسال
                 </span>
+
             </div>
             <v-divider></v-divider>
             <v-radio-group v-model="address" class="px-8">
                 <v-radio :value="address.id" v-for="(address ) in addresses" :key="address.id">
                     <template v-slot:label>
-                        <div class="box-delivery border-r-15 py-3">
-                            <p class="t14400 Arsenic--text ma-3 my-4 text-right">
-                                {{address.addressDetail}}
+                        <div class="box-delivery border-r-15 py-3 text-right">
+                            <span class="position__absolute" style="right: 10px;top: 30px;">
+                                <img src="~/assets/img/map-pin.svg" alt="">
+                            </span>
+                            <p class="t14400 Arsenic--text ma-3 my-4 mr-8 ">
+                                {{ address.addressDetail }}
                             </p>
 
                         </div>
@@ -26,7 +33,6 @@
 
         </v-card>
     </div>
-
 </template>
 
 <script>
@@ -41,8 +47,8 @@ export default {
     components: {
         ModalAddAddres
     },
-    computed:{
-        user(){
+    computed: {
+        user() {
             try {
                 return this.$store.getters['get_meCustomer']
             } catch (error) {
@@ -50,7 +56,7 @@ export default {
             }
         },
 
-        addresses(){
+        addresses() {
             try {
                 return this.user.client.addresses
             } catch (error) {

@@ -17,7 +17,7 @@
 
                         </div>
 
-                        <v-card height="56" color="Gray02" outlined class="border-r-15 py-7 px-8">
+                        <v-card height="56" color="#EDEDED" outlined class="border-r-15 py-7 px-8">
                             <v-row justify="space-between">
                                 <div>
                                     <span class="t12600 mx-1">وضعیت</span>

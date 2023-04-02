@@ -1,5 +1,5 @@
 <template>
-    <v-container class="mt-10 position__relative">
+    <div class="main-container mt-10 position__relative">
         <span class="position__absolute t40600 why-lavin">چرا از لاوین <span class="white--text">
                 خرید میکنند؟
             </span></span>
@@ -28,7 +28,7 @@
                 <v-img height="375" width="625" :src="require('~/assets/img/template2.png')"></v-img>
             </div>
         </div>
-    </v-container>
+    </div>
 </template>
 
 <script>
@@ -37,11 +37,11 @@ export default {
 }
 </script>
 <style>
-ul {
+.info-home-box ul {
   list-style: none;
 }
 
-ul li::before {
+.info-home-box ul li::before {
     content: "\2022";
     color: white;
     font-weight: bold;

@@ -1,6 +1,7 @@
 <template>
-    <v-row justify="center" class="mt-10">
-        <v-col cols="8">
+    <div class="main-container">
+        <v-row justify="center" class="mt-10">
+        <v-col cols="12">
             <v-row justify="center">
                 <v-col cols="4">
                     <CarouselImageThumbnails2 :product="product.clientProductByUrl" />
@@ -22,6 +23,8 @@
             <HomeProduct />
         </v-col>
     </v-row>
+    </div>
+ 
 </template>
 
 <script>

@@ -6,26 +6,24 @@
                 <v-img height="92" width="92" class="rounded-lg mr-6" :src="imageCover"></v-img>
             </v-col>
             <v-col cols="9">
-                <div><span class="t16600 Black--text">
+                <div><span class="t14600 Black--text">
                         {{productName}}
                     </span>
                     <v-chip class="px-5 ma-2">
-                        <span class="t14400"> {{collectionName}}</span>
+                        <span class="t10400"> {{collectionName}}</span>
                     </v-chip>
                 </div>
                 <v-row justify="space-between" class="mt-1">
 
                     <div>
-                        <!-- <v-chip class="mt-2 ml-2" outlined pill>
-                            رز گلد
+                        <v-chip class="mt-2 ml-2 " outlined pill>
+                         <span class="dana-fa">   {{weight}} گرم</span>
                         </v-chip>
-                        <v-chip class="mt-2 ml-2" outlined pill>
-                            رز گلد
-                        </v-chip> -->
+          
                     </div>
                     <div class="ml-10 mt-6">
                         <span class="t18600 Black--text dana-fa">
-                            {{variantPirce}}
+                            {{splitChar(variantPirce)}}
                         </span>
                         <span class="16400 Black--text">
                             تومان
@@ -44,10 +42,29 @@ export default {
         card: ''
     },
 
+    methods:{
+        splitChar(text) {
+            if (text) {
+                return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                return 0;
+            }
+        },
+
+    },
+
     computed:{
         variant(){
             try {
                 return this.card.variant
+            } catch (error) {
+                return ''
+            }
+        },
+
+        weight(){
+            try {
+                return this.variant.weight
             } catch (error) {
                 return ''
             }

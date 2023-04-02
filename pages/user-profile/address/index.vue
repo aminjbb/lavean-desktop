@@ -14,11 +14,15 @@
                                     آدرس ها
                                 </span>
                             </div>
-                            <div class="box-delivery border-r-15 py-3 mt-3" v-for="(address ) in userAddress" :key="address.id">
+                            <div class="box-delivery border-r-15 py-3 mt-3 position__relative" v-for="(address ) in userAddress"
+                                :key="address.id">
                                 <v-row justify="center" align="center">
                                     <v-col cols="10">
-                                        <p class="t14400 Arsenic--text ma-3 my-4 text-right">
-                                           {{ address.addressDetail }}
+                                        <span class="position__absolute" style="right: 10px;top: 30px;">
+                                            <img src="~/assets/img/map-pin.svg" alt="">
+                                        </span>
+                                        <p class="t14400 Arsenic--text ma-3 my-4 ">
+                                            {{ address.addressDetail }}
                                         </p>
                                     </v-col>
                                     <v-col cols="1  ">
@@ -27,7 +31,7 @@
                                 </v-row>
 
                             </div>
-                     
+
                         </div>
 
                         <v-row justify="end" class="pa-5 pl-8">
@@ -51,18 +55,18 @@ export default {
         ModalAddAddres
     },
 
-    computed:{
-        userAddress(){
+    computed: {
+        userAddress() {
             try {
                 return this.$store.getters['get_meCustomer'].client.addresses
             } catch (error) {
                 return []
             }
         }
-    },  
+    },
 
 
-    mounted(){
+    mounted() {
         if (this.$cookies.get('customer_token')) {
             this.$store.dispatch('set_meCustomer')
             this.$store.dispatch('public/set_provinces')
@@ -70,7 +74,7 @@ export default {
         else {
             this.$router.push('/')
         }
-       
+
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div >
-    <vueper-slides   style="border-radius: 25px;" ref="vueperslides1" :touchable="false" fade :autoplay="false" :bullets="false" :slide-ratio="1.11"
+    <vueper-slides  id="pdpCarousel" style="border-radius: 25px;" ref="vueperslides1" :arrows="false" :touchable="false" fade :autoplay="false" :bullets="true" :slide-ratio="1.11"
       @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })">
       <vueper-slide  style="border-radius: 25px;"  v-for="(slide, i) in slides" :key="i" :image="slide.image">
       </vueper-slide>

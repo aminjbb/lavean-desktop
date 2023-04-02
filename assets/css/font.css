@@ -45,6 +45,18 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: Dm_sans;
+
+    src:
+        url('../fonts/DM_Sans/DMSans-Medium.ttf') format('woff2'),
+        url('../fonts/DM_Sans/DMSans-Medium.ttf') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
 
 
 

@@ -2,7 +2,10 @@
     <div class="mt-2">
         <v-card outlined rounded="lg pt-3 pb-3">
             <div class="ma-4">
-                <span class="t14600 Black--text">
+                <span class="position__absolute">
+                    <img src="~/assets/img/Truck.svg" alt="">
+                </span>
+                <span class="t14600 Black--text mr-9 mt-2">
                     انتخاب روش ارسال
                 </span>
             </div>

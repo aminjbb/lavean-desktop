@@ -1,14 +1,14 @@
 <template>
     <div>
-        <v-col cols="11">
+        <v-col cols="12">
             <div class="d-flex mr-7">
                 <div class="mt-2">
                     <span class="ml-3">
                         وزن
                     </span>
                 </div>
-                <div class="w-100">
-                    <v-select height="55" class="rounded-lg border_gray" v-model="changeVariant" background-color="white"
+                <div class="w-100 pdp-form"  id="mySelect" >
+                    <v-select height="55" append-icon="mdi-chevron-down" v-model="changeVariant" background-color="white"
                         @change="setBestvariant()" :disabled="!bestVariant" :items="variants" dense label="وزن"
                         outlined></v-select>
                 </div>
@@ -16,31 +16,31 @@
             </div>
 
         </v-col>
-        <v-col cols="11">
+        <v-col cols="12">
             <v-row class="mr-4">
                 <v-col cols="5">
-                    <v-row class="mt-5" align="center" style="margin-right: 1px">
+                    <v-row class="" align="center" style="margin-right: 1px ; margin-top: 3px;">
                         <span class="t12400 info3--text">
                             راهنمای اندازه‌ها
-                            
+
                         </span>
                         <img class="mr-5" src="~/assets/img/CaretCircleLeft.svg" alt="">
                     </v-row>
                     <div class="mt-15">
                         <p class="t14600">توضیحات</p>
 
-                        <p class="t12400">برای تمیز کردن گوشواره طلا، نقره و دیگر جنس‌های این وسیله‌ی زینتی در خانه
+                        <p class="t12400 line-h-28 text-justify">برای تمیز کردن گوشواره طلا، نقره و دیگر جنس‌های این وسیله‌ی زینتی در خانه
                             می‌توانید از چندین روش مختلف کمک بگیرید که ما در این مطلب برایتان توضیح داده‌ایم.</p>
                     </div>
                 </v-col>
-                <v-col cols="6" md="5" class="mr-15">
-                    <v-card class="br-15" outlined min-height="80" max-height="174" min-width="351" v-if="bestVariant">
+                <v-col cols="6" class="mr-15">
+                    <v-card class="br-15 ma-0" outlined height="174"  >
 
                         <v-row justify="space-between" align="center" class="mt-6 mx-8" v-if="bestVariant">
                             <span class="t12400">
                                 تخفیف
                                 <v-avatar color="accent" size="22">
-                                    <span class="t10400 white--text pa-5">10%</span>
+                                    <span class="t10400 white--text pa-5 dana-fa">10%</span>
                                 </v-avatar>
 
                             </span>
@@ -54,7 +54,7 @@
                             <span class="t22600 DeepCarminePink--text">
                                 ناموجود
                             </span>
-                            <span class="t18400 dana-fa">
+                            <span class="t16400 dana-fa">
                                 این کالا ناموجود میباشد
                             </span>
 
@@ -72,17 +72,22 @@
 
                         </v-row>
                     </v-card>
-                    <v-row justify="end">
-                        <v-col cols="7" md="4" class="mt-6 ml-2">
-                            <v-btn  :loading="loading" dark color="Black" rounded="xl" min-width="207" height="47" v-if="bestVariant"
-                                @click="addToCard()">
-                                <span class="t12400">اضافه کردن به سبد خرید</span>
-                            </v-btn>
-                            <v-btn dark color="Black" rounded="xl" min-width="207" v-else>
-                                <span class="t12400">بازدید از فروشگاه</span>
-                            </v-btn>
-                        </v-col>
+                    <v-row justify="end" align="center" class="mt-6 pl-3" style="    min-width: 363px;">
+
+                        <v-btn :loading="loading" dark color="Black" rounded="xl" min-width="207" height="47"
+                            v-if="bestVariant" @click="addToCard()">
+                            <span class="t12400">اضافه کردن به سبد خرید</span>
+                        </v-btn>
+                        <v-btn dark color="Black" rounded="xl" min-width="207" v-else>
+                            <span class="t12400">بازدید از فروشگاه</span>
+                        </v-btn>
+
                     </v-row>
+                    <!-- <v-row justify="end">
+                        <v-col cols="5" md="4" class="mt-6 ml-2">
+                         
+                        </v-col>
+                    </v-row> -->
                     <!-- <v-card outlined min-height="80" max-height="174" min-width="351">
 
                         <v-row justify="space-between" align="center" class="mt-6 mx-8" v-if="bestVariant">
@@ -106,7 +111,7 @@
 
                         </v-row>
                     </v-card> -->
-                   
+
                 </v-col>
             </v-row>
 

@@ -1,58 +1,62 @@
 <template>
     <div class="mt-2">
-        <v-card outlined rounded="lg pt-3 pb-3">
-            <div class="ma-4">
-                <span class="t14600 Black--text Black--text">
+        <v-card outlined rounded="lg pt-3 pb-3" height="536">
+            <div class="ma-4 d-felx align-content-center">
+                <span class="position__absolute">
+                    <img src="~/assets/img/info.svg" alt="">
+                </span>
+                <span class="t14600 Black--text mr-8">
                     ثبت اطلاعات گیرنده
                 </span>
             </div>
+            
             <v-divider></v-divider>
             <div class="mt-10 mb-5">
 
                 <v-row>
                     <v-form @submit.prevent="validate()" ref="userInfoOrder" v-model="valid">
                         <div>
-                            <v-row justify="center">
-                                <v-col cols="5">
+                            <v-row justify="center" class="order-user-info">
+                                <v-col cols="5" class="box-h">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">نام و نام خانوادگی </span>
                                     </div>
-                                    <v-text-field class="border-r-15 mr-2" :rules="nameRule" v-model="form.fullName"
+                                    <v-text-field color="Black" class="border-r-15 mr-2" :rules="nameRule" v-model="form.fullName"
                                         placeholder="نام و نام خانوادگی" background-color="WhiteSmoke"
                                         outlined></v-text-field>
                                 </v-col>
-                                <v-col cols="5">
+                                <v-col cols="5" class="box-h">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">شماره موبایل</span>
                                     </div>
-                                    <v-text-field placeholder="شماره موبایل" background-color="WhiteSmoke" outlined
+                                    <v-text-field color="Black" placeholder="شماره موبایل" background-color="WhiteSmoke" outlined
                                         :rules="mobileRule" v-model="form.mobile" class="border-r-15 mr-2"></v-text-field>
 
 
                                 </v-col>
-                                <v-col cols="5">
+                                <v-col cols="5" class="box-h">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">کد ملی</span>
                                     </div>
-                                    <v-text-field placeholder="کد ملی" background-color="WhiteSmoke" outlined :rules="rule"
+                                    <v-text-field color="Black" placeholder="کد ملی" background-color="WhiteSmoke" outlined :rules="rule"
                                         v-model="form.nationalCode" class="border-r-15 mr-2"></v-text-field>
 
 
                                 </v-col>
-                                <v-col cols="5">
+                                <v-col cols="5" class="box-h">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">ایمیل</span>
                                     </div>
-                                    <v-text-field placeholder="ایمیل" background-color="WhiteSmoke" outlined :rules="rule"
+                                    <v-text-field color="Black" placeholder="ایمیل" background-color="WhiteSmoke" outlined :rules="rule"
                                         v-model="form.email" class="border-r-15 mr-2"></v-text-field>
 
 
                                 </v-col>
-                                <v-col cols="10">
+                                <v-col cols="10" class="box-h">
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">توضیحات سفارش</span>
                                     </div>
-                                    <v-textarea placeholder="توضیحات سفارش" background-color="WhiteSmoke" outlined
+                                    <v-textarea color="Black" placeholder="توضیحات سفارش" background-color="WhiteSmoke" outlined
                                         v-model="form.comment" class="border-r-15 mr-2"></v-textarea>
 
 

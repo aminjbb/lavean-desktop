@@ -29,7 +29,7 @@
                         class="mt-2 br-15">
                         <v-row class="mt-1" justify="space-between" align="center">
                             <v-col cols="6">
-                                <p class="text-center t14400 Black--text">{{ branche.variant.weight }}</p>
+                                <p class="text-center t14400 Black--text dana-fa">{{ branche.variant.weight }}</p>
                             </v-col>
                             <v-col cols="">
                                 <p class="text-center t14400 Black--text">{{ branche.branch.name }} </p>
@@ -40,8 +40,8 @@
             </v-col>
             <v-col cols="12" class="mt-1" v-else>
                 <v-row justify="center"  :key="index">
-                    <v-card outlined min-height="54" max-height="54" min-width="588" max-width="588" rounded="lg"
-                        class="mt-2">
+                    <v-card outlined min-height="54" max-height="54" min-width="588" max-width="588" 
+                        class="mt-2  br-15 border-danger">
                         <v-row class="mt-1" justify="center" align="center">
                             <!-- <v-col cols="">
                                 <p class="text-center t14400 Black--text">{{ branche.branch.name }} </p>

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" width="725">
+  <v-dialog v-model="dialog" width="725" > 
     <template v-slot:activator="{ on, attrs }">
       <v-col cols="4">
         <v-btn block color="Black" dark rounded="xl" v-bind="attrs" v-on="on">
@@ -12,8 +12,8 @@
     </template>
 
 
-    <v-card>
-      <div class="pa-5">
+    <v-card  class="br-15">
+      <div class="pa-2 px-5">
 
         <v-col>
           <v-row class="ma-0" justify="space-between" align="center">

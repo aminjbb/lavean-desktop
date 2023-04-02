@@ -13,7 +13,7 @@
             </v-row>
         </v-card>
 
-        <v-card outlined min-height="69" class="mt-2 border-r-15">
+        <v-card outlined min-height="69" class="mt-4 border-r-15">
             <v-row justify="space-between pa-8" align="center">
                 <div>
                     <span class="t16400 ">مجموع کل تخفیف</span>
@@ -26,7 +26,7 @@
             </v-row>
         </v-card>
 
-        <div class="mt-2 price-order-box border-r-15">
+        <div class="mt-4 price-order-box border-r-15">
             <v-row justify="space-between pa-8" align="center">
                 <div>
                     <span class="t16400 DeepGreen--text">قابل پرداخت</span>
@@ -82,7 +82,15 @@ export default {
         },
         preStep() {
             this.$store.commit('decress_orderStep')
-        }
+        },
+        splitChar(text) {
+            if (text) {
+                return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                return 0;
+            }
+        },
+      
     },
     computed: {
         orderStep() {

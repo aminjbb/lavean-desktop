@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="700" eager>
+    <v-dialog v-model="dialog" width="700" class="br-15"  eager>
       <template v-slot:activator="{ on, attrs }">
         <v-btn @click="mapLoad()" text depressed color="Azure" class="pa-0" v-bind="attrs" v-on="on">
           تغییر نشانی از روی نقشه
@@ -8,8 +8,8 @@
 
       </template>
 
-      <v-card elevation="0">
-        <div class="pa-5">
+      <v-card elevation="0"  class="br-15">
+        <div class="pa-2 px-5">
 
           <v-col>
             <v-row class="ma-0" justify="space-between" align="center">
@@ -36,12 +36,12 @@
                 <v-autocomplete v-model="selectAddress" :loading="loadingSearch" :search-input.sync="search"
                   @keyup="searchFunction()" label="جست و جوی نشانی" dense item-text="title" item-value="location"
                   :items="Address" background-color="white" outlined prepend-inner-icon="mdi-magnify"
-                  no-data-text="آدرس مورد نظر را وارد کنید" class="over_map">
+                  no-data-text="آدرس مورد نظر را وارد کنید" class="over_map br-24">
                   <template v-slot:item="address">
                     <v-col class="pa-0" cols="12">
                       <v-row class="ma-0" align="center">
                         <v-col cols="1" class="d-flex align-center justify-center">
-                          <img src="~/assets/img/location.svg" alt="" />
+                          <img src="~/assets/img/map-pin.svg" alt="" />
                         </v-col>
                         <v-col>
                           <p class="t12600 OuterSpace--text mb-1">
@@ -64,15 +64,15 @@
                 <v-icon>mdi-crosshairs-gps</v-icon>
               </v-btn>
             </client-only>
-            <img width="40" src="~/assets/img/location1.svg" class="marker_center" alt="" />
+            <img width="40" src="~/assets/img/map-pin.svg" class="marker_center" alt="" />
           </div>
         </v-col>
         <v-divider></v-divider>
         <v-col cols="12">
-          <v-row class="ma-0" align="center">
-            <v-btn :loading="loading" @click="getGraphLocation()" depressed color="success" class="px-10"> ثبت نشانی
+          <v-row class="ma-0" justify="end" align="center">
+            <v-btn :loading="loading" @click="getGraphLocation()" width="207" color="Black" dark rounded="xl"> ثبت نشانی
             </v-btn>
-            <span class="t14400 mr-3">سفارش شما به این نشانی ارسال خواهد شد.</span>
+           
           </v-row>
         </v-col>
       </v-card>

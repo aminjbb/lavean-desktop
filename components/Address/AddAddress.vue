@@ -1,13 +1,13 @@
 <template>
     <v-form @submit.prevent="validate()" ref="address" v-model="valid">
         <div>
-            <v-row>
+            <v-row class="mt-4">
 
                 <v-col cols="12">
                     <div class="px-3 pb-2">
-                        <span class="t16400">آدرس پستی</span>
+                        <span class="t14600">آدرس پستی</span>
                     </div>
-                    <v-textarea placeholder="آدرس پستی" background-color="WhiteSmoke" outlined :rules="addressRule"
+                    <v-textarea  color="Black" placeholder="آدرس پستی" background-color="WhiteSmoke" outlined :rules="addressRule"
                         v-model="form.address" class="border-r-15"></v-textarea>
 
                     <v-row justify="start" class="mx-3">
@@ -17,31 +17,31 @@
 
                 <v-col cols="4">
                     <div class="px-3 pb-2">
-                        <span class="t16400">استان</span>
+                        <span class="t14600">استان</span>
                     </div>
-                    <v-select placeholder="استان" background-color="WhiteSmoke" :rules="rule" v-model="form.province"
+                    <v-select color="Black" placeholder="استان" append-icon="mdi-chevron-down" background-color="WhiteSmoke" :rules="rule" v-model="form.province"
                         :items="province" outlined class="border-r-15"></v-select>
                 </v-col>
                 <v-col cols="4">
                     <div class="px-3 pb-2">
-                        <span class="t16400">شهر</span>
+                        <span class="t14600">شهر</span>
                     </div>
-                    <v-select placeholder="شهر" background-color="WhiteSmoke" :rules="rule" v-model="form.city"
+                    <v-select color="Black" placeholder="شهر" append-icon="mdi-chevron-down" background-color="WhiteSmoke" :rules="rule" v-model="form.city"
                         :items="citys" outlined class="border-r-15"></v-select>
                 </v-col>
                 <v-col cols="4">
                     <div class="px-3 pb-2">
-                        <span class="t16400">پلاک / واحد</span>
+                        <span class="t14600">پلاک / واحد</span>
                     </div>
-                    <v-text-field placeholder="پلاک / واحد" background-color="WhiteSmoke" :rules="plaqueRule"
+                    <v-text-field color="Black" placeholder="پلاک / واحد" background-color="WhiteSmoke" :rules="plaqueRule"
                         v-model="form.plaque" outlined class="border-r-15"></v-text-field>
                 </v-col>
 
                 <v-col cols="12">
                     <div class="px-3 pb-2">
-                        <span class="t16400">کد پستی</span>
+                        <span class="t14600">کد پستی</span>
                     </div>
-                    <v-text-field background-color="WhiteSmoke" :rules="postalCodeRule" v-model="form.postalCode"
+                    <v-text-field color="Black" background-color="WhiteSmoke" :rules="postalCodeRule" v-model="form.postalCode"
                         outlined class="border-r-15" :hint="postalCodeHint" persistent-hint></v-text-field>
                 </v-col>
                

@@ -18,7 +18,7 @@
             </div>
         </v-col>
 
-        <v-col cols="5">
+        <v-col cols="6">
             <v-row justify="center" align="center">
                 <v-col cols="4">
                     <v-row justify="center" class="mt-2">

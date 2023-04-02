@@ -1,11 +1,6 @@
 <template>
     <v-row justify="center">
-        <v-hover
-        v-slot="{ hover }"
-       
-      >
-      <v-card :elevation="hover ? 16 : 0"
-          :class="{ 'on-hover': hover }" rounded="lg" height="369" width="239" outlined>
+        <v-card rounded="lg" height="369" width="239" outlined>
             <v-img height="235" :src="productImageCover" class="border-r-15"></v-img>
             <div class="mt--5 text-center">
                 <v-chip class="pa-2 px-4 plp-colection" v-if="collectionName">
@@ -35,7 +30,7 @@
             </div>
 
             <div class="text-center " :class="!productDiscountPercent ? 'mt-5 mb-5' : ' mb-2 mt-1'">
-                <span class="t18600 Gunmetal--text" v-if="price > 0">
+                <span class=" dana-fa t18600 Gunmetal--text" v-if="price > 0">
                     {{ splitChar(price) }}
                     <span class="t16400 Gunmetal--text">
                         تومان
@@ -53,8 +48,6 @@
 
             </div>
         </v-card>
-      </v-hover>
-       
 
     </v-row>
 </template>

@@ -1,22 +1,22 @@
 <template>
-    <v-container>
+    <div class="main-container">
         <div class="mt-15 mr-10 mb-10 relative">
             <div class="t30600 black--text pr-10">
                 <span>
                     محصولات لاوین
                 </span>
             </div>
-            <img @click="scrollLeft()" class="absolute top50-l" src="~/assets/img/left.svg" alt="">
-                <img @click="scrollRight()" class="absolute top50-r" src="~/assets/img/rigth.svg" alt="">
+            <img v-if="categories.length > 6" @click="scrollLeft()" class="absolute top50-l" src="~/assets/img/left.svg" alt="">
+                <img  v-if="categories.length >6" @click="scrollRight()" class="absolute top50-r" src="~/assets/img/rigth.svg" alt="">
             <v-row id="homeCat" class="mt-5 mb-5 pb-8 flex-nowrap scroll ov-hidden">
-                <v-col cols="3" v-for="(categori, index) in categories" :key="index">
+                <v-col cols="2" v-for="(categori, index) in categories" :key="index">
                     <CategoryCard :categori="categori" />
                 </v-col>
 
             </v-row>
 
         </div>
-    </v-container>
+    </div>
 </template>
 
 <script>

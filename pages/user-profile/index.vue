@@ -9,10 +9,10 @@
                     </v-col>
                     <v-col cols="8">
                         <div class="container-avatar ma-auto mt-12">
-                            <v-row>
-                                <v-col cols="6">
+                            <v-row class="order-user-info">
+                                <v-col cols="6" class="box-h">
                                     <div class="pa-5">
-                                        <span class="t16400 Arsenic--text">نام و نام خانوادگی</span>
+                                        <span class="t14600 Gray02--text">نام و نام خانوادگی</span>
                                     </div>
                                     <v-card class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55"
                                         v-if="!editName">
@@ -27,9 +27,9 @@
                                         v-else-if="editName" placeholder="نام و نام خانوادگی"
                                         background-color="WhiteSmoke" outlined class="border-r-15"></v-text-field>
                                 </v-col>
-                                <v-col cols="6">
+                                <v-col cols="6" class="box-h">
                                     <div class="pa-5">
-                                        <span class="t16400 Arsenic--text">جنسیت</span>
+                                        <span class="t14600 Gray02--text">جنسیت</span>
                                     </div>
                                     <v-card class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55"
                                         v-if="!editSex">
@@ -44,9 +44,9 @@
                                         v-else-if="editSex" placeholder="جنسیت" background-color="WhiteSmoke" outlined
                                         class="border-r-15"></v-select>
                                 </v-col>
-                                <v-col cols="6">
+                                <v-col cols="6" class="box-h">
                                     <div class="pa-5">
-                                        <span class="t16400 Arsenic--text">کد ملی</span>
+                                        <span class="t14600 Gray02--text">کد ملی</span>
                                     </div>
                                     <v-card class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55"
                                         v-if="!editNationalCode">
@@ -60,9 +60,9 @@
                                         v-else-if="editNationalCode" placeholder="کد ملی" background-color="WhiteSmoke"
                                         outlined class="border-r-15"></v-text-field>
                                 </v-col>
-                                <v-col cols="6">
+                                <v-col cols="6" class="box-h">
                                     <div class="pa-5">
-                                        <span class="t16400 Arsenic--text">شماره موبایل</span>
+                                        <span class="t14600 Gray02--text">شماره موبایل</span>
                                     </div>
                                     <v-card class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55"
                                         v-if="!editMobile">
@@ -76,9 +76,9 @@
                                         v-else-if="editMobile" placeholder="شماره موبایل" background-color="WhiteSmoke"
                                         outlined class="border-r-15"></v-text-field>
                                 </v-col>
-                                <v-col cols="6">
+                                <v-col cols="6" class="box-h">
                                     <div class="pa-5">
-                                        <span class="t16400 Arsenic--text">تاریخ تولد</span>
+                                        <span class="t14600 Gray02--text">تاریخ تولد</span>
                                     </div>
                                     <v-card class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55"
                                         v-if="!editBirthdate">
@@ -92,9 +92,9 @@
                                         v-else-if="editBirthdate" placeholder="تاریخ تولد" background-color="WhiteSmoke"
                                         outlined class="border-r-15"></v-text-field>
                                 </v-col>
-                                <v-col cols="6">
+                                <v-col cols="6" class="box-h">
                                     <div class="pa-5">
-                                        <span class="t16400 Arsenic--text">ایمیل</span>
+                                        <span class="t14600 Gray02--text">ایمیل</span>
                                     </div>
                                     <v-card class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55"
                                         v-if="!editEmail">
@@ -111,7 +111,7 @@
                             </v-row>
                         </div>
 
-                        <v-card outlined min-height="129" class="mt-5 border-r-15 pa-5 px-10">
+                        <v-card outlined min-height="129" class="mt-5 border-r-15 pa-5 mx-4 mt-15 px-10">
                             <p class="t12400">محرمانگی اطلاعات مشتری</p>
                             <p class="t12400">
                                 داده‌های شخصی‌ای که فراهم می‌کنید برای پاسخ دادن به سوالات، پردازش سفارشات یا صدور اجازه

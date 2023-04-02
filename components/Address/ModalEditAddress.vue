@@ -25,7 +25,7 @@
 </template> -->
 
 <template>
-  <v-dialog v-model="dialog" width="725">
+  <v-dialog v-model="dialog" width="725" >
     <template v-slot:activator="{ on, attrs }">
       <v-btn icon v-bind="attrs" v-on="on">
         <v-icon>
@@ -35,7 +35,7 @@
 
     </template>
 
-    <v-card color="transparent" elevation="0" class="py-8">
+    <v-card color="transparent" elevation="0" class="py-8 br-15">
       <v-card elevation="0">
         <v-row class="ma-0 profile-header" justify="center" align="center">
           <span class="t14400 Secondary2--text">آدرس</span>

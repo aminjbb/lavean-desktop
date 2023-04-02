@@ -25,10 +25,9 @@
 
             </v-img>
 
-            <v-col cols="9">
-                <v-card rounded="lg" outlined>
-                    <v-col cols="12" class="py-2">
-
+            <div class="main-container">
+                <v-card rounded="lg" outlined height="74">
+                    <v-col cols="12" class="py-4">
                         <div class="text-center">
                             <v-menu offset-y open-on-hover>
                                 <template v-slot:activator="{ on, attrs }">
@@ -70,8 +69,8 @@
                 <v-row justify="space-between" class="mt-5">
                     <div class="d-flex">
                         <div class="position__absolute">
-                            <v-btn @click="searchShow = !searchShow" height="48" class="px-10" color="ChineseWhite" dark
-                                outlined rounded="xl">
+                            <v-btn @click="searchShow = !searchShow" height="48" class="px-10 br-15" color="ChineseWhite"
+                                dark outlined>
                                 <v-row justify="space-between">
                                     <span class="t14400 Black--text">
                                         کالکشن ها
@@ -87,7 +86,7 @@
 
 
 
-                        <v-card outlined class="border-r-15  px-1 mr-175" max-height="48">
+                        <v-card outlined class="border-r-15  mr-175" max-height="48">
                             <v-item-group v-model="shopFilterBtn" active-class="btn2_toggle-plp">
                                 <v-item v-slot="{ active, toggle }" value="most_expensive">
                                     <v-btn depressed rounded class=" white_back border-r-15" large @click="toggle"
@@ -106,9 +105,25 @@
                             </v-item-group>
                         </v-card>
 
+                        <v-row justify="center" align="center" class="filter-price-box mr-5 mt-1">
+                            <span class="t14400 mx-2">کمترین قیمت</span>
+                            <div class="show-fliter-price-box text-center mx-2">
+                                <span class="t10400 ">۱۵.۰۰۰.۰۰۰ تومان</span>
+                            </div>
+
+                         <div class="position__relative">
+                            <v-range-slider class="price-filter-input " v-model="value" ></v-range-slider>
+                         </div>
+                            <div class="show-fliter-price-box text-center mx-2">
+                                <span class="t10400">۱۵.۰۰۰.۰۰۰ تومان</span>
+                            </div>
+                            <span class="t14400 mx-2">بیشترین قیمت</span>
+
+
+                        </v-row>
                         <div class="position__absolute position__absolute_left">
-                            <v-btn @click="sortShow = !sortShow" height="48" class="px-10" color="ChineseWhite" dark
-                                outlined rounded="xl">
+                            <v-btn @click="sortShow = !sortShow" height="48" class="px-10 br-15" color="ChineseWhite" dark
+                                outlined>
                                 <v-row justify="space-between">
                                     <v-icon class="ml-5" color="Black">
                                         mdi-sort-variant
@@ -126,16 +141,17 @@
                 <v-card v-click-outside="outsideSearchShow" v-if="searchShow"
                     class="pa-10 mt-5 position__absolute z-index-10" width="421" rounded="lg" color="Cultured" outlined>
                     <div>
-                        <v-text-field prepend-inner-icon="mdi-search-web" max-height="36" background-color="WhiteSmoke"
+                        <v-text-field dense prepend-inner-icon="mdi-magnify" height="36" background-color="WhiteSmoke"
                             outlined class="border-r-15" placeholder="جست و جوی کالکشن" clearable></v-text-field>
                     </div>
-                    <v-card width="323" color="white" outlined>
+                    <v-card rounded="lg" width="323" color="white" outlined>
                         <template>
                             <v-container fluid>
-                                <v-checkbox :value="colection.url" class="mx-5 my-3" v-model="selectedColection"
-                                    v-for="(colection, index) in collections" :key="colection.id"
-                                    :label="colection.name"></v-checkbox>
-                                <v-divider></v-divider>
+                                <template v-for="(colection, index) in collections">
+                                    <v-checkbox :value="colection.url" class="mx-5 mt-5" v-model="selectedColection"
+                                        :key="colection.id" :label="colection.name"></v-checkbox>
+                                    <v-divider></v-divider>
+                                </template>
                             </v-container>
                         </template>
 
@@ -197,7 +213,7 @@
                 </div>
 
                 <v-row justify="center">
-                    <v-card outlined width="1197" class="pa-10" rounded="lg">
+                    <v-card outlined width="1200" class="pa-10" rounded="lg">
                         <p>
                             یاقوت سرخ به عنوان اصلی‌ترین سنگ ماه تولد تیر شناخته می‌شود و در کنار آن، زمرد، مون استون و
                             مروارید نیز سنگ‌های فرعی متولدین تیر ماه هستند.
@@ -226,7 +242,7 @@
                         </p>
                     </v-card>
                 </v-row>
-            </v-col>
+            </div>
 
         </v-row>
 
@@ -257,6 +273,9 @@ export default {
     },
     data() {
         return {
+            min: 2000000,
+            max: 0,
+            value: [20, 40],
             isFilter: false,
             text: '',
             page: 1,
@@ -275,6 +294,41 @@ export default {
     },
 
     methods: {
+        splitChar(text) {
+            if (text) {
+                return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                return "";
+            }
+        },
+
+        changeRange() {
+            if (this.isSend) {
+                setTimeout(() => {
+                    if (this.$route.query.price_from && this.$route.query.price_to) {
+                        const query = Object.assign({}, this.$route.query);
+                        query.price_from = this.range[0];
+                        query.price_to = this.range[1];
+                        this.$router.push({ query });
+                    } else {
+                        var route = this.$route.fullPath.split("?");
+                        var query = "";
+                        if (route[1]) {
+                            query =
+                                route[1] +
+                                "&price_from=" +
+                                this.range[0] +
+                                "&price_to=" +
+                                this.range[1];
+                        } else {
+                            query =
+                                "?price_from=" + this.range[0] + "&price_to=" + this.range[1];
+                        }
+                        this.$router.push("/shop?" + query);
+                    }
+                }, 25);
+            }
+        },
         outsideSearchShow() {
             if (this.searchShow) {
                 this.searchShow = false;
