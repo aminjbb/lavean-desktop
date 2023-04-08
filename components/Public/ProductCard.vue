@@ -3,7 +3,7 @@
         <v-card rounded="lg" height="369" width="239" outlined>
             <v-img height="235" :src="productImageCover" class="border-r-15"></v-img>
             <div class="mt--5 text-center">
-                <v-chip class="pa-2 px-4 plp-colection" v-if="collectionName">
+                <v-chip color="collectionGray" class="pa-2 px-4 plp-colection" v-if="collectionName">
                     <span class="t1440">
                         {{ collectionName }}
                     </span>

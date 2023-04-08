@@ -314,6 +314,10 @@ p {
   font-size: 40px !important;
   font-weight: 600 !important;
 }
+.t42400 {
+  font-size: 42px !important;
+  font-weight: 400 !important;
+}
 .t45600 {
   font-size: 45px !important;
   font-weight: 600 !important;
@@ -362,4 +366,8 @@ p {
 
 .font-weight-900 {
   font-weight: 900;
+}
+
+.line-h-28{
+  line-height: 28px;
 }

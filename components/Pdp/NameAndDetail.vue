@@ -8,7 +8,7 @@
                     </span>
                 </div>
                 <div class="mt-5 mb-4">
-                    <v-chip class="pa-2 px-4 " v-if="collectionName">
+                    <v-chip color="collectionGray"  class="pa-2 px-4 " v-if="collectionName">
                         <span class="t1440">
                             {{ collectionName }}
                         </span>

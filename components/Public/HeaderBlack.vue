@@ -35,29 +35,33 @@
                 </div>
 
             </v-row>
-            <v-text-field v-if="searchBox"  @click:append="searchProduct()" v-model="search" append-icon="mdi-magnify" placeholder="جست‌وجو محصولات ما " dense background-color="Cultured02" outlined
+            <v-text-field v-if="searchBox" @click:append="searchProduct()" v-model="search" append-icon="mdi-magnify"
+                placeholder="جست‌وجو محصولات ما " dense background-color="Cultured02" outlined
                 class="position__absolute search_box z-index-10"></v-text-field>
         </div>
         <v-divider class="mt-2"></v-divider>
-        <div class="position__absolute zindex-2">
-            <v-btn-toggle class="mb-1" group>
-                <v-btn active-class="headr-active" to="/products" text class="d-flex align-center pb-0 mb-0" large>
-                    <span class="t14400 Black--text"> فروشگاه</span>
-                </v-btn>
+        <div class="main-container">
+            <div class="position__absolute zindex-2">
+                <v-btn-toggle class="mb-1" group>
+                    <v-btn active-class="headr-active" to="/products" text class="d-flex align-center pb-0 mb-0" large>
+                        <span class="t14400 Black--text"> فروشگاه</span>
+                    </v-btn>
 
-                <v-btn active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact large>
-                    <span class="t14400 Black--text"> لاوین مگ </span>
-                </v-btn>
+                    <v-btn active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact large>
+                        <span class="t14400 Black--text"> لاوین مگ </span>
+                    </v-btn>
 
-                <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/about-us" large>
-                    <span class="t14400 Black--text"> درباره ما </span>
-                </v-btn>
-                <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/contact-us" large>
-                    <span class="t14400 Black--text"> تماس با ما </span>
-                </v-btn>
+                    <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/about-us" large>
+                        <span class="t14400 Black--text"> درباره ما </span>
+                    </v-btn>
+                    <v-btn active-class="headr-active" text class="d-flex align-center pb-0 mb-0" to="/contact-us" large>
+                        <span class="t14400 Black--text"> تماس با ما </span>
+                    </v-btn>
 
-            </v-btn-toggle>
+                </v-btn-toggle>
+            </div>
         </div>
+
     </header>
 </template>
 <script>

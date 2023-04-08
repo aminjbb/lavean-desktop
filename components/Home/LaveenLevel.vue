@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-15">
         <v-row justify="center">
             <v-btn color="black2" height="84" width="311" class="levelbtn">
                 <span class="t20600 white--text">

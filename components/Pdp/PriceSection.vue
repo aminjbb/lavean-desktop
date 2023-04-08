@@ -7,7 +7,7 @@
                         وزن
                     </span>
                 </div>
-                <div class="w-100 pdp-form"  id="mySelect" >
+                <div class="w-100 pdp-form" id="mySelect">
                     <v-select height="55" append-icon="mdi-chevron-down" v-model="changeVariant" background-color="white"
                         @change="setBestvariant()" :disabled="!bestVariant" :items="variants" dense label="وزن"
                         outlined></v-select>
@@ -29,14 +29,15 @@
                     <div class="mt-15">
                         <p class="t14600">توضیحات</p>
 
-                        <p class="t12400 line-h-28 text-justify">برای تمیز کردن گوشواره طلا، نقره و دیگر جنس‌های این وسیله‌ی زینتی در خانه
+                        <p class="t12400 line-h-28 text-justify">برای تمیز کردن گوشواره طلا، نقره و دیگر جنس‌های این وسیله‌ی
+                            زینتی در خانه
                             می‌توانید از چندین روش مختلف کمک بگیرید که ما در این مطلب برایتان توضیح داده‌ایم.</p>
                     </div>
                 </v-col>
                 <v-col cols="6" class="mr-15">
-                    <v-card class="br-15 ma-0" outlined height="174"  >
+                    <v-card class="br-15 ma-0" outlined height="174" v-if="bestVariant">
 
-                        <v-row justify="space-between" align="center" class="mt-6 mx-8" v-if="bestVariant">
+                        <v-row justify="space-between" align="center" class="mt-6 mx-8">
                             <span class="t12400">
                                 تخفیف
                                 <v-avatar color="accent" size="22">
@@ -50,18 +51,9 @@
 
 
                         </v-row>
-                        <v-row justify="space-between" align="center" class="mt-6 mx-8" v-else>
-                            <span class="t22600 DeepCarminePink--text">
-                                ناموجود
-                            </span>
-                            <span class="t16400 dana-fa">
-                                این کالا ناموجود میباشد
-                            </span>
 
-
-                        </v-row>
-                        <v-divider v-if="bestVariant" class="mt-10"></v-divider>
-                        <v-row justify="space-between" align="center" class="mt-6 mx-8 pb-8" v-if="bestVariant">
+                        <v-divider class="mt-10"></v-divider>
+                        <v-row justify="space-between" align="center" class="mt-6 mx-8 pb-8">
                             <span class="t12400">
                                 ۲۰٪ اجرت ساخت
                             </span>
@@ -71,6 +63,21 @@
 
 
                         </v-row>
+                    </v-card>
+                    <v-card class="br-15 ma-0" outlined height="84" v-else>
+
+
+                        <v-row justify="space-between" align="center" class="mt-6 mx-8">
+                            <span class="t22600 DeepCarminePink--text">
+                                ناموجود
+                            </span>
+                            <span class="t16400 dana-fa">
+                                این کالا ناموجود میباشد
+                            </span>
+
+
+                        </v-row>
+
                     </v-card>
                     <v-row justify="end" align="center" class="mt-6 pl-3" style="    min-width: 363px;">
 
@@ -159,6 +166,14 @@ export default {
         },
 
         addToCard() {
+            if (!this.$cookies.get('customer_token')) {
+                this.$router.push('/register')
+            }
+            else{
+                this.addToCardReq()
+            }
+        },
+        addToCardReq() {
             this.loading = true
             axios({
                 method: 'post',

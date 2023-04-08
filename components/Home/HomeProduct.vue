@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <div class="mt-5 mb-10 relative">
+        <div class="mt-15 mb-10 relative">
             <div class="t30600 black--text pr-15 ">
                 <span >
                     مناسب شما!

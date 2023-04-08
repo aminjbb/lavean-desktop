@@ -15,7 +15,7 @@
                         </span></div>
                      <div class="mx-auto" style="max-width: 320px; direction: ltr">
                         <v-form @submit.prevent="validate()" ref="sndCode" v-model="valid">
-                            <v-otp-input v-model="code" length="5" @finish="validate()" :rules="Rule" background-color="white"
+                            <v-otp-input color="Black" v-model="code" length="5" @finish="validate()" :rules="Rule" background-color="white"
                                 class="mt-5"></v-otp-input>
                         </v-form>
                     </div>
@@ -40,10 +40,10 @@
             </v-card>
 
             <div>
-                <span class="t48600 white--text position__relative zindex-1-title-image">با لاوین، متفاوت باش!</span>
+                <span class="t48600 mr-5 white--text position__relative zindex-1-title-image">با لاوین، متنوع باش!</span>
                 <v-row justify="end">
 
-                    <v-img max-width="873" max-height="458" :src="require('~/assets/img/register.png')"></v-img>
+                    <v-img max-width="873" max-height="458" :src="require('~/assets/img/otpImage.png')"></v-img>
                 </v-row>
             </div>
 

@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div >
         <v-row justify="center" align="center" v-if="show">
             
-            <v-col cols="8" v-if="cartDetailsLength.length > 0">
+            <div class="main-container" v-if="cartDetailsLength.length > 0">
                 <v-row justify="center mt-10">
                     <v-col cols="7">
                         <OrderDetail v-if="orderStep == 1" />
@@ -48,10 +48,10 @@
                         </v-row>
                     </v-col>
                 </v-row>
-            </v-col>
+            </div>
 
-            <v-col cols="8" v-else>
-                <v-row justify="center mt-10">
+            <div cols="8" v-else>
+                <v-row justify="center mt-15 pt-15">
                     <v-card outlined class="pt-3 pb-3 br-15" width="1200" height="494">
                         <div class="ma-4 d-felx align-content-center">
                             <span class="position__absolute">
@@ -83,7 +83,7 @@
                         </div>
                     </v-card>
                 </v-row>
-            </v-col>
+            </div>
 
         </v-row>
 

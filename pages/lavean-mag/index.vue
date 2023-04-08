@@ -20,8 +20,8 @@
 
         <v-row class="mt-8" justify="center">
             <v-col cols="5">
-                <div id="blog-search">
-                    <v-text-field height="49" v-model="search" append-icon="mdi-magnify" placeholder="جست‌وجو " dense
+                <div id="blog-search" >
+                    <v-text-field color="black" height="49" v-model="search" append-icon="mdi-magnify" placeholder="جست‌وجو " dense
                         background-color="Cultured02" outlined class="br-24 blog-search-box"></v-text-field>
                 </div>
 

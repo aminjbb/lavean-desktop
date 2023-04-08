@@ -12,7 +12,7 @@
                             شماره موبایل خود را وارد کنید.!
                         </span></div>
                     <v-form ref="sendSms" v-model="valid" @submit.prevent="validate()">
-                        <v-text-field placeholder=" شماره موبایل" background-color="white" outlined v-model="number"
+                        <v-text-field color="Black" placeholder=" شماره موبایل" background-color="white" outlined v-model="number"
                             :rules="mobileRule" class="border-r-15 mt-5"></v-text-field>
                     </v-form>
 

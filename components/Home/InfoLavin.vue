@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container mt-10 position__relative">
+    <div class="main-container mt-15 position__relative">
         <span class="position__absolute t40600 why-lavin">چرا از لاوین <span class="white--text">
                 خرید میکنند؟
             </span></span>

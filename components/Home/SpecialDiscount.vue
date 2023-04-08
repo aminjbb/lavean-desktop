@@ -81,7 +81,7 @@
 
                         </v-col>
 
-                        <v-col cols="7">
+                        <v-col cols="6">
                             <v-row justify="start">
                                 <span class="t40600 black--text dana-fa ">
                                     ۲۵٬۰۰۰٬۰۰۰
@@ -89,7 +89,7 @@
                                 </span>
                             </v-row>
                         </v-col>
-                        <v-col cols="6" class="mt-2">
+                        <v-col cols="7" class="mt-2">
                             <v-row justify="center">
                                 <v-btn class="rounded-lg" block color="black" dark depressed height="59"> مشاهده
                                     کالا</v-btn>

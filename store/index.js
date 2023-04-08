@@ -14,10 +14,14 @@ export const state = () => ({
   isLogin: false,
   meCustomer: '',
   deliveryMethods: [],
-  orderBrache: []
+  orderBrache: [],
+  braches: []
 })
 
 export const mutations = {
+  set_braches(state, obj) {
+    state.braches = obj
+  },
   set_orderBrache(state, obj) {
     state.orderBrache = obj
   },
@@ -68,8 +72,22 @@ export const mutations = {
 
 export const actions = {
 
-  async set_orderBrache({ commit } , url) {
-  
+  async set_braches({ commit }) {
+
+    const query = gql`
+    query{
+        clientBranches{
+          results{
+            id , name , address
+          }
+        }
+          
+        } `;
+    const me = await this.$graphql.default.request(query, {});
+    commit('set_braches', me.clientBranches.results);
+  },
+  async set_orderBrache({ commit }, url) {
+
     const query = gql`
     clientBranchWarehouseStocks(variant_Product_Url:"`+ url + `"){
       results{
@@ -257,6 +275,9 @@ export const actions = {
 }
 
 export const getters = {
+  get_braches(state, obj) {
+    return state.braches
+  },
   get_orderBrache(state) {
     return state.orderBrache
   },

@@ -25,24 +25,15 @@
 
             </v-img>
 
-            <div class="main-container">
+            <div class="main-container mt-5">
                 <v-card rounded="lg" outlined height="74">
                     <v-col cols="12" class="py-4">
                         <div class="text-center">
-                            <v-menu offset-y open-on-hover>
-                                <template v-slot:activator="{ on, attrs }">
-                                    <v-btn text v-bind="attrs" v-on="on">
-                                        <span class="t14400 mx-3 Black--text">
-                                            همه
-                                        </span>
-                                    </v-btn>
-                                </template>
-                                <v-list>
-                                    <v-list-item v-for="(item, index) in items" :key="index">
-                                        <v-list-item-title>{{ item.title }}</v-list-item-title>
-                                    </v-list-item>
-                                </v-list>
-                            </v-menu>
+                            <v-btn text v-bind="attrs" v-on="on">
+                                <span class="t14400 mx-3 Black--text">
+                                    همه
+                                </span>
+                            </v-btn>
                             <v-menu offset-y>
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn text v-bind="attrs" v-on="on">
@@ -82,10 +73,6 @@
                             </v-btn>
 
                         </div>
-
-
-
-
                         <v-card outlined class="border-r-15  mr-175" max-height="48">
                             <v-item-group v-model="shopFilterBtn" active-class="btn2_toggle-plp">
                                 <v-item v-slot="{ active, toggle }" value="most_expensive">
@@ -105,17 +92,17 @@
                             </v-item-group>
                         </v-card>
 
-                        <v-row justify="center" align="center" class="filter-price-box mr-5 mt-1">
+                        <v-row justify="center" align="center" class="filter-price-box mr-5 mt-1-5">
                             <span class="t14400 mx-2">کمترین قیمت</span>
-                            <div class="show-fliter-price-box text-center mx-2">
-                                <span class="t10400 ">۱۵.۰۰۰.۰۰۰ تومان</span>
+                            <div class="show-fliter-price-box text-center mx-2 t10400 pt-1">
+                                ۱۵.۰۰۰.۰۰۰ تومان
                             </div>
 
-                         <div class="position__relative">
-                            <v-range-slider class="price-filter-input " v-model="value" ></v-range-slider>
-                         </div>
-                            <div class="show-fliter-price-box text-center mx-2">
-                                <span class="t10400">۱۵.۰۰۰.۰۰۰ تومان</span>
+                            <div class="position__relative">
+                                <v-range-slider track-color="MagicMint" color="DeepGreen" class="price-filter-input " v-model="value"></v-range-slider>
+                            </div>
+                            <div class="show-fliter-price-box text-center mx-2 t10400 pt-1">
+                                ۱۵.۰۰۰.۰۰۰ تومان
                             </div>
                             <span class="t14400 mx-2">بیشترین قیمت</span>
 
@@ -148,7 +135,7 @@
                         <template>
                             <v-container fluid>
                                 <template v-for="(colection, index) in collections">
-                                    <v-checkbox :value="colection.url" class="mx-5 mt-5" v-model="selectedColection"
+                                    <v-checkbox color="DeepGreen" :value="colection.url" class="mx-5 mt-5" v-model="selectedColection"
                                         :key="colection.id" :label="colection.name"></v-checkbox>
                                     <v-divider></v-divider>
                                 </template>
@@ -173,11 +160,11 @@
 
                     <v-card width="323" color="white" outlined>
                         <v-radio-group v-model="radioGroup">
-                            <v-radio class="ma-3" label="جدید‌ترین" value="n"></v-radio>
+                            <v-radio color="DeepGreen" class="mx-5 mt-5" label="جدید‌ترین" value="1"></v-radio>
                             <v-divider></v-divider>
-                            <v-radio class="ma-3" label="کمترین قیمت" value="n"></v-radio>
+                            <v-radio color="DeepGreen" class="mx-5 mt-5" label="کمترین قیمت" value="2"></v-radio>
                             <v-divider></v-divider>
-                            <v-radio class="ma-3" label="بیشترین قیمت" value="n"></v-radio>
+                            <v-radio color="DeepGreen" class="mx-5 mt-5" label="بیشترین قیمت" value="3"></v-radio>
                             <v-divider></v-divider>
 
                         </v-radio-group>

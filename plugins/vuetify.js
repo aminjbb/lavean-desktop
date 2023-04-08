@@ -67,7 +67,8 @@ export default (ctx) => {
           DeepCarminePink:"#FF2C2C",
           LightSilver:"#D9D9D9",
           black2:"#0A0A0A",
-          mainError:'#A82525'
+          mainError:'#A82525',
+          collectionGray:'#EDEDED'
           
         },
         dark: {},

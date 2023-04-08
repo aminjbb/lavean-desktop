@@ -5,7 +5,7 @@
     <HomeProduct />
     <InfoLavin />
     <div>
-      <v-img height="414" :src="require('~/assets/img/bannerPlp.png')" class="mt-10">
+      <v-img height="414" :src="require('~/assets/img/bannerPlp.png')" class="mt-15">
         <v-container>
           <v-row justify="start" align="center" class="height-percent-100 mt-15">
             <v-col cols="5" class="mt-5">
@@ -13,18 +13,18 @@
                 با لاوین در دنیای فشن سفر کنید!
               </span>
             </v-col>
-            <v-col cols="6" class="mb-9">
-              <v-btn style="    bottom: 50px;
-    height: 58px;
-    position: absolute;
-    left: 190px;" class="px-15" color="Cultured" dark rounded="xl">
+            <v-col cols="6" class="mb-9 position__relative">
+              <v-btn style="    bottom: -130px;
+                height: 58px;
+                position: absolute;
+                left: 42px;" class="px-15" color="Cultured" dark rounded="xl">
                 <span class="t20400 Black--text">
                   شروع کنیم
                 </span>
               </v-btn>
             </v-col>
           </v-row>
-       
+
         </v-container>
       </v-img>
     </div>
@@ -50,7 +50,7 @@ export default {
     HomeCategory,
     LaveenLevel
   },
-  
+
 
   beforeMount() {
     this.$store.dispatch('set_productHome')

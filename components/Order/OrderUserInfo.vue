@@ -56,7 +56,7 @@
                                     <div class="px-3 pb-2">
                                         <span class="t14600 Black--text">توضیحات سفارش</span>
                                     </div>
-                                    <v-textarea color="Black" placeholder="توضیحات سفارش" background-color="WhiteSmoke" outlined
+                                    <v-textarea   auto-grow color="Black" placeholder="توضیحات سفارش" background-color="WhiteSmoke" outlined
                                         v-model="form.comment" class="border-r-15 mr-2"></v-textarea>
 
 
