@@ -1399,6 +1399,26 @@ header {
   height: 79px;
 }
 
-.static-radius{
+.static-radius {
   border-radius: 0px 20px 20px 0px;
+}
+
+.mag-home-title {
+  background: #ffff;
+  position: absolute;
+  top: -38px;
+}
+
+.mag-home-card {
+  width: 392px;
+  height: 199px;
+  background: #0A0A0A;
+  border: 1px solid #DFDFDF;
+  border-radius: 16px;
+}
+
+.mag-text-image {
+  position: absolute;
+  bottom: 20px;
+   right: 15px;
 }

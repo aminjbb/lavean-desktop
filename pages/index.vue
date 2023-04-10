@@ -30,6 +30,7 @@
     </div>
     <HomeCategory />
     <LaveenLevel />
+    <MagHome />
 
   </div>
 </template>
@@ -41,6 +42,7 @@ import HomeProduct from '~/components/Home/HomeProduct.vue'
 import InfoLavin from '~/components/Home/InfoLavin.vue'
 import HomeCategory from '~/components/Home/HomeCategory.vue'
 import LaveenLevel from '~/components/Home/LaveenLevel.vue'
+import MagHome from '~/components/Home/MagHome.vue'
 export default {
   components: {
     MainBanner,
@@ -48,7 +50,8 @@ export default {
     HomeProduct,
     InfoLavin,
     HomeCategory,
-    LaveenLevel
+    LaveenLevel,
+    MagHome
   },
 
 
