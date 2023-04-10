@@ -59,7 +59,7 @@
                         <span class="t14400 white--text"> فروشگاه</span>
                     </v-btn>
 
-                    <v-btn active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact large>
+                    <v-btn to="/lavean-mag" active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact large>
 
                         <span class="t14400 white--text"> لاوین مگ </span>
                     </v-btn>
