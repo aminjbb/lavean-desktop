@@ -83,12 +83,12 @@
                             <span class="t13400 white--text">وارد فروشگاه شو!</span>
                         </div>
                     </v-col>
-                    <v-col cols="1">
+                    <v-col cols="1" class="px-0">
                         <div class="text-center">
                             <span class="t13400 white--text"> محصول مورد نظرتو انتخاب کن  </span>
                         </div>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col cols="2" class="px-13">
                         <div class="text-center">
                             <span class="t13400 white--text">وارد اکانت کاربریت شو یا یکی بساز.</span>
                         </div>

@@ -1,30 +1,29 @@
 <template>
-    <div class="main-container">
-        <v-row justify="center" class="mt-10">
-        <v-col cols="12">
-            <v-row justify="center">
-                <v-col cols="4">
-                    <CarouselImageThumbnails2 :product="product.clientProductByUrl" />
-                </v-col>
-                <v-col cols="8">
-                    <NameAndDetail :product="product.clientProductByUrl" />
-                    <PriceSection :product="product.clientProductByUrl" />
-                </v-col>
+    <div class="main-container pt-8">
+        <v-row justify="center" class="mt-15">
+            <v-col cols="12">
+                <v-row justify="center">
+                    <v-col cols="4">
+                        <CarouselImageThumbnails2 :product="product.clientProductByUrl" />
+                    </v-col>
+                    <v-col cols="8">
+                        <NameAndDetail :product="product.clientProductByUrl" />
+                        <PriceSection :product="product.clientProductByUrl" />
+                    </v-col>
 
-            </v-row>
-        </v-col>
+                </v-row>
+            </v-col>
 
 
-        <v-col cols="10" class="mt-6">
-            <v-divider></v-divider>
-            <Branches :Branches="product.clientBranchWarehouseStocks.results" />
-        </v-col>
-        <v-col cols="10" class="mt-6">
-            <HomeProduct />
-        </v-col>
-    </v-row>
+            <v-col cols="10" class="mt-6">
+                <v-divider></v-divider>
+                <Branches :Branches="product.clientBranchWarehouseStocks.results" />
+            </v-col>
+            <v-col cols="10" class="mt-6">
+                <HomeProduct />
+            </v-col>
+        </v-row>
     </div>
- 
 </template>
 
 <script>
@@ -35,7 +34,7 @@ import PriceSection from "~/components/Pdp/PriceSection.vue";
 import HomeProduct from '~/components/Home/HomeProduct.vue'
 import { gql } from 'nuxt-graphql-request';
 export default {
-    layout:'headerBlack',
+    layout: 'headerBlack',
     components: {
         CarouselImageThumbnails2,
         NameAndDetail,
@@ -111,7 +110,7 @@ export default {
         }
     },
     beforeMount() {
-    this.$store.dispatch('set_productHome')
-  }
+        this.$store.dispatch('set_productHome')
+    }
 }
 </script>

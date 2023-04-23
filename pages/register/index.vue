@@ -34,7 +34,7 @@
             </v-card>
 
             <div>
-                <span class="t48600 white--text position__relative zindex-1-title-image">با لاوین، متفاوت باش!</span>
+                <span class="t48600 white--text position__relative zindex-1-title-image mr-8">با لاوین، متفاوت باش!</span>
                 <v-row justify="end">
 
                     <v-img max-width="873" max-height="458" :src="require('~/assets/img/register.png')"></v-img>

@@ -23,7 +23,7 @@
             </v-row>
 
             <v-row justify="center" class="mt-15">
-                <v-btn  color="Black" dark rounded="xl" width="171" height="48">
+                <v-btn  color="Black" dark rounded="xl" width="171" height="48" to="/lavean-mag">
                     <span class="t16600">
                         بیشتر بخوانید
                     </span>

@@ -1,12 +1,12 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="700" class="br-15"  eager>
-      <template v-slot:activator="{ on, attrs }">
+    <v-dialog v-model="addressMapModal" width="700" class="br-15"  eager>
+      <!-- <template v-slot:activator="{ on, attrs }">
         <v-btn @click="mapLoad()" text depressed color="Azure" class="pa-0" v-bind="attrs" v-on="on">
           تغییر نشانی از روی نقشه
         </v-btn>
 
-      </template>
+      </template> -->
 
       <v-card elevation="0"  class="br-15">
         <div class="pa-2 px-5">
@@ -26,7 +26,7 @@
         <v-divider></v-divider>
 
         <v-col v-if="map">
-          <div class="position__relative leaf_map" id="map-wrap">
+          <div class="position__relative leaf_map br-20" id="map-wrap">
             <client-only>
               <l-map @moveend="getCenterMap" :zoom="12" :center="latLng1" id="map">
                 <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
@@ -111,6 +111,12 @@ export default {
         this.latLng1 = [val.y, val.x];
       }
     },
+
+    addressMapModal(val){
+      if (val) {
+        this.mapLoad()
+      }
+    }
   },
 
   methods: {
@@ -189,6 +195,11 @@ export default {
     // map.on('click', onMapClick);
   },
 
+  computed:{
+    addressMapModal(){
+      return this.$store.getters['public/get_addressMapModal']
+    }
+  },
   mounted() {
 
     if (this.lat && this.long) {

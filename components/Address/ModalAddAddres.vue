@@ -1,13 +1,7 @@
 <template>
   <v-dialog v-model="dialog" width="725" > 
     <template v-slot:activator="{ on, attrs }">
-      <v-col cols="4">
-        <v-btn block color="Black" dark rounded="xl" v-bind="attrs" v-on="on">
-          <span class="t12400">
-            اضافه کردن آدرس جدید
-          </span>
-        </v-btn>
-      </v-col>
+    
 
     </template>
 

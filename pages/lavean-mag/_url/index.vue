@@ -1,8 +1,10 @@
 <template>
-    <div class="main-container mt-15">
-        <Title />
-        <Description/>
-        <TagSection/>
+    <div class="main-container mt-15 pt-15">
+        <div class="mt-15">
+            <Title />
+            <Description />
+            <TagSection />
+        </div>
     </div>
 </template>
 

@@ -73,7 +73,7 @@
                                 
                             </v-row>
                             <v-row justify="center" class="mt-6">
-                                <v-btn width="207" color="Black" dark rounded="xl">
+                                <v-btn to="/products" width="207" color="Black" dark rounded="xl">
                                     <span class="t12400">
                                       بازدید از فروشگاه
                                     </span>

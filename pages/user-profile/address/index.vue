@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5">
+    <div class="mt-15 pt-10 ">
         <v-row justify="center" align="center">
             <v-col cols="8">
                 <v-row justify="center">
@@ -14,8 +14,8 @@
                                     آدرس ها
                                 </span>
                             </div>
-                            <div class="box-delivery border-r-15 py-3 mt-3 position__relative" v-for="(address ) in userAddress"
-                                :key="address.id">
+                            <div class="box-delivery border-r-15 py-3 mt-3 position__relative"
+                                v-for="(address ) in userAddress" :key="address.id">
                                 <v-row justify="center" align="center">
                                     <v-col cols="10">
                                         <span class="position__absolute" style="right: 10px;top: 30px;">
@@ -35,25 +35,34 @@
                         </div>
 
                         <v-row justify="end" class="pa-5 pl-8">
-                            <ModalAddAddres />
+                            <v-col cols="4">
+                                <v-btn block color="Black" dark rounded="xl" @click="openMapAddress()">
+                                    <span class="t12400">
+                                        اضافه کردن آدرس جدید
+                                    </span>
+                                </v-btn>
+                            </v-col>
                         </v-row>
                     </v-col>
                 </v-row>
             </v-col>
 
         </v-row>
-
+        <ModalAddAddres />
+        <ModalMapuserAddress/>
     </div>
 </template>
 
 <script>
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
+import ModalMapuserAddress from '~/components/Address/ModalMapuserAddress.vue'
 export default {
     layout: 'headerBlack',
     components: {
         UserProfileNavigation,
-        ModalAddAddres
+        ModalAddAddres,
+        ModalMapuserAddress
     },
 
     computed: {
@@ -63,6 +72,12 @@ export default {
             } catch (error) {
                 return []
             }
+        }
+    },
+
+    methods:{
+        openMapAddress(){
+            this.$store.commit('public/set_addressMapModal' , true)
         }
     },
 

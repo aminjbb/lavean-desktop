@@ -24,7 +24,7 @@
                             راهنمای اندازه‌ها
 
                         </span>
-                        <img class="mr-5" src="~/assets/img/CaretCircleLeft.svg" alt="">
+                        <img class="mr-3" src="~/assets/img/CaretCircleLeft.svg" alt="">
                     </v-row>
                     <div class="mt-15">
                         <p class="t14600">توضیحات</p>

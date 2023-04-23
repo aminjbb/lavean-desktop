@@ -1,9 +1,11 @@
 <template>
   <div>
     <MainBanner />
-    <SpecialDiscount />
+    <HomeGiftSection/>
+    
     <HomeProduct />
     <InfoLavin />
+    <SpecialDiscount />
     <div>
       <v-img height="414" :src="require('~/assets/img/bannerPlp.png')" class="mt-15">
         <v-container>
@@ -37,6 +39,7 @@
 
 <script>
 import MainBanner from '~/components/Home/MainBanner.vue'
+import HomeGiftSection from '~/components/Home/HomeGiftSection.vue'
 import SpecialDiscount from '~/components/Home/SpecialDiscount.vue'
 import HomeProduct from '~/components/Home/HomeProduct.vue'
 import InfoLavin from '~/components/Home/InfoLavin.vue'
@@ -46,6 +49,7 @@ import MagHome from '~/components/Home/MagHome.vue'
 export default {
   components: {
     MainBanner,
+    HomeGiftSection,
     SpecialDiscount,
     HomeProduct,
     InfoLavin,

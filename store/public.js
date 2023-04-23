@@ -6,12 +6,15 @@ export const strict = false
 export const state = () => ({
     provinces: [],
     citys: [],
+    addressMapModal:false
 
 })
 
 export const mutations = {
-    
-    set_citys(state, obj) {
+    set_addressMapModal(state , bool){
+        state.addressMapModal = bool
+    },
+    set_citys(state, obj) { 
         state.citys = obj
     },
 
@@ -58,6 +61,9 @@ export const actions = {
 }
 
 export const getters = {
+    get_addressMapModal(state ){
+       return state.addressMapModal 
+    },
     get_citys(state) {
         return  state.citys
     },

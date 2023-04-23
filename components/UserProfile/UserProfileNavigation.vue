@@ -22,7 +22,7 @@
     <v-list color="Cultured">
       <v-list-item-group class="mx-5 Gunmetal--text border-r-15">
         <template v-for="(item, i) in items" class="border-r-15">
-          <v-list-item active-class="success--text" :key="i" :to="item.to" exact class="border-r-15 ma-3 white">
+          <v-list-item active-class="successFocus--text" :key="i" :to="item.to" exact class="border-r-15 ma-3 white">
             <v-list-item-icon class="ml-3">
 
 

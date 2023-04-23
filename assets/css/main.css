@@ -684,9 +684,9 @@ ol li {
   bottom: 15px !important;
 }
 
-.leaf_map {
+/* .leaf_map {
   height: calc(100vh - 136px);
-}
+} */
 
 
 .marker_center {
@@ -1302,7 +1302,7 @@ header {
 }
 
 .user-profile-active {
-  background: #C8EBE2 !important
+  color: #C8EBE2 !important
 }
 
 .dm-sans-font {
@@ -1350,9 +1350,9 @@ header {
 }
 
 .blog-banner .content-banner {
-  right: 36px;
+  right: 10px;
   position: absolute;
-  bottom: 35px;
+  bottom: 14px;
 }
 
 .br-20 {
@@ -1415,10 +1415,105 @@ header {
   background: #0A0A0A;
   border: 1px solid #DFDFDF;
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .mag-text-image {
   position: absolute;
   bottom: 20px;
-   right: 15px;
+  right: 15px;
+}
+
+.gradiant-back {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(10, 10, 10, 0) 100%);
+}
+
+.active-mag-btn {
+  background: #FFFFFF !important;
+  border-radius: 24.5px !important;
+}
+
+.search-box-mag {
+  width: 33px;
+  height: 33px;
+  background: #757575;
+  left: 10px;
+  top: 10px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaflet-container {
+  border-radius: 20px;
+}
+
+.gift-section {
+  width: 1199px;
+  height: 262px;
+  background: linear-gradient(95deg, rgb(210 172 103) 5.97%, rgb(237 214 174 / 90%) 63.18%);
+  border-radius: 40px;
+}
+
+.gift-image-box {
+  position: absolute;
+  top: -188px;
+  left: 0;
+}
+
+.survey-box {
+  width: 499px;
+  height: 97px;
+  background: #FFFFFF;
+  border: 1px solid #EDEDED;
+  border-radius: 15px;
+}
+
+
+.survey-filter-input {
+  width: 453px;
+  margin: auto;
+  height: 29px;
+}
+
+.survey-filter-input .v-slider__track-container {
+  height: 2px !important;
+}
+
+.survey-filter-input .v-slider__tick {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #21725E !important;
+}
+
+#surveyTextarea .v-input__slot {
+  height: 97px !important;
+  border: 1px solid #EDEDED !important;
+  border-radius: 15px !important
+}
+
+#surveyTextarea fieldset {
+
+  border: 1px solid #EDEDED !important;
+  border-radius: 15px !important
+}
+
+#giftBoxText fieldset {
+
+  border: 1px solid #EDEDED !important;
+}
+
+#giftBoxText .v-icon {
+  margin-top: 10px;
+}
+
+
+.gift-btn {
+  position: absolute !important;
+  top: 10px;
+  left: 51px;
+  border-radius: 8px !important;
 }

@@ -13,7 +13,7 @@
                     </v-row>
                     <v-row justify="end" align="center" class="height-percent-100 mt-15">
                         <v-col cols="3">
-                            <v-btn height="58" class="px-15" color="Cultured" dark rounded="xl">
+                            <v-btn height="58" class="px-15" color="Cultured" dark rounded="xl" to="/lavean-mag">
                                 <span class="t20400 Black--text">
                                     شروع کنیم
                                 </span>
@@ -94,15 +94,16 @@
 
                         <v-row justify="center" align="center" class="filter-price-box mr-5 mt-1-5">
                             <span class="t14400 mx-2">کمترین قیمت</span>
-                            <div class="show-fliter-price-box text-center mx-2 t10400 pt-1">
-                                ۱۵.۰۰۰.۰۰۰ تومان
+                            <div class="show-fliter-price-box text-center mx-2 t10400 pt-1 dana-fa">
+                                {{ splitChar(value[0]) }} تومان
                             </div>
 
                             <div class="position__relative">
-                                <v-range-slider track-color="MagicMint" color="DeepGreen" class="price-filter-input " v-model="value"></v-range-slider>
+                                <v-range-slider track-color="MagicMint" color="DeepGreen" class="price-filter-input "
+                                    v-model="value" min="0" max="20000000" step="50000"> </v-range-slider>
                             </div>
-                            <div class="show-fliter-price-box text-center mx-2 t10400 pt-1">
-                                ۱۵.۰۰۰.۰۰۰ تومان
+                            <div class="show-fliter-price-box text-center mx-2 t10400 pt-1 dana-fa">
+                                {{ splitChar(value[1]) }} تومان
                             </div>
                             <span class="t14400 mx-2">بیشترین قیمت</span>
 
@@ -128,15 +129,16 @@
                 <v-card v-click-outside="outsideSearchShow" v-if="searchShow"
                     class="pa-10 mt-5 position__absolute z-index-10" width="421" rounded="lg" color="Cultured" outlined>
                     <div>
-                        <v-text-field dense prepend-inner-icon="mdi-magnify" height="36" background-color="WhiteSmoke"
-                            outlined class="border-r-15" placeholder="جست و جوی کالکشن" clearable></v-text-field>
+                        <v-text-field dense prepend-inner-icon="mdi-magnify" height="36" background-color="white" outlined
+                            class="border-r-15" placeholder="جست و جوی کالکشن" clearable></v-text-field>
                     </div>
                     <v-card rounded="lg" width="323" color="white" outlined>
                         <template>
                             <v-container fluid>
                                 <template v-for="(colection, index) in collections">
-                                    <v-checkbox color="DeepGreen" :value="colection.url" class="mx-5 mt-5" v-model="selectedColection"
-                                        :key="colection.id" :label="colection.name"></v-checkbox>
+                                    <v-checkbox color="DeepGreen" :value="colection.url" class="mx-5 mt-5"
+                                        v-model="selectedColection" :key="colection.id"
+                                        :label="colection.name"></v-checkbox>
                                     <v-divider></v-divider>
                                 </template>
                             </v-container>
@@ -159,15 +161,20 @@
                     color="Cultured" outlined>
 
                     <v-card width="323" color="white" outlined>
-                        <v-radio-group v-model="radioGroup">
-                            <v-radio color="DeepGreen" class="mx-5 mt-5" label="جدید‌ترین" value="1"></v-radio>
-                            <v-divider></v-divider>
-                            <v-radio color="DeepGreen" class="mx-5 mt-5" label="کمترین قیمت" value="2"></v-radio>
-                            <v-divider></v-divider>
-                            <v-radio color="DeepGreen" class="mx-5 mt-5" label="بیشترین قیمت" value="3"></v-radio>
-                            <v-divider></v-divider>
+                        <template>
+                            <v-container fluid>
+                                <v-radio-group v-model="radioGroup">
+                                    <v-radio color="DeepGreen" class="ma-5 " label="جدید‌ترین" value="1"></v-radio>
+                                    <v-divider></v-divider>
+                                    <v-radio color="DeepGreen" class="ma-5" label="کمترین قیمت" value="2"></v-radio>
+                                    <v-divider></v-divider>
+                                    <v-radio color="DeepGreen" class="ma-5" label="بیشترین قیمت" value="3"></v-radio>
+                                    <v-divider></v-divider>
 
-                        </v-radio-group>
+                                </v-radio-group>
+                            </v-container>
+                        </template>
+                     
 
 
                     </v-card>
@@ -242,6 +249,14 @@ export default {
     beforeMount() {
         this.$store.dispatch('set_products', '')
         this.$store.dispatch('set_collections')
+      
+    },
+
+    mounted(){
+        if (this.$route.query.max_price && this.$route.query.min_price) {
+            console.log( this.$route.query.max_price , this.$route.query.min_price);
+            this.value = [this.$route.query.min_price ,this.$route.query.max_price]
+        }
     },
     components: {
         ProductCard
@@ -262,7 +277,7 @@ export default {
         return {
             min: 2000000,
             max: 0,
-            value: [20, 40],
+            value: [0, 20000000],
             isFilter: false,
             text: '',
             page: 1,
@@ -285,7 +300,7 @@ export default {
             if (text) {
                 return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             } else {
-                return "";
+                return text;
             }
         },
 
@@ -373,6 +388,7 @@ export default {
             }
             this.$store.dispatch('set_products', query)
         }
-    }
+    },
+
 }
 </script>
