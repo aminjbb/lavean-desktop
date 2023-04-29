@@ -29,16 +29,16 @@
                 <v-card rounded="lg" outlined height="74">
                     <v-col cols="12" class="py-4">
                         <div class="text-center">
-                            <v-btn text v-bind="attrs" v-on="on">
-                                <span class="t14400 mx-3 Black--text">
+                            <v-btn color="DeepGreen" v-bind="attrs" v-on="on" class="br-10">
+                                <span class="t14400 mx-3 Black--text white--text" >
                                     همه
                                 </span>
                             </v-btn>
-                            <v-menu offset-y>
+                            <v-menu offset-y v-for="(cat , index) in produCategories" :key="index">
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn text v-bind="attrs" v-on="on">
                                         <span class="t14400 mx-3 Black--text">
-                                            گردن بند
+                                            {{cat.name}}
                                         </span>
                                     </v-btn>
                                 </template>
@@ -182,8 +182,8 @@
 
                 </v-card>
 
-                <v-row justify="center" align="center" class="my-10">
-                    <v-col cols="3" v-for="(product, index) in  products" :key="index">
+                <v-row justify="center" align="center" class="mb-10">
+                    <v-col cols="3" v-for="(product, index) in  products" :key="index" class="mt-13">
                         <ProductCard :product="product" />
                     </v-col>
 
@@ -249,6 +249,7 @@ export default {
     beforeMount() {
         this.$store.dispatch('set_products', '')
         this.$store.dispatch('set_collections')
+        this.$store.dispatch('set_produCategories')
       
     },
 
@@ -271,6 +272,9 @@ export default {
 
         collections() {
             return this.$store.getters['get_collections']
+        },
+        produCategories(){
+            return this.$store.getters['get_produCategories']
         }
     },
     data() {

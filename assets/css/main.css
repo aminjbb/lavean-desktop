@@ -1517,3 +1517,7 @@ header {
   left: 51px;
   border-radius: 8px !important;
 }
+
+.br-10{
+  border-radius:10px !important
+}

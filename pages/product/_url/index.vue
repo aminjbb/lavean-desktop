@@ -19,7 +19,7 @@
                 <v-divider></v-divider>
                 <Branches :Branches="product.clientBranchWarehouseStocks.results" />
             </v-col>
-            <v-col cols="10" class="mt-6">
+            <v-col cols="12" class="mt-6">
                 <HomeProduct />
             </v-col>
         </v-row>

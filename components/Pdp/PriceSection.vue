@@ -35,13 +35,13 @@
                     </div>
                 </v-col>
                 <v-col cols="6" class="mr-15">
-                    <v-card class="br-15 ma-0" outlined height="174" v-if="bestVariant">
+                    <v-card class="br-15 ma-0" outlined height="88" v-if="bestVariant">
 
                         <v-row justify="space-between" align="center" class="mt-6 mx-8">
                             <span class="t12400">
                                 تخفیف
-                                <v-avatar color="accent" size="22">
-                                    <span class="t10400 white--text pa-5 dana-fa">10%</span>
+                                <v-avatar class="pt-1" color="accent" size="23">
+                                    <span class="t10400 white--text  dana-fa">10%</span>
                                 </v-avatar>
 
                             </span>
@@ -52,8 +52,8 @@
 
                         </v-row>
 
-                        <v-divider class="mt-10"></v-divider>
-                        <v-row justify="space-between" align="center" class="mt-6 mx-8 pb-8">
+                        <!-- <v-divider class="mt-10"></v-divider> -->
+                        <!-- <v-row justify="space-between" align="center" class="mt-6 mx-8 pb-8">
                             <span class="t12400">
                                 ۲۰٪ اجرت ساخت
                             </span>
@@ -62,7 +62,7 @@
                             </span>
 
 
-                        </v-row>
+                        </v-row> -->
                     </v-card>
                     <v-card class="br-15 ma-0" outlined height="84" v-else>
 

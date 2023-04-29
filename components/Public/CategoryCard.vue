@@ -1,7 +1,7 @@
 <template>
     <v-card rounded="lg" height="188" width="190" outlined>
         <v-row justify="center" align="center" class="height-percent-100">
-            <v-img max-height="130" max-width="108" :src="categoriImage"
+            <v-img max-height="108" max-width="108" :src="categoriImage"
                 class="border-r-15"></v-img>
         </v-row>
         <div class="d-flex justify-center">
