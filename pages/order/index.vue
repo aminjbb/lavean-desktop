@@ -1,7 +1,7 @@
 <template>
-    <div >
+    <div>
         <v-row justify="center" align="center" v-if="show">
-            
+
             <div class="main-container" v-if="cartDetailsLength.length > 0">
                 <v-row justify="center mt-10">
                     <v-col cols="7">
@@ -14,7 +14,7 @@
 
                     </v-col>
                     <v-col cols="5">
-                        <OrderPrice />
+                        <OrderPrice :cartDetails="cartDetails" />
                         <v-row justify="space-between" align="center" class="mt-3 mr-1">
                             <v-col cols="8" v-if="orderStep == 1">
                                 <v-row>
@@ -70,15 +70,15 @@
                             </v-row>
                             <v-row justify="center" class="mt-6">
                                 <p class="t18600 Black--text">سبد خرید شما خالی است!</p>
-                                
+
                             </v-row>
                             <v-row justify="center" class="mt-6">
                                 <v-btn to="/products" width="207" color="Black" dark rounded="xl">
                                     <span class="t12400">
-                                      بازدید از فروشگاه
+                                        بازدید از فروشگاه
                                     </span>
                                 </v-btn>
-                                
+
                             </v-row>
                         </div>
                     </v-card>
@@ -112,19 +112,21 @@ export default {
         ModalAddAddres
     },
 
-    data(){
-        return{
-            cartDetailsLength :[],
-            show:false
+    data() {
+        return {
+            cartDetailsLength: [],
+            show: false
         }
     },
 
     methods: {
         netxStep() {
+            
             if (this.orderStep == 2) {
                 this.$refs.OrderUserInfo.$refs.userInfoOrder.validate()
                 setTimeout(() => {
                     if (this.$refs.OrderUserInfo.valid) {
+
                         this.updateUser()
                     }
                 }, 100);
@@ -137,10 +139,39 @@ export default {
                 sessionStorage.setItem('orderDelivery', this.$refs.OrderDelivery.delivery)
                 this.$store.commit('incress_orderStep')
             }
-            else {
+            else if (this.orderStep == 5) {
+                this.makeOrder()
+            }
+            else{
                 this.$store.commit('incress_orderStep')
             }
+
             // 
+        },
+        makeOrder() {
+            axios({
+                method: 'post',
+                url: process.env.apiUrl + 'order/client/',
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data: {
+                    client_comment: sessionStorage.getItem('orderComment'),
+                    address: sessionStorage.getItem('orderAddress'),
+                    delivery: sessionStorage.getItem('orderDelivery'),
+                    shipping: {
+                        time_from: "18:00",
+                        time_to: "20:00",
+                        date: "2023-01-01"
+                    }
+                }
+            })
+                .then(response => {
+                    this.$router.push('/order/1')
+                })
+                .catch(err => {
+
+                })
         },
         updateClient() {
             axios({
@@ -216,8 +247,8 @@ export default {
             }
         }
     },
-    watch:{
-        cartDetails(val){
+    watch: {
+        cartDetails(val) {
             this.cartDetailsLength = val
         }
     },

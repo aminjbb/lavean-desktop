@@ -7,11 +7,13 @@
                     <div class="px-3 pb-2">
                         <span class="t14600">آدرس پستی</span>
                     </div>
-                    <v-textarea  color="Black" placeholder="آدرس پستی" background-color="WhiteSmoke" outlined :rules="addressRule"
-                        v-model="form.address" class="border-r-15"></v-textarea>
+                    <v-textarea color="Black" placeholder="آدرس پستی" background-color="WhiteSmoke" outlined
+                        :rules="addressRule" v-model="form.address" class="border-r-15"></v-textarea>
 
                     <v-row justify="start" class="mx-3">
-                        <ModalMapuserAddress />
+                        <v-btn @click="mapLoad()" text depressed color="Azure" class="pa-0" v-bind="attrs" v-on="on">
+                            تغییر نشانی از روی نقشه
+                        </v-btn>
                     </v-row>
                 </v-col>
 
@@ -19,15 +21,15 @@
                     <div class="px-3 pb-2">
                         <span class="t14600">استان</span>
                     </div>
-                    <v-select color="Black" placeholder="استان" append-icon="mdi-chevron-down" background-color="WhiteSmoke" :rules="rule" v-model="form.province"
-                        :items="province" outlined class="border-r-15"></v-select>
+                    <v-select color="Black" placeholder="استان" append-icon="mdi-chevron-down" background-color="WhiteSmoke"
+                        :rules="rule" v-model="form.province" :items="province" outlined class="border-r-15"></v-select>
                 </v-col>
                 <v-col cols="4">
                     <div class="px-3 pb-2">
                         <span class="t14600">شهر</span>
                     </div>
-                    <v-select color="Black" placeholder="شهر" append-icon="mdi-chevron-down" background-color="WhiteSmoke" :rules="rule" v-model="form.city"
-                        :items="citys" outlined class="border-r-15"></v-select>
+                    <v-select color="Black" placeholder="شهر" append-icon="mdi-chevron-down" background-color="WhiteSmoke"
+                        :rules="rule" v-model="form.city" :items="citys" outlined class="border-r-15"></v-select>
                 </v-col>
                 <v-col cols="4">
                     <div class="px-3 pb-2">
@@ -41,16 +43,17 @@
                     <div class="px-3 pb-2">
                         <span class="t14600">کد پستی</span>
                     </div>
-                    <v-text-field color="Black" background-color="WhiteSmoke" :rules="postalCodeRule" v-model="form.postalCode"
-                        outlined class="border-r-15" :hint="postalCodeHint" persistent-hint></v-text-field>
+                    <v-text-field color="Black" background-color="WhiteSmoke" :rules="postalCodeRule"
+                        v-model="form.postalCode" outlined class="border-r-15" :hint="postalCodeHint"
+                        persistent-hint></v-text-field>
                 </v-col>
-               
+
 
             </v-row>
 
             <v-row class="ma-0 my-6" justify="end">
 
-                <v-btn class="px-15" :loading="loading" @click="validate()"  color="Black" dark rounded="xl" >
+                <v-btn class="px-15" :loading="loading" @click="validate()" color="Black" dark rounded="xl">
                     <span class="t12400">
                         ثبت اطلاعات
                     </span>
@@ -130,6 +133,10 @@ export default {
     },
 
     methods: {
+        mapLoad() {
+            localStorage.setItem('modalMap', 'edit')
+            this.$store.commit('public/set_addressMapModal', true)
+        },
         validate() {
             this.$refs.address.validate();
             setTimeout(() => {
@@ -158,12 +165,15 @@ export default {
                     postal_code: this.convertPersianNumber(this.form.postalCode),
                     address_detail: this.form.address,
                     number: this.form.plaque,
-                    phone_number: mobile
+                    phone_number: mobile,
+                    longitude: this.get_addressOnMap.lng,
+                    latitude: this.get_addressOnMap.lat
                 },
             })
                 .then((response) => {
-                    this.loading = false;
-                    this.$store.dispatch("set_userAddress");
+
+                    this.$store.dispatch('set_meCustomer')
+                    this.$store.commit('public/set_addAddressModal', false)
                     if (this.userForm) {
                         this.userEdit();
                     } else {
@@ -190,24 +200,23 @@ export default {
             }
             axios({
                 method: "put",
-                url: process.env.apiUrl + "address/" + this.address.id + "/",
+                url: process.env.apiUrl + "address/client/" + this.address.id + "/",
                 headers: {
                     Authorization: "Bearer " + this.$cookies.get("customer_token"),
                 },
                 data: {
-                    title: this.form.addressName,
-                    first_name: name,
                     city: this.form.city,
-                    postal_code: this.form.postalCode,
+                    postal_code: this.convertPersianNumber(this.form.postalCode),
                     address_detail: this.form.address,
                     number: this.form.plaque,
                     phone_number: mobile,
-                    default: true,
+                    longitude: this.get_addressOnMap.lng,
+                    latitude: this.get_addressOnMap.lat
                 },
             })
                 .then((response) => {
                     this.loading = false;
-                    this.$store.dispatch("set_userAddress");
+                    this.$store.dispatch('set_meCustomer')
                     this.cancele();
                 })
                 .catch((err) => {
@@ -222,14 +231,12 @@ export default {
 
         setForm() {
             try {
-                this.form.address = this.address.address_detail;
+                this.form.address = this.address.addressDetail;
                 this.form.province = this.address.city.province.id;
                 this.form.city = this.address.city.id;
-                this.form.postalCode = this.address.postal_code;
+                this.form.postalCode = this.address.postalCode;
                 this.form.plaque = this.address.number;
-                this.form.name = this.address.first_name;
-                this.form.number = this.address.phone_number;
-                this.form.addressName = this.address.title;
+
             } catch (error) {
 
             }
@@ -270,10 +277,14 @@ export default {
     },
 
     computed: {
+
+        get_addressOnMap() {
+            return this.$store.getters['public/get_addressOnMap']
+        },
         province() {
             var province = []
             this.$store.getters["public/get_provinces"].forEach(element => {
-                var form = { text :element.name , value: element.id}
+                var form = { text: element.name, value: element.id }
                 province.push(form)
             });
             return province
@@ -282,7 +293,7 @@ export default {
         citys() {
             var citys = []
             this.$store.getters["public/get_citys"].forEach(element => {
-                var form = { text :element.name , value: element.id}
+                var form = { text: element.name, value: element.id }
                 citys.push(form)
             });
             return citys
@@ -330,8 +341,8 @@ export default {
             deep: true,
         },
 
-        addressD(val) {
-            this.form.address = val.address.formatted_address
+        get_addressOnMap(val) {
+            this.form.address = this.get_addressOnMap.address.formatted_address
         },
 
         address() {
@@ -345,6 +356,10 @@ export default {
         if (this.sendMethod == "put") {
             this.setForm();
         }
+        else {
+            this.form.address = this.get_addressOnMap.address.formatted_address
+        }
+
     },
 };
 </script>

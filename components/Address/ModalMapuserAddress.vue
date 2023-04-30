@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="addressMapModal" width="700" class="br-15"  eager>
+    <v-dialog @click:outside="close()" v-model="addressMapModal" width="700" class="br-15" eager>
       <!-- <template v-slot:activator="{ on, attrs }">
         <v-btn @click="mapLoad()" text depressed color="Azure" class="pa-0" v-bind="attrs" v-on="on">
           تغییر نشانی از روی نقشه
@@ -8,7 +8,7 @@
 
       </template> -->
 
-      <v-card elevation="0"  class="br-15">
+      <v-card elevation="0" class="br-15">
         <div class="pa-2 px-5">
 
           <v-col>
@@ -16,7 +16,7 @@
               <span class="t14600 Black--text">
                 آدرس
               </span>
-              <v-btn icon @click="dialog = false">
+              <v-btn icon @click="close()">
                 <v-icon> mdi-close </v-icon>
               </v-btn>
             </v-row>
@@ -72,7 +72,7 @@
           <v-row class="ma-0" justify="end" align="center">
             <v-btn :loading="loading" @click="getGraphLocation()" width="207" color="Black" dark rounded="xl"> ثبت نشانی
             </v-btn>
-           
+
           </v-row>
         </v-col>
       </v-card>
@@ -112,7 +112,7 @@ export default {
       }
     },
 
-    addressMapModal(val){
+    addressMapModal(val) {
       if (val) {
         this.mapLoad()
       }
@@ -120,6 +120,9 @@ export default {
   },
 
   methods: {
+    close() {
+      this.$store.commit('public/set_addressMapModal', false)
+    },
     mapLoad() {
       setTimeout(() => {
         this.map = true
@@ -152,7 +155,6 @@ export default {
       let result = text.replace(/'/g, '"');
       const obj = JSON.parse(result);
       this.loadingSearch = false;
-      console.log(obj);
       this.Address = obj.items;
     },
     async getGraphLocation() {
@@ -170,8 +172,15 @@ export default {
         lng: this.latLng1[1],
         address: JSON.parse(result)
       }
-      this.dialog = false
-      this.$store.commit('userProfile/set_addressOnMap', form)
+
+      this.$store.commit('public/set_addressOnMap', form)
+      this.close()
+      if (localStorage.getItem('modalMap') != 'edit') {
+        this.$store.commit('public/set_addAddressModal', true)
+        
+      }
+      
+
       // this.$store.commit('user/set_mapAddress', form);
       this.loading = false
     },
@@ -195,8 +204,8 @@ export default {
     // map.on('click', onMapClick);
   },
 
-  computed:{
-    addressMapModal(){
+  computed: {
+    addressMapModal() {
       return this.$store.getters['public/get_addressMapModal']
     }
   },

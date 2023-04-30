@@ -1,12 +1,9 @@
-<template>
-  <v-dialog v-model="dialog" width="725" > 
-    <template v-slot:activator="{ on, attrs }">
-    
-
-    </template>
+<template> 
+  <v-dialog @click:outside="close()" v-model="dialog" width="725">
 
 
-    <v-card  class="br-15">
+
+    <v-card class="br-15">
       <div class="pa-2 px-5">
 
         <v-col>
@@ -14,7 +11,7 @@
             <span class="t14600 Black--text">
               آدرس
             </span>
-            <v-btn icon @click="dialog = false">
+            <v-btn icon @click="close()">
               <v-icon> mdi-close </v-icon>
             </v-btn>
           </v-row>
@@ -75,14 +72,24 @@ export default {
 
   methods: {
     close() {
-      this.dialog = false;
+      this.$store.commit('public/set_addAddressModal', false)
     }
   },
 
   data() {
     return {
-      dialog: false,
+
     };
   },
+
+  computed: {
+    dialog() {
+      try {
+        return this.$store.getters['public/get_addAddressModal']
+      } catch (error) {
+
+      }
+    }
+  }
 };
 </script>

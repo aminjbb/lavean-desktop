@@ -30,15 +30,15 @@
                     <v-col cols="12" class="py-4">
                         <div class="text-center">
                             <v-btn color="DeepGreen" v-bind="attrs" v-on="on" class="br-10">
-                                <span class="t14400 mx-3 Black--text white--text" >
+                                <span class="t14400 mx-3 Black--text white--text">
                                     همه
                                 </span>
                             </v-btn>
-                            <v-menu offset-y v-for="(cat , index) in produCategories" :key="index">
+                            <v-menu offset-y v-for="(cat, index) in produCategories" :key="index">
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn text v-bind="attrs" v-on="on">
                                         <span class="t14400 mx-3 Black--text">
-                                            {{cat.name}}
+                                            {{ cat.name }}
                                         </span>
                                     </v-btn>
                                 </template>
@@ -74,8 +74,8 @@
 
                         </div>
                         <v-card outlined class="border-r-15  mr-175" max-height="48">
-                            <v-item-group v-model="shopFilterBtn" active-class="btn2_toggle-plp">
-                                <v-item v-slot="{ active, toggle }" value="most_expensive">
+                            <v-item-group v-model="available" active-class="btn2_toggle-plp">
+                                <v-item v-slot="{ active, toggle }" value="available">
                                     <v-btn depressed rounded class=" white_back border-r-15" large @click="toggle"
                                         active-class="btn2_toggle-plp">
 
@@ -163,18 +163,19 @@
                     <v-card width="323" color="white" outlined>
                         <template>
                             <v-container fluid>
-                                <v-radio-group v-model="radioGroup">
-                                    <v-radio color="DeepGreen" class="ma-5 " label="جدید‌ترین" value="1"></v-radio>
+                                <v-radio-group v-model="sort">
+                                    <v-radio color="DeepGreen" class="ma-5 " label="جدید‌ترین" value="newest"></v-radio>
                                     <v-divider></v-divider>
-                                    <v-radio color="DeepGreen" class="ma-5" label="کمترین قیمت" value="2"></v-radio>
+                                    <v-radio color="DeepGreen" class="ma-5" label="کمترین قیمت" value="cheapest"></v-radio>
                                     <v-divider></v-divider>
-                                    <v-radio color="DeepGreen" class="ma-5" label="بیشترین قیمت" value="3"></v-radio>
+                                    <v-radio color="DeepGreen" class="ma-5" label="بیشترین قیمت"
+                                        value="most_expensive"></v-radio>
                                     <v-divider></v-divider>
 
                                 </v-radio-group>
                             </v-container>
                         </template>
-                     
+
 
 
                     </v-card>
@@ -245,18 +246,19 @@
 
 <script>
 import ProductCard from '~/components/Public/ProductCard.vue'
+import { ProductListFilter } from "~/store/classes"
 export default {
     beforeMount() {
         this.$store.dispatch('set_products', '')
         this.$store.dispatch('set_collections')
         this.$store.dispatch('set_produCategories')
-      
+
     },
 
-    mounted(){
+    mounted() {
         if (this.$route.query.max_price && this.$route.query.min_price) {
-            console.log( this.$route.query.max_price , this.$route.query.min_price);
-            this.value = [this.$route.query.min_price ,this.$route.query.max_price]
+            console.log(this.$route.query.max_price, this.$route.query.min_price);
+            this.value = [this.$route.query.min_price, this.$route.query.max_price]
         }
     },
     components: {
@@ -273,19 +275,20 @@ export default {
         collections() {
             return this.$store.getters['get_collections']
         },
-        produCategories(){
+        produCategories() {
             return this.$store.getters['get_produCategories']
         }
     },
     data() {
         return {
+            available: 'all',
             min: 2000000,
             max: 0,
             value: [0, 20000000],
             isFilter: false,
+            sort: '',
             text: '',
             page: 1,
-            shopFilterBtn: 'all',
             searchShow: false,
             sortShow: false,
             selectedColection: [],
@@ -296,6 +299,7 @@ export default {
                 { title: 'Click Me' },
                 { title: 'Click Me 2' },
             ],
+            productFilter: new ProductListFilter()
         }
     },
 
@@ -308,33 +312,7 @@ export default {
             }
         },
 
-        changeRange() {
-            if (this.isSend) {
-                setTimeout(() => {
-                    if (this.$route.query.price_from && this.$route.query.price_to) {
-                        const query = Object.assign({}, this.$route.query);
-                        query.price_from = this.range[0];
-                        query.price_to = this.range[1];
-                        this.$router.push({ query });
-                    } else {
-                        var route = this.$route.fullPath.split("?");
-                        var query = "";
-                        if (route[1]) {
-                            query =
-                                route[1] +
-                                "&price_from=" +
-                                this.range[0] +
-                                "&price_to=" +
-                                this.range[1];
-                        } else {
-                            query =
-                                "?price_from=" + this.range[0] + "&price_to=" + this.range[1];
-                        }
-                        this.$router.push("/shop?" + query);
-                    }
-                }, 25);
-            }
-        },
+
         outsideSearchShow() {
             if (this.searchShow) {
                 this.searchShow = false;
@@ -347,50 +325,50 @@ export default {
         },
         fillterColection() {
 
-            if (this.selectedColection.length > 0) {
-                var colections = ''
-                this.selectedColection.forEach(el => {
-                    colections += '"' + el + '",'
-                })
-                if (this.isSend) {
-                    setTimeout(() => {
+            this.productFilter.colection = this.selectedColection
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        },
+        filterSort() {
 
-                        if (this.$route.query.colection) {
-                            const query = Object.assign({}, this.$route.query);
-                            query.colection = colections;
-                            this.$router.push({ query });
-                        } else {
-                            var route = this.$route.fullPath.split("?");
-                            var query = "";
-                            if (route[1]) {
-                                query = route[1] + "&colection=" + colections;
-                            } else {
-                                query = "?colection=" + colections;
-                            }
+            this.productFilter.sort = this.sort
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        },
+        filterPrice() {
+            this.productFilter.min_price = this.value[0]
+            this.productFilter.max_price = this.value[1]
 
-                            this.$router.push("/products?" + query);
-                        }
-                    }, 25);
-                }
-            } else {
-                let url = new URL(window.location.href);
-                let params = new URLSearchParams(url.sort);
-                params.delete("colection");
-                var newParams = params.toString();
-
-                this.$router.push("/products?" + newParams);
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        },
+        filterAvailable() {
+            if (this.available == 'available') {
+                this.productFilter.available = 'available'
             }
+            else {
+                this.productFilter.available = ''
+            }
+            this.$router.push("/products?" + this.productFilter.query_maker());
         }
     },
 
     watch: {
         $route(to) {
+
             this.isFilter = true
-            var query = ''
-            if (to.query.colection) {
-                query = ',collection_Url_In:[' + to.query.colection + ']'
-            }
-            this.$store.dispatch('set_products', query)
+            this.$store.dispatch('set_products', this.productFilter.query_maker_graph(to))
+        },
+        sort() {
+            this.filterSort()
+        },
+        value() {
+            this.filterPrice()
+        },
+        available() {
+            this.filterAvailable()
+        },
+        page(val) {
+            this.productFilter.page = val
+
+            this.$router.push("/products?" + this.productFilter.query_maker());
         }
     },
 

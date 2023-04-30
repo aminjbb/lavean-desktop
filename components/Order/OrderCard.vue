@@ -9,11 +9,11 @@
                 <div><span class="t14600 Black--text">
                         {{productName}}
                     </span>
-                    <v-chip class="px-5 ma-2">
+                    <v-chip class="px-5 ma-2" v-if="collectionName">
                         <span class="t10400"> {{collectionName}}</span>
                     </v-chip>
                 </div>
-                <v-row justify="space-between" class="mt-1">
+                <v-row justify="space-between" :class=" collectionName ? 'mt-1' : 'mt-5'" >
 
                     <div>
                         <v-chip class="mt-2 ml-2 " outlined pill>

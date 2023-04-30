@@ -6,15 +6,23 @@ export const strict = false
 export const state = () => ({
     provinces: [],
     citys: [],
-    addressMapModal:false
+    addressMapModal: false,
+    addAddressModal: false,
+    addressOnMap: ''
 
 })
 
 export const mutations = {
-    set_addressMapModal(state , bool){
+    set_addAddressModal(state, bool) {
+        state.addAddressModal = bool
+    },
+    set_addressOnMap(state, obj) {
+        state.addressOnMap = obj
+    },
+    set_addressMapModal(state, bool) {
         state.addressMapModal = bool
     },
-    set_citys(state, obj) { 
+    set_citys(state, obj) {
         state.citys = obj
     },
 
@@ -26,13 +34,13 @@ export const mutations = {
 
 
 export const actions = {
-    async set_citys({ commit } , id) {
+    async set_citys({ commit }, id) {
         const requestHeaders = {
             Authorization: "Bearer " + cookies.get("customer_token"),
         };
         const query = gql`
         query{
-            clientCities(limit:1000 ,province_Id: `+id+`){
+            clientCities(limit:1000 ,province_Id: `+ id + `){
                 results{
                     id,
                     name
@@ -42,7 +50,7 @@ export const actions = {
         const me = await this.$graphql.default.request(query, {}, requestHeaders);
         commit('set_citys', me.clientCities.results);
     },
-    async set_provinces({ commit } ) {
+    async set_provinces({ commit }) {
         const requestHeaders = {
             Authorization: "Bearer " + cookies.get("customer_token"),
         };
@@ -60,12 +68,19 @@ export const actions = {
     },
 }
 
+
 export const getters = {
-    get_addressMapModal(state ){
-       return state.addressMapModal 
+    get_addAddressModal(state) {
+        return state.addAddressModal
+    },
+    get_addressOnMap(state) {
+        return state.addressOnMap
+    },
+    get_addressMapModal(state) {
+        return state.addressMapModal
     },
     get_citys(state) {
-        return  state.citys
+        return state.citys
     },
     get_provinces(state) {
         return state.provinces

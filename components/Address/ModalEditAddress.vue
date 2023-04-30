@@ -25,7 +25,7 @@
 </template> -->
 
 <template>
-  <v-dialog v-model="dialog" width="725" >
+  <v-dialog v-model="dialog" width="725">
     <template v-slot:activator="{ on, attrs }">
       <v-btn icon v-bind="attrs" v-on="on">
         <v-icon>
@@ -35,27 +35,27 @@
 
     </template>
 
-    <v-card color="transparent" elevation="0" class="py-8 br-15">
-      <v-card elevation="0">
-        <v-row class="ma-0 profile-header" justify="center" align="center">
-          <span class="t14400 Secondary2--text">آدرس</span>
-        </v-row>
+    <v-card  class=" br-15">
+      <div class="pa-2 px-5">
+
         <v-col>
-          <v-row class="ma-0" justify="end" align="center">
-            <v-btn icon @click="dialog = false">
+          <v-row class="ma-0" justify="space-between" align="center">
+            <span class="t14600 Black--text">
+              آدرس
+            </span>
+            <v-btn icon @click="close()">
               <v-icon> mdi-close </v-icon>
             </v-btn>
           </v-row>
         </v-col>
+      </div>
+      <v-divider></v-divider>
+      <v-col class="pa-2 px-6">
+        <AddAddress :cancele="close" sendMethod="put" :address="address" />
 
-        <v-col class="pa-2 px-6">
-          <AddAddress :cancele="close" sendMethod="put" :address="address" />
-
-        </v-col>
-      </v-card>
+      </v-col>
     </v-card>
   </v-dialog>
-
 </template>
   
 

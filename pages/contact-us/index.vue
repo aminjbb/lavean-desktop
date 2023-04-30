@@ -4,31 +4,33 @@
         <v-row justify="center" class="mt-15">
             <v-col cols="6">
                 <div class="mt-5">
-                    <div class="ma-0">
-                        <div class="px-5 py-2">
-                            <span class="t16400 Arsenic--text">موضوع</span>
+                    <v-form ref="contactUs" v-model="valid">
+                        <div class="ma-0">
+                            <div class="px-5 py-2">
+                                <span class="t16400 Arsenic--text">موضوع</span>
+                            </div>
+                            <v-text-field :rules="rule" v-model="form.subject" color="black" class="border-r-15"
+                                placeholder="موضوع" background-color="WhiteSmoke" outlined></v-text-field>
                         </div>
-                        <v-text-field color="black" class="border-r-15" placeholder="موضوع" background-color="WhiteSmoke"
-                            outlined></v-text-field>
-                    </div>
-                    <div class="ma-0">
-                        <div class="px-5 py-2">
-                            <span class="t16400 Arsenic--text">آدرس ایمیل</span>
+                        <div class="ma-0">
+                            <div class="px-5 py-2">
+                                <span class="t16400 Arsenic--text">آدرس ایمیل</span>
+                            </div>
+                            <v-text-field :rules="rule" v-model="form.email" color="black" class="border-r-15"
+                                placeholder="ایمیل" background-color="WhiteSmoke" outlined></v-text-field>
                         </div>
-                        <v-text-field color="black" class="border-r-15" placeholder="ایمیل" background-color="WhiteSmoke"
-                            outlined></v-text-field>
-                    </div>
-                    <div>
-                        <div class="px-5 py-2">
-                            <span class="t16400 Arsenic--text">پیام</span>
+                        <div>
+                            <div class="px-5 py-2">
+                                <span class="t16400 Arsenic--text">پیام</span>
+                            </div>
+                            <v-textarea :rules="rule" v-model="form.message" color="black" class="border-r-15"
+                                placeholder="چطوری میتونم کمکت کنم؟" background-color="WhiteSmoke" outlined></v-textarea>
                         </div>
-                        <v-textarea color="black" class="border-r-15" placeholder="چطوری میتونم کمکت کنم؟"
-                            background-color="WhiteSmoke" outlined></v-textarea>
-                    </div>
+                    </v-form>
                 </div>
                 <v-row justify="end">
                     <v-col cols="5">
-                        <v-btn block color="Black" dark rounded="xl">
+                        <v-btn :loading="loading" @click="validate()" block color="Black" dark rounded="xl">
                             <span class="t12400">
                                 ارسال
                             </span>
@@ -68,12 +70,14 @@
                 </div>
                 <v-row justify="end" class="mt-4">
                     <v-col cols="5">
-                        <v-btn v-if="brancheShow.length == 3" block outlined color="Black" dark rounded="xl" @click="loadBranche()">
+                        <v-btn v-if="brancheShow.length == 3" block outlined color="Black" dark rounded="xl"
+                            @click="loadBranche()">
                             <span class="t12400">
                                 بیشتر
                             </span>
                         </v-btn>
-                        <v-btn v-if="brancheShow.length > 3" block outlined color="Black" dark rounded="xl" @click="minBranche()">
+                        <v-btn v-if="brancheShow.length > 3" block outlined color="Black" dark rounded="xl"
+                            @click="minBranche()">
                             <span class="t12400">
                                 کمتر
                             </span>
@@ -88,12 +92,20 @@
 
 <script>
 
-
+import axios from 'axios'
 export default {
     layout: 'headerBlack',
     data() {
         return {
-            brancheShow: []
+            brancheShow: [],
+            valid: true,
+            loading: false,
+            form: {
+                subject: '',
+                email: '',
+                message: ''
+            },
+            rule: [(v) => !!v || "این فیلد الزامی است"],
         }
     },
     beforeMount() {
@@ -116,12 +128,39 @@ export default {
         }
     },
 
-    methods:{
-        loadBranche(){
+    methods: {
+        loadBranche() {
             this.brancheShow = this.branches
         },
-        minBranche(){
+        minBranche() {
             this.brancheShow = this.branches.slice(0, 3)
+        },
+
+        validate() {
+            this.$refs.contactUs.validate()
+            setTimeout(() => {
+                if (this.valid) {
+                    this.submitForm()
+                }
+            }, 200);
+        },
+        submitForm() {
+            this.loading = true;
+            axios({
+                method: 'post',
+                url: process.env.apiUrl + 'contact_us/client/',
+                data: {
+                    email: this.form.email,
+                    subject: this.form.subject,
+                    message: this.form.message,
+                }
+            })
+                .then(response => {
+                    this.loading = false;
+                })
+                .catch(err => {
+                    this.loading = false;
+                })
         }
     }
 

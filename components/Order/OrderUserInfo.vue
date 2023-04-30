@@ -136,7 +136,7 @@ export default {
             try {
                 this.form.fullName = this.user.firstName
                 this.form.mobile = this.client.mobile
-                this.form.email = this.user.email
+                this.form.email = this.user.username
                 this.form.nationalCode = this.userInfo.nationalCode
             } catch (error) {
 

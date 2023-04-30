@@ -26,8 +26,8 @@
                                         </p>
                                     </v-col>
                                     <v-col cols="1  ">
-                                        <v-icon>mdi-square-edit-outline</v-icon>
-                                    </v-col>
+                                        <ModalEditAddress :address="address"/>
+                                    </v-col> 
                                 </v-row>
 
                             </div>
@@ -56,13 +56,15 @@
 <script>
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
+import ModalEditAddress from '~/components/Address/ModalEditAddress.vue'
 import ModalMapuserAddress from '~/components/Address/ModalMapuserAddress.vue'
 export default {
     layout: 'headerBlack',
     components: {
         UserProfileNavigation,
         ModalAddAddres,
-        ModalMapuserAddress
+        ModalMapuserAddress,
+        ModalEditAddress
     },
 
     computed: {
@@ -77,6 +79,7 @@ export default {
 
     methods:{
         openMapAddress(){
+            localStorage.setItem('modalMap' , 'add')
             this.$store.commit('public/set_addressMapModal' , true)
         }
     },

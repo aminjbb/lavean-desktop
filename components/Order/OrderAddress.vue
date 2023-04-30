@@ -28,15 +28,24 @@
 
             </v-radio-group>
             <v-row justify="end" class="pa-5 pl-8">
-                <ModalAddAddres />
+                <v-col cols="4">
+                                <v-btn block color="Black" dark rounded="xl" @click="openMapAddress()">
+                                    <span class="t12400">
+                                        اضافه کردن آدرس جدید
+                                    </span>
+                                </v-btn>
+                            </v-col>
             </v-row>
 
         </v-card>
+        <ModalAddAddres />
+        <ModalMapuserAddress />
     </div>
 </template>
 
 <script>
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
+import ModalMapuserAddress from '~/components/Address/ModalMapuserAddress.vue'
 export default {
     data() {
         return {
@@ -45,7 +54,7 @@ export default {
     },
 
     components: {
-        ModalAddAddres
+        ModalAddAddres,ModalMapuserAddress
     },
     computed: {
         user() {
@@ -63,6 +72,14 @@ export default {
                 return error
             }
         },
+    },
+
+    methods: {
+        openMapAddress() {
+            localStorage.setItem('modalMap' , 'add')
+            this.$store.dispatch('public/set_provinces')
+            this.$store.commit('public/set_addressMapModal', true)
+        }
     }
 }
 </script>

@@ -135,6 +135,7 @@ export const actions = {
                 id,weight,price
                 product{
                   url
+                  discountPercent
                   collection{
                     name
                   }
@@ -151,9 +152,10 @@ export const actions = {
               user{
                 firstName
                 lastName
-                email
+                username
               },
               mobile,
+              birthdate,
               addresses{
                 id
                 city{
@@ -172,7 +174,7 @@ export const actions = {
              },
              sex,
              nationalCode,
-             birthdate
+            
             }
           } `;
     const me = await this.$graphql.default.request(query, {}, requestHeaders);
@@ -198,6 +200,9 @@ export const actions = {
             clientProductCategories{
               results{
                 id,name,image,url
+                subCategories{
+                  id,name,url
+                }
               }
             }
           } `;

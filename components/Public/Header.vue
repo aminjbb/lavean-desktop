@@ -14,7 +14,7 @@
                         </span>
                     </v-row>
                 </v-card>
-                <div justify="end"><a href="/"><img width="180" height="40"
+                <div class="pl-15"><a href="/"><img width="180" height="40"
                             :src="require('~/assets/img/lavinLogoMain.png')"></a>
                 </div>
                 <div>
