@@ -167,6 +167,7 @@ export default {
 
         addToCard() {
             if (!this.$cookies.get('customer_token')) {
+                this.$cookies.set('urlBack' , this.$route.path)
                 this.$router.push('/register')
             }
             else{

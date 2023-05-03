@@ -18,9 +18,13 @@ export const state = () => ({
   braches: [],
   clientOrder: '',
   myOrders: [],
+  clientPayment:''
 })
 
 export const mutations = {
+  set_clientPayment(state, obj){
+    state.clientPayment = obj
+  },
   set_myOrders(state, obj) {
     state.myOrders = obj
   },
@@ -80,6 +84,72 @@ export const mutations = {
 
 export const actions = {
 
+  async set_clientPayment({ commit }, id) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+      clientPayment(payId:`+id+`){
+          id
+          gateway
+          amount
+          createdAt
+          paidAt
+          refId
+          requestId
+          saleReferenceId
+          authority
+          order{
+              id
+              details{
+                variant{
+                  weight,price
+                  product{
+                    url
+                    discountPercent
+                    collection{
+                      name
+                    }
+                    name
+                    imageCover{
+                      imageThumbnail{
+                        medium
+                      }
+                    }
+                  }
+                }
+                variantName
+                variantUnitPriceWithoutDiscount
+                variantUnitPrice
+              }
+              finalPrice
+              delivery{
+                name
+              }
+              address{
+                addressDetail
+                number
+                postalCode
+                city{
+                  name
+                  province{
+                    name
+                  }
+                }
+              }
+              createdAt
+              currentStatus{
+                name
+              }
+              clientComment
+          }
+        }
+          
+      } `;
+    const payment = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_clientPayment', payment.clientPayment);
+  },
   async set_myOrders({ commit }) {
     const requestHeaders = {
       Authorization: "Bearer " + cookies.get("customer_token"),
@@ -400,6 +470,9 @@ export const actions = {
 }
 
 export const getters = {
+  get_clientPayment(state){
+    return state.clientPayment
+  },
   get_myOrders(state) {
     return state.myOrders
   },

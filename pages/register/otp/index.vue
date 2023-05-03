@@ -135,7 +135,14 @@ export default {
                 .then((response) => {
                     this.$cookies.set("customer_token", response.data.access);
                     this.$store.commit("set_isLogin", true);
-                    this.$router.push('/')
+                    if (this.$cookies.get('urlBack')) {
+                        this.$router.push(this.$cookies.get('urlBack'))
+                        this.$cookies.remove('urlBack')
+                    }
+                    else{
+                        this.$router.push('/')
+                    }
+                    
                 })
                 .catch((err) => {
 

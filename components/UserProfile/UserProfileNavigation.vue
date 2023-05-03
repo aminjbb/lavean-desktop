@@ -38,11 +38,11 @@
 
       </v-list-item-group>
 
-      <v-row justify="end" class="pa-5 pl-15">
-        <span class="mx-2">
+      <v-row justify="end" class="pa-5 pl-15" >
+        <span class="mx-2" @click="logout()"  >
           <v-img width="24" height="24" :src="require('~/assets/img/log-out.svg')"></v-img>
         </span>
-        <span class="mainError--text t16400">خروج</span>
+        <span class="mainError--text t16400" @click="logout()">خروج</span>
 
       </v-row>
     </v-list>
