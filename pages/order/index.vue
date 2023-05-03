@@ -167,7 +167,7 @@ export default {
                 }
             })
                 .then(response => {
-                    this.$router.push('/order/1')
+                    this.$router.push('/order/'+response.data.id)
                 })
                 .catch(err => {
 

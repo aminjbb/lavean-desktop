@@ -15,10 +15,18 @@ export const state = () => ({
   meCustomer: '',
   deliveryMethods: [],
   orderBrache: [],
-  braches: []
+  braches: [],
+  clientOrder: '',
+  myOrders: [],
 })
 
 export const mutations = {
+  set_myOrders(state, obj) {
+    state.myOrders = obj
+  },
+  set_clientOrder(state, obj) {
+    state.clientOrder = obj
+  },
   set_braches(state, obj) {
     state.braches = obj
   },
@@ -72,6 +80,118 @@ export const mutations = {
 
 export const actions = {
 
+  async set_myOrders({ commit }) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+      meCustomer{
+        orders{
+          id
+          details{
+            variant{
+              weight,price
+              product{
+                url
+                discountPercent
+                collection{
+                  name
+                }
+                name
+                imageCover{
+                  imageThumbnail{
+                    medium
+                  }
+                }
+              }
+            }
+            variantName
+            variantUnitPriceWithoutDiscount
+            variantUnitPrice
+          }
+          finalPrice
+          delivery{
+            name
+          }
+          address{
+            addressDetail
+            number
+            postalCode
+            city{
+              name
+              province{
+                name
+              }
+            }
+          }
+          createdAt
+          currentStatus{
+            name
+          }
+          clientComment
+        }
+        }
+          
+      } `;
+    const orders = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_myOrders', orders.meCustomer.orders);
+  },
+  async set_clientOrder({ commit }, id) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+      clientOrder(orderId:`+ id + `){
+        id
+        details{
+          variant{
+            weight,price
+            product{
+              url
+              discountPercent
+              collection{
+                name
+              }
+              name
+              imageCover{
+                imageThumbnail{
+                  medium
+                }
+              }
+            }
+          }
+          variantName
+          variantUnitPriceWithoutDiscount
+          variantUnitPrice
+        }
+        finalPrice
+        delivery{
+          name
+        }
+        address{
+          addressDetail
+          number
+          postalCode
+          city{
+            name
+            province{
+              name
+            }
+          }
+        }
+        createdAt
+        currentStatus{
+          name
+        }
+        clientComment
+        }
+          
+        } `;
+    const order = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_clientOrder', order.clientOrder);
+  },
   async set_braches({ commit }) {
 
     const query = gql`
@@ -280,7 +400,13 @@ export const actions = {
 }
 
 export const getters = {
-  get_braches(state, obj) {
+  get_myOrders(state) {
+    return state.myOrders
+  },
+  get_clientOrder(state) {
+    return state.clientOrder
+  },
+  get_braches(state) {
     return state.braches
   },
   get_orderBrache(state) {

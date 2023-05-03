@@ -1,29 +1,29 @@
 <template>
     <v-col cols="12">
-        <v-divider></v-divider>
+
         <v-row class="my-5">
             <v-col cols="3">
                 <v-img height="92" width="92" class="rounded-lg mr-6" :src="imageCover"></v-img>
             </v-col>
             <v-col cols="9">
                 <div><span class="t14600 Black--text">
-                        {{productName}}
+                        {{ productName }}
                     </span>
                     <v-chip class="px-5 ma-2" v-if="collectionName">
-                        <span class="t10400"> {{collectionName}}</span>
+                        <span class="t10400"> {{ collectionName }}</span>
                     </v-chip>
                 </div>
-                <v-row justify="space-between" :class=" collectionName ? 'mt-1' : 'mt-5'" >
+                <v-row justify="space-between" :class="collectionName ? 'mt-1' : 'mt-5'">
 
                     <div>
                         <v-chip class="mt-2 ml-2 " outlined pill>
-                         <span class="dana-fa">   {{weight}} گرم</span>
+                            <span class="dana-fa"> {{ weight }} گرم</span>
                         </v-chip>
-          
+
                     </div>
                     <div class="ml-10 mt-6">
                         <span class="t18600 Black--text dana-fa">
-                            {{splitChar(variantPirce)}}
+                            {{ splitChar(variantPirce) }}
                         </span>
                         <span class="16400 Black--text">
                             تومان
@@ -33,16 +33,16 @@
             </v-col>
 
         </v-row>
-
+        <v-divider></v-divider>
     </v-col>
 </template>
 <script>
 export default {
-    props:{
+    props: {
         card: ''
     },
 
-    methods:{
+    methods: {
         splitChar(text) {
             if (text) {
                 return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -53,8 +53,8 @@ export default {
 
     },
 
-    computed:{
-        variant(){
+    computed: {
+        variant() {
             try {
                 return this.card.variant
             } catch (error) {
@@ -62,7 +62,7 @@ export default {
             }
         },
 
-        weight(){
+        weight() {
             try {
                 return this.variant.weight
             } catch (error) {
@@ -70,11 +70,11 @@ export default {
             }
         },
 
-        variantPirce(){
+        variantPirce() {
             return this.variant.price
         },
 
-        productName(){
+        productName() {
             try {
                 return this.variant.product.name
             } catch (error) {
@@ -82,7 +82,7 @@ export default {
             }
         },
 
-        imageCover(){
+        imageCover() {
             try {
                 return process.env.baseUrl + '/media/' + this.variant.product.imageCover.imageThumbnail.medium
             } catch (error) {
@@ -90,7 +90,7 @@ export default {
             }
         },
 
-        collectionName(){
+        collectionName() {
             try {
                 return this.variant.product.collection.name
             } catch (error) {
