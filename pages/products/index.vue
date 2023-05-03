@@ -36,19 +36,19 @@
                             </v-btn>
                             <v-menu offset-y v-for="(cat, index) in produCategories" :key="index">
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-btn text v-bind="attrs" v-on="on">
+                                    <v-btn text  @click="assignCat(cat)">
                                         <span class="t14400 mx-3 Black--text">
                                             {{ cat.name }}
                                         </span>
                                     </v-btn>
                                 </template>
-                                <v-list>
-                                    <v-list-item v-for="(item, index) in items" :key="index">
+                                <!-- <v-list v-if="cat.subCategories.length >0">
+                                    <v-list-item v-for="(item, index) in cat.subCategories" :key="index">
                                         <v-list-item-title><v-btn text to="/">
-                                                {{ item.title }}
+                                                {{ item.name }}
                                             </v-btn></v-list-item-title>
                                     </v-list-item>
-                                </v-list>
+                                </v-list> -->
                             </v-menu>
 
                         </div>
@@ -129,8 +129,9 @@
                 <v-card v-click-outside="outsideSearchShow" v-if="searchShow"
                     class="pa-10 mt-5 position__absolute z-index-10" width="421" rounded="lg" color="Cultured" outlined>
                     <div>
-                        <v-text-field dense prepend-inner-icon="mdi-magnify" height="36" background-color="white" outlined
-                            class="border-r-15" placeholder="جست و جوی کالکشن" clearable></v-text-field>
+                        <v-text-field dense prepend-inner-icon="mdi-magnify" color="black" height="36"
+                            background-color="white" outlined class="border-r-15" placeholder="جست و جوی کالکشن"
+                            clearable></v-text-field>
                     </div>
                     <v-card rounded="lg" width="323" color="white" outlined>
                         <template>
@@ -164,13 +165,13 @@
                         <template>
                             <v-container fluid>
                                 <v-radio-group v-model="sort">
-                                    <v-radio color="DeepGreen" class="ma-5 " label="جدید‌ترین" value="newest"></v-radio>
+                                    <v-radio color="DeepGreen" class="mx-5 mb-5" label="جدید‌ترین" value="newest"></v-radio>
                                     <v-divider></v-divider>
                                     <v-radio color="DeepGreen" class="ma-5" label="کمترین قیمت" value="cheapest"></v-radio>
                                     <v-divider></v-divider>
-                                    <v-radio color="DeepGreen" class="ma-5" label="بیشترین قیمت"
+                                    <v-radio color="DeepGreen" class="mx-5 mt-5" label="بیشترین قیمت"
                                         value="most_expensive"></v-radio>
-                                    <v-divider></v-divider>
+
 
                                 </v-radio-group>
                             </v-container>
@@ -249,7 +250,7 @@ import ProductCard from '~/components/Public/ProductCard.vue'
 import { ProductListFilter } from "~/store/classes"
 export default {
     beforeMount() {
-        this.$store.dispatch('set_products', '')
+        this.$store.dispatch('set_products', this.productFilter.query_maker_graph(this.$route))
         this.$store.dispatch('set_collections')
         this.$store.dispatch('set_produCategories')
 
@@ -276,7 +277,12 @@ export default {
             return this.$store.getters['get_collections']
         },
         produCategories() {
-            return this.$store.getters['get_produCategories']
+            try {
+                var cat = this.$store.getters['get_produCategories']
+                return cat.slice(0, 9)
+            } catch (error) {
+                return []
+            }
         }
     },
     data() {
@@ -304,6 +310,9 @@ export default {
     },
 
     methods: {
+        assignCat(cat){
+            this.$router.push('/products?cat=' + cat.id)
+        },
         splitChar(text) {
             if (text) {
                 return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

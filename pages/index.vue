@@ -61,7 +61,8 @@ export default {
 
   beforeMount() {
     this.$store.dispatch('set_productHome')
-    this.$store.dispatch('set_produCategories')
+    this.$store.dispatch('set_produCategoriesHome')
+    this.$store.dispatch('set_clientBanners')
   }
 }
 </script>

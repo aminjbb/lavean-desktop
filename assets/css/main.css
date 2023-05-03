@@ -1126,6 +1126,11 @@ ol li {
   top: 70px;
   border-radius: 24.5px !important;
 }
+.search_box-1 {
+  left: 11%;
+  top: 83px;
+  border-radius: 24.5px !important;
+}
 
 @media (max-width: 1902px) {
   .search_box {

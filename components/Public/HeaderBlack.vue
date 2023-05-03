@@ -37,7 +37,7 @@
             </v-row>
             <v-text-field v-if="searchBox" @click:append="searchProduct()" v-model="search" append-icon="mdi-magnify"
                 placeholder="جست‌وجو محصولات ما " dense background-color="Cultured02" outlined
-                class="position__absolute search_box z-index-10"></v-text-field>
+                class="position__absolute search_box-1 z-index-10"></v-text-field>
         </div>
         <v-divider class="mt-2"></v-divider>
         <div class="main-container">

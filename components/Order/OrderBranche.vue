@@ -9,7 +9,7 @@
             <v-divider></v-divider>
             <v-radio-group v-model="radios" class="px-8">
 
-                <v-radio value="Google">
+                <v-radio color="black" value="Google">
                     <template v-slot:label>
                         <div class="box-delivery border-r-15">
                             <p class="t14400 Arsenic--text ma-3 my-4 text-right">

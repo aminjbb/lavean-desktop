@@ -32,7 +32,7 @@ export default {
     },
     computed: {
         categories() {
-            return this.$store.getters['get_produCategories']
+            return this.$store.getters['get_produCategoriesHome']
         }
     },
     methods: {

@@ -1,5 +1,5 @@
 <template>
-    <v-card rounded="lg" height="188" width="190" outlined>
+    <v-card rounded="lg" height="188" width="190" outlined :to="'/products?cat=' +categori.id">
         <v-row justify="center" align="center" class="height-percent-100">
             <v-img max-height="108" max-width="108" :src="categoriImage"
                 class="border-r-15"></v-img>

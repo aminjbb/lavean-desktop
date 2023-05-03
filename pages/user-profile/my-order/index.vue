@@ -49,7 +49,7 @@
                                         {{ order.id }}
                                     </span></div>
 
-                                <div class="text-end pr-10"> <span class="t14400">
+                                <div class="text-end pr-15 mr-8"> <span class="t14400">
                                         {{ orderDate(order.createdAt) }}
                                     </span></div>
 
@@ -57,8 +57,8 @@
                                         {{ publicMethod.splitChar(order.finalPrice) }} تومان
                                     </span></div>
 
-                                <div class="text-center pl-8"> <span class="t14400">
-                                        تحویل شده
+                                <div class="text-center pl-8"> <span v-if="order.currentStatus" class="t14400">
+                                        {{order.currentStatus.name}}
                                     </span></div>
 
                                 <div class="text-center"> <span class="t14400">

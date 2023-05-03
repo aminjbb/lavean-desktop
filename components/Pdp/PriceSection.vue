@@ -2,7 +2,7 @@
     <div>
         <v-col cols="12">
             <div class="d-flex mr-7">
-                <div class="mt-2">
+                <div class="mt-3">
                     <span class="ml-3">
                         وزن
                     </span>
@@ -248,6 +248,10 @@ export default {
                 return []
             }
         }
+    },
+
+    mounted(){
+        this.changeVariant = this.bestVariant.id
     }
 }
 </script>

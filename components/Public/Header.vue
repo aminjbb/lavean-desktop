@@ -24,8 +24,18 @@
                                 :src="require('~/assets/img/search.svg')"></v-img>
                         </div>
                         <div class="d-flex">
-                            <a href="/order"> <img class="ml-2" width="29" height="32"
-                                    :src="require('~/assets/img/card.svg')" /></a>
+                            <a href="/order">
+                                <v-badge v-if="cardDetail > 0" bordered offset-x="45" offset-y="40" color="DeepCarminePink"
+                                    overlap>
+                                    <template v-slot:badge>
+                                       <span class="dana-fa">{{cardDetail}}</span>
+                                    </template>
+                                    
+                                    <img class="ml-2" width="29" height="32"
+                                        :src="require('~/assets/img/card.svg')" /></v-badge>
+
+                                <img class="ml-2" width="29" height="32" :src="require('~/assets/img/card.svg')"
+                                    v-else /></a>
 
                             <img @click="userProfileRoute()" class="mt-1 mr-4" width="28" height="28"
                                 :src="require('~/assets/img/userProfile.svg')" />
@@ -35,9 +45,9 @@
                 </div>
 
             </v-row>
-            <v-text-field v-if="searchBox" @click:append="searchProduct()" v-model="search" append-icon="mdi-magnify"
+            <v-text-field color="black" v-if="searchBox" @click:append="searchProduct()" v-model="search" append-icon="mdi-magnify"
                 placeholder="جست‌وجو محصولات ما " dense background-color="Cultured02" outlined
-                class="position__absolute search_box z-index-10"></v-text-field>
+                class="position__absolute search_box-1 z-index-10"></v-text-field>
             <!-- <v-card class="" color="Cultured02" width="395" height="49">
                 <v-row justify="center" align="center">
                     <v-col cols="11">
@@ -59,7 +69,8 @@
                         <span class="t14400 white--text"> فروشگاه</span>
                     </v-btn>
 
-                    <v-btn to="/lavean-mag" active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact large>
+                    <v-btn to="/lavean-mag" active-class="headr-active" text class="d-flex align-centerpb-0 mb-0" exact
+                        large>
 
                         <span class="t14400 white--text"> لاوین مگ </span>
                     </v-btn>
@@ -96,6 +107,26 @@ export default {
         },
         searchProduct() {
             this.$router.push('/products?name=' + this.search)
+        }
+    },
+
+    computed: {
+        customer() {
+            return this.$store.getters['get_meCustomer']
+        },
+
+        cardDetail() {
+            try {
+                return this.customer.cartDetails.length
+            } catch (error) {
+                return 0
+            }
+        }
+    },
+
+    mounted() {
+        if (this.$cookies.get('customer_token')) {
+            this.$store.dispatch('set_meCustomer')
         }
     }
 }

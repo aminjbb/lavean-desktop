@@ -12,7 +12,7 @@
             </div>
             <v-divider></v-divider>
             <v-radio-group v-model="address" class="px-8">
-                <v-radio :value="address.id" v-for="(address ) in addresses" :key="address.id">
+                <v-radio color="black" :value="address.id" v-for="(address ) in addresses" :key="address.id">
                     <template v-slot:label>
                         <div class="box-delivery border-r-15 py-3 text-right">
                             <span class="position__absolute" style="right: 10px;top: 30px;">

@@ -12,7 +12,7 @@
             <v-divider></v-divider>
             <v-radio-group v-model="delivery" class="px-8">
 
-                <v-radio :value="delivery.id" v-for="(delivery) in deliveryMethods" :key="delivery.id">
+                <v-radio color="black" :value="delivery.id" v-for="(delivery) in deliveryMethods" :key="delivery.id">
                     <template v-slot:label>
                         <div class="box-delivery border-r-15 py-3">
                             <p class="t14400 Arsenic--text ma-3 mt-2 text-right">

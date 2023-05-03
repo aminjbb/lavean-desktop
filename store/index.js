@@ -18,11 +18,19 @@ export const state = () => ({
   braches: [],
   clientOrder: '',
   myOrders: [],
-  clientPayment:''
+  clientPayment: '',
+  clientBanners: [],
+  produCategoriesHome: []
 })
 
 export const mutations = {
-  set_clientPayment(state, obj){
+  set_produCategoriesHome(state, obj) {
+    state.produCategoriesHome = obj
+  },
+  set_clientBanners(state, obj) {
+    state.clientBanners = obj
+  },
+  set_clientPayment(state, obj) {
     state.clientPayment = obj
   },
   set_myOrders(state, obj) {
@@ -84,13 +92,30 @@ export const mutations = {
 
 export const actions = {
 
+  async set_clientBanners({ commit }, id) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+        clientBanners(type:SHOP_DESKTOP_MAIN_PAGE_TOP){
+          results{
+            image
+            url
+          }
+        }
+          
+      } `;
+    const banner = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_clientBanners', banner.clientBanners.results);
+  },
   async set_clientPayment({ commit }, id) {
     const requestHeaders = {
       Authorization: "Bearer " + cookies.get("customer_token"),
     };
     const query = gql`
     query{
-      clientPayment(payId:`+id+`){
+      clientPayment(payId:`+ id + `){
           id
           gateway
           amount
@@ -387,7 +412,7 @@ export const actions = {
 
     const query = gql`
         query{
-            clientProductCategories{
+            clientProductCategories(parent_Isnull:true){
               results{
                 id,name,image,url
                 subCategories{
@@ -398,6 +423,22 @@ export const actions = {
           } `;
     const categories = await this.$graphql.default.request(query, {});
     commit('set_produCategories', categories.clientProductCategories.results);
+  },
+  async set_produCategoriesHome({ commit }, form) {
+
+    const query = gql`
+        query{
+            clientProductCategories(parent_Isnull:true){
+              results{
+                id,name,image,url
+                subCategories{
+                  id,name,url
+                }
+              }
+            }
+          } `;
+    const categories = await this.$graphql.default.request(query, {});
+    commit('set_produCategoriesHome', categories.clientProductCategories.results);
   },
   async set_productHome({ commit }, form) {
 
@@ -470,7 +511,13 @@ export const actions = {
 }
 
 export const getters = {
-  get_clientPayment(state){
+  get_produCategoriesHome(state) {
+    return state.produCategoriesHome
+  },
+  get_clientBanners(state) {
+    return state.clientBanners
+  },
+  get_clientPayment(state) {
     return state.clientPayment
   },
   get_myOrders(state) {

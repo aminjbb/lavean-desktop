@@ -201,6 +201,10 @@ export class ProductListFilter {
             var page = (route.query.page - 1) * 20
             query += ',offset:' + page
         }
+        if (route.query.cat) {
+       
+            query += ',categoryProductAssignments_Category_Id:' + route.query.cat
+        }
         return query
     }
 }
