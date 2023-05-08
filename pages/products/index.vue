@@ -116,7 +116,13 @@
                                     <v-icon class="ml-5" color="Black">
                                         mdi-sort-variant
                                     </v-icon>
-                                    <span class="t14400 Black--text">
+                                    <span class="t14400 Black--text" v-if="sort == 'cheapest'">
+                                         کمترین
+                                    </span>
+                                    <span class="t14400 Black--text" v-else-if="sort == 'most_expensive'">
+                                        بیشترین 
+                                    </span>
+                                    <span class="t14400 Black--text" v-else>
                                         جدید ترین
                                     </span>
 
@@ -248,6 +254,7 @@
 <script>
 import ProductCard from '~/components/Public/ProductCard.vue'
 import { ProductListFilter } from "~/store/classes"
+import { debounce } from "debounce";
 export default {
     beforeMount() {
         this.$store.dispatch('set_products', this.productFilter.query_maker_graph(this.$route))
@@ -342,12 +349,12 @@ export default {
             this.productFilter.sort = this.sort
             this.$router.push("/products?" + this.productFilter.query_maker());
         },
-        filterPrice() {
+        filterPrice: debounce(function (e)  {
             this.productFilter.min_price = this.value[0]
             this.productFilter.max_price = this.value[1]
 
             this.$router.push("/products?" + this.productFilter.query_maker());
-        },
+        }, 1000),
         filterAvailable() {
             if (this.available == 'available') {
                 this.productFilter.available = 'available'
