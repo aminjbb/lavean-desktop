@@ -68,7 +68,7 @@ export default {
             schema,
             collection{
                 name, 
-                url,
+
             }
             images{
                 imageThumbnail{

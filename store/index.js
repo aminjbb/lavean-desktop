@@ -399,7 +399,7 @@ export const actions = {
         query{
           clientCollections(limit:100){
               results{
-                id,name,url
+                id,name
               }
             }
           } `;
@@ -451,7 +451,6 @@ export const actions = {
                   discountPercent
                   collection{
                     name,
-                    url,
                   }
                   bestVariant{
                       id,weight,price
@@ -485,7 +484,6 @@ export const actions = {
                   discountPercent
                   collection{
                     name,
-                    url,
                   }
                   bestVariant{
                       id,weight,price
