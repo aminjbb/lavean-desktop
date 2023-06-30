@@ -12,7 +12,7 @@
 
             <div>
                 <v-row>
-                    <OrderCard v-for="(card , index) in cartDetails" :key="index" :card="card"/>
+                    <OrderCardDetail v-for="(card , index) in cartDetails" :key="index" :card="card"/>
                 </v-row>
             </div>
         </v-card>
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import OrderCard from '~/components/Order/OrderCard.vue'
+import OrderCardDetail from '~/components/Order/OrderCardDetail.vue'
 export default {
     components:{
-        OrderCard
+        OrderCardDetail
     },
 
     computed:{

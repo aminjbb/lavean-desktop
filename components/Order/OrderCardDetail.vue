@@ -6,7 +6,8 @@
                 <v-img height="92" width="92" class="rounded-lg mr-6" :src="imageCover"></v-img>
             </v-col>
             <v-col cols="9">
-                <div>
+                <v-row justify="space-between" class="pa-3 pl-10">
+                    <div>
                         <span class="t14600 Black--text">
                             {{ productName }}
                         </span>
@@ -14,6 +15,11 @@
                             <span class="t10400"> {{ collectionName }}</span>
                         </v-chip>
                     </div>
+
+                    <v-btn @click="deleteCart()" icon>
+                        <v-icon color="error">mdi-trash-can-outline</v-icon>
+                    </v-btn>
+                </v-row>
 
                 <v-row justify="space-between" :class="collectionName ? 'mt-1' : 'mt-5'">
 
