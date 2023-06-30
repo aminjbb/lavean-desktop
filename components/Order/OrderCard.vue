@@ -1,18 +1,26 @@
 <template>
     <v-col cols="12">
-
+        <v-divider></v-divider>
         <v-row class="my-5">
             <v-col cols="3">
                 <v-img height="92" width="92" class="rounded-lg mr-6" :src="imageCover"></v-img>
             </v-col>
             <v-col cols="9">
-                <div><span class="t14600 Black--text">
-                        {{ productName }}
-                    </span>
-                    <v-chip class="px-5 ma-2" v-if="collectionName">
-                        <span class="t10400"> {{ collectionName }}</span>
-                    </v-chip>
-                </div>
+                <v-row justify="space-between" class="pa-3 pl-10">
+                    <div>
+                        <span class="t14600 Black--text">
+                            {{ productName }}
+                        </span>
+                        <v-chip class="px-5 ma-2" v-if="collectionName">
+                            <span class="t10400"> {{ collectionName }}</span>
+                        </v-chip>
+                    </div>
+
+                    <v-btn @click="deleteCart()" icon>
+                        <v-icon color="error">mdi-trash-can-outline</v-icon>
+                    </v-btn>
+                </v-row>
+
                 <v-row justify="space-between" :class="collectionName ? 'mt-1' : 'mt-5'">
 
                     <div>
@@ -33,10 +41,11 @@
             </v-col>
 
         </v-row>
-        <v-divider></v-divider>
+
     </v-col>
 </template>
 <script>
+import axios from 'axios'
 export default {
     props: {
         card: ''
@@ -50,6 +59,25 @@ export default {
                 return 0;
             }
         },
+
+        deleteCart() {
+            axios({
+                method: "delete",
+                url: process.env.apiUrl + "cart/client/",
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data: {
+                    variant: this.variant.id,
+                },
+            })
+                .then((response) => {
+                    this.$store.dispatch('set_meCustomer')
+                })
+                .catch((err) => {
+
+                });
+        }
 
     },
 

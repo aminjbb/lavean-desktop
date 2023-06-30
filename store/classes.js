@@ -148,6 +148,7 @@ export class ProductListFilter {
         this.available = "";
         this.colection = [],
             this.numbers_in_page = 20;
+            this.name = ''
     }
 
     query_maker() {
@@ -169,6 +170,9 @@ export class ProductListFilter {
         }
         if (this.available) {
             query += "available=" + this.available + "&"
+        }
+        if (this.name) {
+            query += "name=" + this.name + "&"
         }
         if (this.colection.length > 0) {
             var colections = ''
@@ -196,6 +200,9 @@ export class ProductListFilter {
         }
         if (route.query.available) {
             query += ',variants_BranchWarehouse_Quantity_Gte:1'
+        }
+        if (route.query.name) {
+            query += ',name_Icontains:"' +route.query.name + '"'
         }
         if (route.query.page) {
             var page = (route.query.page - 1) * 20

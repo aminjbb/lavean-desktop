@@ -257,6 +257,9 @@ import { ProductListFilter } from "~/store/classes"
 import { debounce } from "debounce";
 export default {
     beforeMount() {
+        if (this.$route.query.name) {
+            this.productFilter.name = this.$route.query.name
+        }
         this.$store.dispatch('set_products', this.productFilter.query_maker_graph(this.$route))
         this.$store.dispatch('set_collections')
         this.$store.dispatch('set_produCategories')
@@ -265,7 +268,6 @@ export default {
 
     mounted() {
         if (this.$route.query.max_price && this.$route.query.min_price) {
-            console.log(this.$route.query.max_price, this.$route.query.min_price);
             this.value = [this.$route.query.min_price, this.$route.query.max_price]
         }
     },

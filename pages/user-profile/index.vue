@@ -85,7 +85,7 @@
                                         </v-row>
                                     </v-card>
                                     <div class="px-4" v-else-if="editMobile">
-                                        <v-text-field color="Black" v-model="mobile" @click:append="editMobile = false"
+                                        <v-text-field color="Black" v-model="mobile" @click:append="sendData({ mobile: mobile }, 'user/client/me/client/')"
                                             append-icon="mdi-check-circle-outline" @blur="editMobile = false"
                                             placeholder="شماره موبایل" background-color="WhiteSmoke" outlined
                                             class="border-r-15"></v-text-field>

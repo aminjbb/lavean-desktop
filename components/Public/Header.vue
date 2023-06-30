@@ -45,7 +45,7 @@
                 </div>
 
             </v-row>
-            <v-text-field color="black" v-if="searchBox" @click:append="searchProduct()" v-model="search" append-icon="mdi-magnify"
+            <v-text-field color="black" v-if="searchBox" @click:append="searchProduct()" @keyup.enter="searchProduct()" v-model="search" append-icon="mdi-magnify"
                 placeholder="جست‌وجو محصولات ما " dense background-color="Cultured02" outlined
                 class="position__absolute search_box-1 z-index-10"></v-text-field>
             <!-- <v-card class="" color="Cultured02" width="395" height="49">
@@ -106,6 +106,7 @@ export default {
             }
         },
         searchProduct() {
+            this.searchBox = false
             this.$router.push('/products?name=' + this.search)
         }
     },
