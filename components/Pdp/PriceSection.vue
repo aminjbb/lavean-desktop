@@ -192,7 +192,6 @@ export default {
                     this.text = 'با موفقیت به سبد خرید اضافه شد'
                     this.color = 'success'
                     this.loading = false
-                    this.$router.push('/order')
                     setTimeout(() => {
                         this.snackbar = false
                     }, 4000);

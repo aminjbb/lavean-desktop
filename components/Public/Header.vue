@@ -24,13 +24,13 @@
                                 :src="require('~/assets/img/search.svg')"></v-img>
                         </div>
                         <div class="d-flex">
-                            <a href="/order">
+                            <a @click="cartModal = !cartModal">
                                 <v-badge v-if="cardDetail > 0" bordered offset-x="45" offset-y="40" color="DeepCarminePink"
                                     overlap>
                                     <template v-slot:badge>
-                                       <span class="dana-fa">{{cardDetail}}</span>
+                                        <span class="dana-fa">{{ cardDetail }}</span>
                                     </template>
-                                    
+
                                     <img class="ml-2" width="29" height="32"
                                         :src="require('~/assets/img/card.svg')" /></v-badge>
 
@@ -45,9 +45,71 @@
                 </div>
 
             </v-row>
-            <v-text-field color="black" v-if="searchBox" @click:append="searchProduct()" @keyup.enter="searchProduct()" v-model="search" append-icon="mdi-magnify"
-                placeholder="جست‌وجو محصولات ما " dense background-color="Cultured02" outlined
-                class="position__absolute search_box-1 z-index-10"></v-text-field>
+            <v-text-field color="black" v-if="searchBox" @click:append="searchProduct()" @keyup.enter="searchProduct()"
+                v-model="search" append-icon="mdi-magnify" placeholder="جست‌وجو محصولات ما " dense
+                background-color="Cultured02" outlined class="position__absolute search_box-1 z-index-10"></v-text-field>
+            <div class="pa-5 position__absolute card-modal-box z-index-10" v-if="cartModal"
+                v-click-outside="closeCartModal">
+                <v-card min-width="678" color="white" outlined class="br-15">
+                    <div v-if="cartDetailsLength.length > 0">
+                        <div class="ma-4 d-felx align-content-center">
+                            <span class="position__absolute">
+                                <img src="~/assets/img/ShoppingCartSimple.svg" alt="">
+                            </span>
+                            <span class="t14600 Black--text mr-8">
+                                سبد خرید
+                            </span>
+                        </div>
+                        <v-divider></v-divider>
+                        <v-row>
+                            <OrderCardDetail v-for="(card, index) in cartDetails" :key="index" :card="card" />
+                        </v-row>
+                    </div>
+                    <div cols="8" v-else>
+                        <v-row justify="center ">
+                            <v-card outlined class="pt-3 pb-3 br-15" width="1200" height="494">
+                                <div class="ma-4 d-felx align-content-center">
+                                    <span class="position__absolute">
+                                        <img src="~/assets/img/ShoppingCartSimple.svg" alt="">
+                                    </span>
+                                    <span class="t14600 Black--text mr-8">
+                                        سبد خرید
+                                    </span>
+                                </div>
+                                <v-divider></v-divider>
+                                <div class="mt-10">
+                                    <v-row justify="center">
+                                        <v-img class="mt-10" max-width="234" max-height="200"
+                                            :src="require('~/assets/img/is-null-object.svg')"></v-img>
+
+                                    </v-row>
+                                    <v-row justify="center" class="mt-6">
+                                        <p class="t18600 Black--text">سبد خرید شما خالی است!</p>
+
+                                    </v-row>
+                                    <v-row justify="center" class="mt-6">
+                                        <v-btn to="/products" width="207" color="Black" dark rounded="xl">
+                                            <span class="t12400">
+                                                بازدید از فروشگاه
+                                            </span>
+                                        </v-btn>
+
+                                    </v-row>
+                                </div>
+                            </v-card>
+                        </v-row>
+                    </div>
+
+                </v-card>
+                <v-row v-if="cartDetailsLength.length > 0" justify="end" class="ma-6">
+                    <v-btn @click="cartModal = false; $router.push('/order')" width="207" color="Black" dark rounded="xl">
+                        <span class="t12400">
+                            مشاهده سبد خرید
+                        </span>
+                    </v-btn>
+
+                </v-row>
+            </div>
             <!-- <v-card class="" color="Cultured02" width="395" height="49">
                 <v-row justify="center" align="center">
                     <v-col cols="11">
@@ -89,14 +151,25 @@
     </header>
 </template>
 <script>
+import OrderCardDetail from '~/components/Order/OrderCardDetail'
 export default {
+    components: {
+        OrderCardDetail
+    },
     data() {
         return {
             search: '',
-            searchBox: false
+            searchBox: false,
+            cartModal: false,
+            cartDetailsLength: [],
         }
     },
     methods: {
+        closeCartModal() {
+            if (this.cartModal) {
+                this.cartModal = false
+            }
+        },
         userProfileRoute() {
             if (this.$cookies.get('customer_token')) {
                 this.$router.push('/user-profile')
@@ -112,6 +185,13 @@ export default {
     },
 
     computed: {
+        cartDetails() {
+            try {
+                return this.$store.getters['get_meCustomer'].cartDetails
+            } catch (error) {
+                return []
+            }
+        },
         customer() {
             return this.$store.getters['get_meCustomer']
         },
@@ -122,6 +202,12 @@ export default {
             } catch (error) {
                 return 0
             }
+        }
+    },
+
+    watch: {
+        cartDetails(val) {
+            this.cartDetailsLength = val
         }
     },
 
