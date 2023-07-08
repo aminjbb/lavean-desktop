@@ -31,6 +31,7 @@ export default {
     "~/plugins/vuetify.js",
     { src: "~plugins/vue-cooki.js", ssr: false },
     { src: "~/plugins/datePicker.js",ssr: false },
+    { src: "~/plugins/ImageMagnifier.js",ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
