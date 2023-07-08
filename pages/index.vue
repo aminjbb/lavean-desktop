@@ -63,6 +63,7 @@ export default {
     this.$store.dispatch('set_productHome')
     this.$store.dispatch('set_produCategoriesHome')
     this.$store.dispatch('set_clientBanners')
+    this.$store.dispatch('set_collections')
   }
 }
 </script>

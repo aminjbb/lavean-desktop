@@ -177,7 +177,7 @@ export class ProductListFilter {
         if (this.colection.length > 0) {
             var colections = ''
             this.colection.forEach(el => {
-                colections += '"' + el + '",'
+                colections += '' + el + ','
             })
             query += "colections=" + colections + "&"
         }
@@ -187,7 +187,7 @@ export class ProductListFilter {
     query_maker_graph(route) {
         var query = ''
         if (route.query.colections) {
-            query += ',collection_Url_In:[' + route.query.colections + ']'
+            query += ',collection_Id_In:[' + route.query.colections + ']'
         }
         if (route.query.sort) {
             query += ',sort:"' + route.query.sort + '"'

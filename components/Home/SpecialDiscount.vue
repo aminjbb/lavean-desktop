@@ -2,7 +2,7 @@
     <div>
         <vueper-slides class="no-shadow" style="border-radius: 25px;" :arrows="false" :touchable="true" fade
             :autoplay="true" :bullets="false" :shadow="false">
-            <vueper-slide v-for="i in 4" :key="i">
+            <vueper-slide v-for="(collection , index) in collections" :key="index">
                 <template #content>
                     <div class="main-container">
                         <div class="mt-90">
@@ -12,7 +12,7 @@
                                         <v-col cols="12">
                                             <div class="d-flex justify-end align-center">
                                                 <h5 class="t50800 black--text">
-                                                    کالکشن نوروز!
+                                                   {{collection.name}}
                                                 </h5>
                                             </div>
 
@@ -38,7 +38,7 @@
                                      
                                         <v-col cols="7" class="mt-2">
                                             <v-row justify="center">
-                                                <v-btn class="rounded-lg"  color="black" dark depressed height="59" width="283">
+                                                <v-btn class="rounded-lg"  color="black" dark depressed height="59" width="283" :to="'/products?colections=' +collection.id +','">
                                                     مشاهده کالکشن</v-btn>
                                             </v-row>
                                         </v-col>
@@ -80,32 +80,38 @@ export default {
         }
     },
 
+    computed:{
+        collections(){
+            return this.$store.getters['get_collections']
+        }
+    },
+
     methods: {
-        countDown() {
-            if (this.countdown_seconds > 0) {
-                --this.countdown_seconds;
-            } else {
-                this.countdown_seconds = 59;
-                if (this.countdown_minutes > 0) {
-                    --this.countdown_minutes;
-                } else {
-                    this.countdown_minutes = 59;
-                    if (this.countdown_hours > 0) {
-                        --this.countdown_hours;
-                    }
-                }
-            }
-        },
+        // countDown() {
+        //     if (this.countdown_seconds > 0) {
+        //         --this.countdown_seconds;
+        //     } else {
+        //         this.countdown_seconds = 59;
+        //         if (this.countdown_minutes > 0) {
+        //             --this.countdown_minutes;
+        //         } else {
+        //             this.countdown_minutes = 59;
+        //             if (this.countdown_hours > 0) {
+        //                 --this.countdown_hours;
+        //             }
+        //         }
+        //     }
+        // },
     },
     mounted() {
-        var date = new Date();
+        // var date = new Date();
 
-        this.countdown_hours = date.getHours()
-        this.countdown_minutes = date.getMinutes()
-        this.countdown_seconds = date.getMinutes()
-        setInterval(() => {
-            this.countDown();
-        }, 1000);
+        // this.countdown_hours = date.getHours()
+        // this.countdown_minutes = date.getMinutes()
+        // this.countdown_seconds = date.getMinutes()
+        // setInterval(() => {
+        //     this.countDown();
+        // }, 1000);
     },
 }
 </script>

@@ -143,7 +143,7 @@
                         <template>
                             <v-container fluid>
                                 <template v-for="(colection, index) in collections">
-                                    <v-checkbox color="DeepGreen" :value="colection.url" class="mx-5 mt-5"
+                                    <v-checkbox color="DeepGreen" :value="colection.id" class="mx-5 mt-5"
                                         v-model="selectedColection" :key="colection.id"
                                         :label="colection.name"></v-checkbox>
                                     <v-divider></v-divider>
