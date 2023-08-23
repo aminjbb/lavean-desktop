@@ -200,6 +200,11 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+
+  beforeMount() {
+
+    this.$store.dispatch('set_clientGoldPrice')
   }
 }
 </script>
