@@ -20,10 +20,14 @@ export const state = () => ({
   myOrders: [],
   clientPayment: '',
   clientBanners: [],
-  produCategoriesHome: []
+  produCategoriesHome: [],
+  clientGoldPrice: ''
 })
 
 export const mutations = {
+  set_clientGoldPrice(state, obj) {
+    state.clientGoldPrice = obj
+  },
   set_produCategoriesHome(state, obj) {
     state.produCategoriesHome = obj
   },
@@ -91,6 +95,17 @@ export const mutations = {
 
 
 export const actions = {
+  async set_clientGoldPrice({ commit }) {
+
+    const query = gql`
+        query{
+            clientGoldPrice{
+              price
+            }
+          } `;
+    const obj = await this.$graphql.default.request(query, {});
+    commit('set_clientGoldPrice', obj.clientGoldPrice);
+  },
 
   async set_clientBanners({ commit }, id) {
   
@@ -507,6 +522,9 @@ export const actions = {
 }
 
 export const getters = {
+  get_clientGoldPrice(state) {
+    return state.clientGoldPrice
+  },
   get_produCategoriesHome(state) {
     return state.produCategoriesHome
   },
