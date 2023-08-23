@@ -9,8 +9,8 @@
                         <span class="t12400">
                             قیمت لحظه ای طلا
                         </span>
-                        <span class="t12400">
-                            ۱,۴۵۵,۸۸۸,۹۳۰ ریال
+                        <span class="t12400 dana-fa">
+                            {{ splitChar(clientGoldPrice) }} ریال
                         </span>
                     </v-row>
                 </v-card>
