@@ -29,7 +29,7 @@
                         class="mt-2 br-15">
                         <v-row class="mt-1" justify="space-between" align="center">
                             <v-col cols="6">
-                                <p class="text-center t14400 Black--text dana-fa">{{ branch.variant.weight }}</p>
+                                <p class="text-center t14400 Black--text dana-fa">{{ branch.weight }}</p>
                             </v-col>
                             <v-col cols="">
                                 <p class="text-center t14400 Black--text">{{ branch.branch.name }} </p>

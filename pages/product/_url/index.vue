@@ -4,11 +4,11 @@
       <v-col cols="12">
         <v-row justify="center">
           <v-col cols="4">
-            <CarouselImageThumbnails2 :product="product.clientProductByUrl"/>
+            <CarouselImageThumbnails2 :product="product"/>
           </v-col>
           <v-col cols="8">
-            <NameAndDetail :product="product.clientProductByUrl"/>
-            <PriceSection :product="product.clientProductByUrl"/>
+            <NameAndDetail :product="product"/>
+            <PriceSection :product="product"/>
           </v-col>
 
         </v-row>
@@ -88,15 +88,11 @@ export default {
 
     `;
 
-    let product = await $graphql.default.request(query);
+    let data = await $graphql.default.request(query);
+    let product = data.clientProductByUrl
     let branches = product.inStockVariants
-
-    // product.stocks.results[0].availableVariants.forEach((element) => {
-    //     colors.push({ color: element.color, value: element.id });
-    // });
-
     store.commit("public/set_overlay", false);
-    store.commit("set_bestVariant", product.clientProductByUrl.bestVariant);
+    store.commit("set_bestVariant", product.bestVariant);
     return {product, branches};
 
   },
