@@ -1,4 +1,3 @@
-import axios from 'axios'
 import cookies from 'vue-cookies'
 import { gql } from 'nuxt-graphql-request';
 
@@ -14,7 +13,6 @@ export const state = () => ({
   isLogin: false,
   meCustomer: '',
   deliveryMethods: [],
-  orderBrache: [],
   braches: [],
   clientOrder: '',
   myOrders: [],
@@ -45,9 +43,6 @@ export const mutations = {
   },
   set_braches(state, obj) {
     state.braches = obj
-  },
-  set_orderBrache(state, obj) {
-    state.orderBrache = obj
   },
   set_deliveryMethods(state, obj) {
     state.deliveryMethods = obj
@@ -108,7 +103,7 @@ export const actions = {
   },
 
   async set_clientBanners({ commit }, id) {
-  
+
     const query = gql`
     query{
         clientBanners(type:SHOP_DESKTOP_MAIN_PAGE_TOP){
@@ -117,7 +112,7 @@ export const actions = {
             url
           }
         }
-          
+
       } `;
     const banner = await this.$graphql.default.request(query, {});
     commit('set_clientBanners', banner.clientBanners.results);
@@ -183,7 +178,7 @@ export const actions = {
               clientComment
           }
         }
-          
+
       } `;
     const payment = await this.$graphql.default.request(query, {}, requestHeaders);
     commit('set_clientPayment', payment.clientPayment);
@@ -240,7 +235,7 @@ export const actions = {
           clientComment
         }
         }
-          
+
       } `;
     const orders = await this.$graphql.default.request(query, {}, requestHeaders);
     commit('set_myOrders', orders.meCustomer.orders);
@@ -295,7 +290,7 @@ export const actions = {
         }
         clientComment
         }
-          
+
         } `;
     const order = await this.$graphql.default.request(query, {}, requestHeaders);
     commit('set_clientOrder', order.clientOrder);
@@ -309,29 +304,10 @@ export const actions = {
             id , name , address
           }
         }
-          
+
         } `;
     const me = await this.$graphql.default.request(query, {});
     commit('set_braches', me.clientBranches.results);
-  },
-  async set_orderBrache({ commit }, url) {
-
-    const query = gql`
-    clientBranchWarehouseStocks(variant_Product_Url:"`+ url + `"){
-      results{
-          variant{
-              id,weight,
-          price,
-          },
-          branch{
-              id , name
-          }
-      }
-  }
-          
-        } `;
-    const me = await this.$graphql.default.request(query, {}, requestHeaders);
-    commit('set_orderBrache', me.clientBranchWarehouseStocks.results);
   },
   async set_deliveryMethods({ commit }) {
     const requestHeaders = {
@@ -346,7 +322,7 @@ export const actions = {
               description
             }
           }
-          
+
         } `;
     const me = await this.$graphql.default.request(query, {}, requestHeaders);
     commit('set_deliveryMethods', me.clientDeliveryMethods.results);
@@ -402,7 +378,7 @@ export const actions = {
              },
              sex,
              nationalCode,
-            
+
             }
           } `;
     const me = await this.$graphql.default.request(query, {}, requestHeaders);
@@ -542,9 +518,6 @@ export const getters = {
   },
   get_braches(state) {
     return state.braches
-  },
-  get_orderBrache(state) {
-    return state.orderBrache
   },
   get_deliveryMethods(state) {
     return state.deliveryMethods

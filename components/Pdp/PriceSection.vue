@@ -92,7 +92,7 @@
                     </v-row>
                     <!-- <v-row justify="end">
                         <v-col cols="5" md="4" class="mt-6 ml-2">
-                         
+
                         </v-col>
                     </v-row> -->
                     <!-- <v-card outlined min-height="80" max-height="174" min-width="351">
@@ -250,7 +250,10 @@ export default {
     },
 
     mounted(){
-        this.changeVariant = this.bestVariant.id
+        if(this.bestVariant) {
+          console.log("ALISH")
+          this.changeVariant = this.bestVariant.id
+        }
     }
 }
 </script>
