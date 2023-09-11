@@ -39,9 +39,9 @@
 
                         <v-row justify="space-between" align="center" class="mt-6 mx-8">
                             <span class="t12400">
-                                تخفیف
+<!--                                تخفیف-->
                                 <v-avatar class="pt-1" color="accent" size="23">
-                                    <span class="t10400 white--text  dana-fa">10%</span>
+                                    <span class="t10400 white--text  dana-fa"></span>
                                 </v-avatar>
 
                             </span>
@@ -229,8 +229,7 @@ export default {
         },
         variantPriceWithDiscount() {
             try {
-                var price = (this.bestVariant.price + this.product.discountPercent) / 100
-                return this.bestVariant.price - price.toFixed(0)
+                return this.bestVariant.price
             } catch (error) {
                 return ''
             }
