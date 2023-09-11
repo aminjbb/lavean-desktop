@@ -10,7 +10,7 @@
                             قیمت لحظه ای طلا
                         </span>
                         <span class="t12400 dana-fa">
-                            {{ splitChar(clientGoldPrice) }} ریال
+                            {{ splitChar(clientGoldPrice) }} تومان
                         </span>
                     </v-row>
                 </v-card>
@@ -112,7 +112,7 @@
             <!-- <v-card class="" color="Cultured02" width="395" height="49">
                 <v-row justify="center" align="center">
                     <v-col cols="11">
-                       
+
                     </v-col>
                     <v-col cols="1">
                         <v-row justify="center" align="center">
