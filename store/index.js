@@ -141,7 +141,7 @@ export const actions = {
                   product{
                     url
                     discountPercent
-                    collection{
+                    collections{
                       name
                     }
                     name
@@ -198,7 +198,7 @@ export const actions = {
               product{
                 url
                 discountPercent
-                collection{
+                collections{
                   name
                 }
                 name
@@ -254,7 +254,7 @@ export const actions = {
             product{
               url
               discountPercent
-              collection{
+              collections{
                 name
               }
               name
@@ -340,7 +340,7 @@ export const actions = {
                 product{
                   url
                   discountPercent
-                  collection{
+                  collections{
                     name
                   }
                   name
@@ -440,7 +440,7 @@ export const actions = {
                   name,
                   url,
                   discountPercent
-                  collection{
+                  collections{
                     name,
                   }
                   bestVariant{
@@ -473,7 +473,7 @@ export const actions = {
                   name,
                   url,
                   discountPercent
-                  collection{
+                  collections{
                     name,
                   }
                   bestVariant{

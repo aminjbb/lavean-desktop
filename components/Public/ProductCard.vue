@@ -73,7 +73,7 @@ export default {
 
         collectionName() {
             try {
-                return this.product.collection.name
+                return this.product.collections[0].name
             } catch (error) {
                 return ''
             }

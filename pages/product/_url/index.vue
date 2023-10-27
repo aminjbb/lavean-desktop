@@ -56,7 +56,7 @@ export default {
             metaTags,
             canonical,
             schema,
-            collection{
+            collections{
                 name,
 
             }

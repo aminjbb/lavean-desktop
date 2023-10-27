@@ -114,7 +114,7 @@ export default {
 
         collectionName() {
             try {
-                return this.variant.product.collection.name
+                return this.variant.product.collections[0].name
             } catch (error) {
                 return ''
             }
